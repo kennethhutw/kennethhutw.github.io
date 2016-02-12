@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>GoogleMap TileLayer Test</title>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+<![endif]-->
+<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=drawing" type="text/javascript"></script> 
+<script src="leaflet-google.js"></script>
+<style>
+body { margin: 0; }
+#map { height: 100%; }
+</style>
+<script>
+    function init() {
+        var map = L.map('map').setView([25.033718,121.56481], 3);
+       
+	    var googleLayer = new L.Google('ROADMAP',{ styles:[{stylers: [{saturation: -100}]}]});
+        map.addLayer(googleLayer);
+    }
+</script>
+</head>
+<body onload="javascript:init();">
+<div id="map"></div>
+</body>
+</html>

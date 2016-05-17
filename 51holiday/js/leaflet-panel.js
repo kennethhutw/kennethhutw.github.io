@@ -35,6 +35,8 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 					if(overlays[i].hasOwnProperty("marker") && overlays[i].marker.hasOwnProperty("active"))
 					{
 						IsActiveMarker =overlays[i].marker.active;
+                         //
+       
 					}
 					this._addLayer(overlays[i].layers[n], true, overlays[i].group,IsActiveMarker);
 				}
@@ -91,7 +93,8 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 			markertype =layer.marker.control;
 		if(layer.marker && layer.marker.displayname)
 			displayname =layer.marker.displayname;
-
+       
+        
 		this._layers[id] = {
 			layer:layerLayer,
 			name: layer.name,
@@ -1041,15 +1044,45 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 	},
 	_onMarkerClick:function(e){
 		this._handlingClick = true;
+		
 		var lat = e.currentTarget.getAttribute( "data-lat" );
 		var lon = e.currentTarget.getAttribute( "data-lon" );
+		var layerId = e.currentTarget.getAttribute( "data-layerid" );
+		var obj = this._layers[layerId];
 		//this._map.panTo( new L.LatLng( lat, lon ) );
-        var name = e.currentTarget.innerText;
-
-        this._map.flyTo( new L.LatLng( lat, lon ),15 );
+        var name =  "<p> "+e.currentTarget.innerText + "</p>";
+        var markerid = e.currentTarget.getAttribute( "data-markerid" );
+		  this._map.flyTo( new L.LatLng( lat, lon ),15 );
+		for(ml in this._map._layers) {
+			var layer = this._map._layers[ml];
+			if (layer.feature) {
+				if(layer.options.title.toLowerCase()==obj.name.toLowerCase())
+				{
+					if(layer._leaflet_id==markerid)
+					{
+						layer._icon.src="images/select-marker.png";
+					//	layer._icon.style.backgroundColor='#08f';
+						layer._icon.style.cursor='#08f';
+						
+						popup = new L.Popup();
+						var bounds = this._map.getBounds();
+						
+						var offset = parseFloat(lat)+0.0012;
+						popup.setLatLng(new L.LatLng( offset, lon ));
+						popup.setContent(name);
+						this._map.openPopup(popup);
+						layer.fire('click');
+					}
+					layer.closePopup();
+				}
+			
+			}
+		} 
+      
         // var group = new L.featureGroup([L.marker([lat, lon])]);
         // this._map.fitBounds(group.getBounds());
 	    this._handlingClick = false;
+		return layer;
 
 	},
 	_subfilter: function(layer,subfiltercontrols,that ){

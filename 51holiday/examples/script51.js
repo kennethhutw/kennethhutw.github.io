@@ -12,48 +12,48 @@ layer = new L.TileLayer(tileUrl,
     maxZoom: 18
 });
 
-// add the layer to the map
-map.addLayer(layer);
 
-/*
-var parisKievLL = [[1.3010655,103.8538013 ], [1.4618116, 103.7615745],[3.1393364,101.5467663],[2.7512352,101.7089291]];
-var londonParisRomeBerlinBucarest = [[51.507222, -0.1275], [48.8567, 2.3508],
-[41.9, 12.5], [52.516667, 13.383333], [44.4166,26.1]];
-var londonBrusselFrankfurtAmsterdamLondon = [[51.507222, -0.1275], [50.85, 4.35],
-[50.116667, 8.683333], [52.366667, 4.9], [51.507222, -0.1275]];
-var barcelonePerpignanPauBordeauxMarseilleMonaco = [
-    [41.385064, 2.173403],
-    [42.698611, 2.895556],
-    [43.3017, -0.3686],
-    [44.837912, -0.579541],
-    [43.296346, 5.369889],
-    [43.738418, 7.424616]
-];
-
-
-//map.fitBounds(londonParisRomeBerlinBucarest);
-
-//========================================================================
-var marker1 = L.Marker.movingMarker(parisKievLL, [10000]).addTo(map);
-L.polyline(parisKievLL).addTo(map);
-marker1.once('click', function () {
-    marker1.start();
-    marker1.closePopup();
-    marker1.unbindPopup();
-    marker1.on('click', function() {
-        if (marker1.isRunning()) {
-            marker1.pause();
+var myTrip = [[1.3010655,103.8538013],[1.4618116,103.7615745],[3.1393364,101.5467663],[2.7512352,101.7089291],[25.1013443,102.9327304],[25.0439788,102.7157993],[24.7515023,103.1782069],[25.0700448,103.3500283],[25.0439788,102.7157993],[25.0513952,102.7011452],[25.0275218,102.6737143],[24.9617588,102.6634683],[25.0347297, 102.7083859],[25.0439788,102.7157993],[25.0520444,102.703872],[25.0395304, 102.7071431],[25.1013443,102.9327304],[2.7512352,101.7089291],[1.3644256, 103.9893421]];
+var greenIcon = L.icon({
+    iconUrl: 'me2.png',
+    iconSize:     [60, 60]
+});
+var marker2 = L.Marker.movingMarker(myTrip,
+    [3000, 9000, 9000, 4000, 4000, 4000, 4000,3000, 9000, 9000, 4000, 4000, 4000, 4000,4000, 4000, 4000, 4000], {autostart: true})
+ marker2.setIcon(greenIcon);   
+    
+    L.polyline(myTrip, {color: 'red'}).addTo(map);
+    marker2.on('start', function() {
+    marker2.bindPopup('<b>Welcome!  This is my 2016/5/1 Holiday !</b> <p>You can click each marker <img src="../js/images/marker-icon.png"  title="The fifth day" style=" width: 25px; height: 41px;"> to see the details. </P> ', {closeOnClick: false})
+    .openPopup();
+        setTimeout(function() {
+        marker2.bindPopup('<b>Click me!! Click me !!</b>').openPopup();
+    }, 10000);
+});
+    marker2.on('end', function() {
+    marker2.bindPopup('<b>2016/5/1 Holiday Done !</b>', {closeOnClick: false})
+    .openPopup();
+});
+marker2.once('click', function () {
+    marker2.start();
+    marker2.closePopup();
+    marker2.unbindPopup();
+    marker2.on('click', function() {
+        if (marker2.isRunning()) {
+            marker2.pause();
         } else {
-            marker1.start();
+            marker2.start();
         }
     });
     setTimeout(function() {
-        marker1.bindPopup('<b>Click me to pause !</b>').openPopup();
+        marker2.bindPopup('<b>Click me!! Click me !!</b>').openPopup();
     }, 2000);
 });
+marker2.addTo(map);
+// add the layer to the map
+//map.addLayer(layer);
 
-marker1.bindPopup('<b>Click me to start !</b>', {closeOnClick: false});
-marker1.openPopup();
+/*
 
 //========================================================================
 var FlyfromKLToKunming = [[2.7512352,101.7089291],[25.1013443,102.9327304],[25.0439788,102.7157993]];
@@ -109,8 +109,10 @@ var overLayers = [
         });
         insidemarker.on('click', function(e) { 
          $('#sidebar').html(this.feature.content);
+		
         sidebar.toggle();  
         });
+		
         return insidemarker;
 		}}),
 		group: "The first day",
@@ -172,6 +174,7 @@ var overLayers = [
               title :'The fourth day'
         });
           insidemarker4.on('click', function(e) { 
+		  sidebar.hide();
                 $('#sidebar').html(this.feature.content);
                 sidebar.toggle();   
           });
@@ -207,82 +210,70 @@ var overLayers = [
 		marker:true,
 	}
 ];
-var baseLayers = [
-	{
-		name: "Open Street Map",
-		layer: new L.TileLayer("http://rt{s}.map.gtimg.com/realtimerender?z={z}&x={x}&y={y}&type=vector&style=0",{getUrlArgs: function(a) {
-            return {
-                z: a.z,
-                x: a.x,
-                y: Math.pow(2, a.z) - 1 - a.y
-            }
-        }})
-	}];
-var panelLayers = new L.Control.PanelLayers(null,overLayers,null,null);
-map.addControl(panelLayers);
+
+
+
+
+
   map.on('click', function () {
             sidebar.hide();
         });
-/*
-var marker2 = L.Marker.movingMarker(londonParisRomeBerlinBucarest,
-    [3000, 9000, 9000, 4000], {autostart: true}).addTo(map);
-L.polyline(londonParisRomeBerlinBucarest, {color: 'red'}).addTo(map);
-
-
-marker2.on('end', function() {
-    marker2.bindPopup('<b>Welcome to Bucarest !</b>', {closeOnClick: false})
-    .openPopup();
-});
-
-//=========================================================================
-
-var marker3 = L.Marker.movingMarker(londonBrusselFrankfurtAmsterdamLondon,
-    [2000, 2000, 2000, 2000], {autostart: true, loop: true}).addTo(map);
-
-marker3.loops = 0;
-marker3.bindPopup('', {closeOnClick: false});
-
-//=========================================================================
-
-var marker4 = L.Marker.movingMarker([[45.816667, 15.983333]], []).addTo(map);
-
-marker3.on('loop', function(e) {
-    marker3.loops++;
-    if (e.elapsedTime < 50) {
-        marker3.getPopup().setContent("<b>Loop: " + marker3.loops + "</b>")
-        marker3.openPopup();
-        setTimeout(function() {
-            marker3.closePopup();
-
-            if (! marker1.isEnded()) {
-                marker1.openPopup();
-            } else {
-                if (marker4.getLatLng().equals([45.816667, 15.983333])) {
-                    marker4.bindPopup('Click on the map to move me !');
-                    marker4.openPopup();
-                }
-
-            }
-
-        }, 2000);
+		
+L.TileLayer.WebDogTileLayer = L.TileLayer.extend({
+    getTileUrl: function (tilePoint) {
+        var urlArgs,
+            getUrlArgs = this.options.getUrlArgs;
+ 
+        if (getUrlArgs) {
+            var urlArgs = getUrlArgs(tilePoint);
+        } else {
+            urlArgs = {
+                z: tilePoint.z,
+                x: tilePoint.x,
+                y: tilePoint.y
+            };
+        }
+ 
+        return L.Util.template(this._url, L.extend(urlArgs, this.options, {s: this._getSubdomain(tilePoint)}));
     }
 });
+ 
+L.tileLayer.webdogTileLayer = function (url, options) {
+    return new L.TileLayer.WebDogTileLayer(url, options);
+};
+var url = 'http://rt{s}.map.gtimg.com/realtimerender?z={z}&x={x}&y={y}&type=vector&style=0',
+    options = L.extend({
+        subdomain: '012'},{
 
-map.on("click", function(e) {
-    marker4.moveTo(e.latlng, 2000);
-});
+		
+		   subdomains: "012",
+        getUrlArgs: function (tilePoint) {
+            return {
+                z: tilePoint.z,
+                x: tilePoint.x,
+                y: Math.pow(2, tilePoint.z) - 1 - tilePoint.y
+            };
+        }        
+    });
+	L.tileLayer.webdogTileLayer(url, options);
+	var baseLayers = [
+	{
+		name: "Open Street Map",
+		layer: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+		active: true
+	},{
+		name: "QQ Map",
+		layer: new L.tileLayer.webdogTileLayer(url, options)
+	}];
+	var panelLayers = new L.Control.PanelLayers(baseLayers,overLayers,null,null);
+map.addControl(panelLayers);
 
-//=========================================================================
 
-var marker5 = L.Marker.movingMarker(
-    barcelonePerpignanPauBordeauxMarseilleMonaco,
-    10000, {autostart: true}).addTo(map);
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-marker5.addStation(1, 2000);
-marker5.addStation(2, 2000);
-marker5.addStation(3, 2000);
-marker5.addStation(4, 2000);
+  ga('create', 'UA-65211878-2', 'auto');
+  ga('send', 'pageview');
 
-L.polyline(barcelonePerpignanPauBordeauxMarseilleMonaco,
-    {color: 'green'}).addTo(map);
-*/

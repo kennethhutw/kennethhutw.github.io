@@ -35,8 +35,6 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 					if(overlays[i].hasOwnProperty("marker") && overlays[i].marker.hasOwnProperty("active"))
 					{
 						IsActiveMarker =overlays[i].marker.active;
-                         //
-       
 					}
 					this._addLayer(overlays[i].layers[n], true, overlays[i].group,IsActiveMarker);
 				}
@@ -93,8 +91,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 			markertype =layer.marker.control;
 		if(layer.marker && layer.marker.displayname)
 			displayname =layer.marker.displayname;
-       
-        
+
 		this._layers[id] = {
 			layer:layerLayer,
 			name: layer.name,
@@ -1044,7 +1041,6 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 	},
 	_onMarkerClick:function(e){
 		this._handlingClick = true;
-		
 		var lat = e.currentTarget.getAttribute( "data-lat" );
 		var lon = e.currentTarget.getAttribute( "data-lon" );
 		var layerId = e.currentTarget.getAttribute( "data-layerid" );

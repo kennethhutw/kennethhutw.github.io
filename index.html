@@ -51,9 +51,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kennethhutw.github.io"></form>
@@ -96,11 +96,13 @@
 <p>If you cannot see the map, you can change it to qq map. </p>
 <p>If you have any idea or suggestion, please let me know. </p>
 <p>Hope you also have a good 2016_5_1_holiday as me. </p>
+<p><a href="http://kennethhutw.github.io/51Holiday/examples/51holiday.html">http://kennethhutw.github.io/51Holiday/examples/51holiday.html</a></p>
+<p><a href="http://kennethhutw.github.io/51Holiday/examples/51holiday.html">My 2016_5_1_holiday </a>! </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kennethhutw.github.io/2016/05/30/2016-5-1-myholiday/" data-id="ciothpntj0000lcsbla3r1sd8" class="article-share-link">Partager</a>
+      <a data-url="https://kennethhutw.github.io/2016/05/30/2016-5-1-myholiday/" data-id="ciothpntj0000lcsbla3r1sd8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leaflet/">leaflet</a></li></ul>
@@ -145,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kennethhutw.github.io/2016/05/26/WebFrontEndStack-hit-rate/" data-id="ciothpntw0001lcsbe1f7fe3j" class="article-share-link">Partager</a>
+      <a data-url="https://kennethhutw.github.io/2016/05/26/WebFrontEndStack-hit-rate/" data-id="ciothpntw0001lcsbe1f7fe3j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/echarts/">echarts</a></li></ul>
@@ -192,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kennethhutw.github.io/2016/05/23/hello-world/" data-id="ciothlhfp00019csbkfocnwe9" class="article-share-link">Partager</a>
+      <a data-url="https://kennethhutw.github.io/2016/05/23/hello-world/" data-id="ciothlhfp00019csbkfocnwe9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -233,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kennethhutw.github.io/2016/04/06/ggg/" data-id="ciothlhe500009csb059t9sex" class="article-share-link">Partager</a>
+      <a data-url="https://kennethhutw.github.io/2016/04/06/ggg/" data-id="ciothlhe500009csb059t9sex" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开始/">开始</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日志/">日志</a></li></ul>
@@ -272,11 +274,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>This is a plugin to use baidu map tiles with leaflet.  </p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p><code>var map = L.map(&#39;container&#39;);
+    map.setView([39.916527,116.397128], 11);
+    var qqLayer = new L.BMap();
+    map.addLayer(qqLayer);</code> .</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p><a href="http://kennethhutw.github.io/leaflet_baidu/leaflet-baidu.html">http://kennethhutw.github.io/leaflet_baidu/leaflet-baidu.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kennethhutw.github.io/2016/03/30/leaflet-baidu/" data-id="ciothpnu60004lcsbmlpu7mhx" class="article-share-link">Partager</a>
+      <a data-url="https://kennethhutw.github.io/2016/03/30/leaflet-baidu/" data-id="ciothpnu60004lcsbmlpu7mhx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leaflet/">leaflet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qq-map/">qq map</a></li></ul>
@@ -315,11 +322,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>This is a plugin to use qq map tiles with leaflet.  </p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p><code>var map = L.map(&#39;container&#39;);
+    map.setView([39.916527,116.397128], 11);
+    var qqLayer = new L.qq();
+      map.addLayer(qqLayer);</code> .</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p><a href="http://kennethhutw.github.io/leaflet_qq/leaflet-qq.html">http://kennethhutw.github.io/leaflet_qq/leaflet-qq.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kennethhutw.github.io/2016/02/20/leaflet-qq/" data-id="ciothpnui000jlcsb49y4lq3l" class="article-share-link">Partager</a>
+      <a data-url="https://kennethhutw.github.io/2016/02/20/leaflet-qq/" data-id="ciothpnui000jlcsb49y4lq3l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leaflet/">leaflet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qq-map/">qq map</a></li></ul>
@@ -360,11 +372,12 @@
         <p>Web front-end stack: browsers, platforms, libraries, frameworks, tools etc.</p>
 <p>It shows the web front end technology stack and It has English and Chinese version. </p>
 <p>You can use mouse to move/zoom in/zoom out. some of them has link to see the detail. </p>
+<p><a href="http://kennethhutw.github.io/WebFrontEndStack/WebFrontEndStack.html">http://kennethhutw.github.io/WebFrontEndStack/WebFrontEndStack.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kennethhutw.github.io/2016/01/30/WebFrontEndStack/" data-id="ciothnqxt00009wsbc8r7ztwq" class="article-share-link">Partager</a>
+      <a data-url="https://kennethhutw.github.io/2016/01/30/WebFrontEndStack/" data-id="ciothnqxt00009wsbc8r7ztwq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3/">d3</a></li></ul>
@@ -383,7 +396,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/d3/">d3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/echarts/">echarts</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leaflet/">leaflet</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/日志/">日志</a></li></ul>
     </div>
@@ -393,7 +406,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/d3/">d3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/echarts/">echarts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leaflet/">leaflet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qq-map/">qq map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开始/">开始</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日志/">日志</a></li></ul>
     </div>
@@ -403,7 +416,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/leaflet/" style="font-size: 20px;">leaflet</a> <a href="/tags/map/" style="font-size: 15px;">map</a> <a href="/tags/qq-map/" style="font-size: 15px;">qq map</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/日志/" style="font-size: 10px;">日志</a>
     </div>
@@ -422,7 +435,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -459,7 +472,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Kenneth_hu<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kennethhutw.github.io/"/>
-  <updated>2016-05-30T04:02:47.941Z</updated>
+  <updated>2016-05-30T04:10:10.373Z</updated>
   <id>https://kennethhutw.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://kennethhutw.github.io/2016/05/30/2016-5-1-myholiday/"/>
     <id>https://kennethhutw.github.io/2016/05/30/2016-5-1-myholiday/</id>
     <published>2016-05-30T01:32:39.000Z</published>
-    <updated>2016-05-30T04:02:47.941Z</updated>
+    <updated>2016-05-30T04:10:10.373Z</updated>
     
     <content type="html">&lt;p&gt;I made a trip in Kunming. I use leaflet to record where I have been during this trip. &lt;/p&gt;
 &lt;p&gt;You click any item in right bar. It will take you to the location of item. &lt;/p&gt;
@@ -28,6 +28,8 @@
 &lt;p&gt;If you cannot see the map, you can change it to qq map. &lt;/p&gt;
 &lt;p&gt;If you have any idea or suggestion, please let me know. &lt;/p&gt;
 &lt;p&gt;Hope you also have a good 2016_5_1_holiday as me. &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/51Holiday/examples/51holiday.html&quot;&gt;http://kennethhutw.github.io/51Holiday/examples/51holiday.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/51Holiday/examples/51holiday.html&quot;&gt;My 2016_5_1_holiday &lt;/a&gt;! &lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -128,15 +130,20 @@
     <link href="https://kennethhutw.github.io/2016/03/30/leaflet-baidu/"/>
     <id>https://kennethhutw.github.io/2016/03/30/leaflet-baidu/</id>
     <published>2016-03-30T01:32:06.000Z</published>
-    <updated>2016-05-30T04:03:01.477Z</updated>
+    <updated>2016-05-30T04:06:19.069Z</updated>
     
     <content type="html">&lt;p&gt;This is a plugin to use baidu map tiles with leaflet.  &lt;/p&gt;
+&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;p&gt;&lt;code&gt;var map = L.map(&amp;#39;container&amp;#39;);
+    map.setView([39.916527,116.397128], 11);
+    var qqLayer = new L.BMap();
+    map.addLayer(qqLayer);&lt;/code&gt; .&lt;/p&gt;
+&lt;h2 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;headerlink&quot; title=&quot;Example&quot;&gt;&lt;/a&gt;Example&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/leaflet_baidu/leaflet-baidu.html&quot;&gt;http://kennethhutw.github.io/leaflet_baidu/leaflet-baidu.html&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
       &lt;p&gt;This is a plugin to use baidu map tiles with leaflet.  &lt;/p&gt;
-
+&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h
     
     </summary>
     
@@ -156,15 +163,20 @@
     <link href="https://kennethhutw.github.io/2016/02/20/leaflet-qq/"/>
     <id>https://kennethhutw.github.io/2016/02/20/leaflet-qq/</id>
     <published>2016-02-20T01:32:06.000Z</published>
-    <updated>2016-05-30T04:02:56.961Z</updated>
+    <updated>2016-05-30T04:06:45.173Z</updated>
     
     <content type="html">&lt;p&gt;This is a plugin to use qq map tiles with leaflet.  &lt;/p&gt;
+&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;p&gt;&lt;code&gt;var map = L.map(&amp;#39;container&amp;#39;);
+    map.setView([39.916527,116.397128], 11);
+    var qqLayer = new L.qq();
+      map.addLayer(qqLayer);&lt;/code&gt; .&lt;/p&gt;
+&lt;h2 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;headerlink&quot; title=&quot;Example&quot;&gt;&lt;/a&gt;Example&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/leaflet_qq/leaflet-qq.html&quot;&gt;http://kennethhutw.github.io/leaflet_qq/leaflet-qq.html&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
       &lt;p&gt;This is a plugin to use qq map tiles with leaflet.  &lt;/p&gt;
-
+&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;
     
     </summary>
     
@@ -184,11 +196,12 @@
     <link href="https://kennethhutw.github.io/2016/01/30/WebFrontEndStack/"/>
     <id>https://kennethhutw.github.io/2016/01/30/WebFrontEndStack/</id>
     <published>2016-01-30T01:32:06.000Z</published>
-    <updated>2016-05-30T04:03:11.473Z</updated>
+    <updated>2016-05-30T04:12:01.324Z</updated>
     
     <content type="html">&lt;p&gt;Web front-end stack: browsers, platforms, libraries, frameworks, tools etc.&lt;/p&gt;
 &lt;p&gt;It shows the web front end technology stack and It has English and Chinese version. &lt;/p&gt;
 &lt;p&gt;You can use mouse to move/zoom in/zoom out. some of them has link to see the detail. &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/WebFrontEndStack/WebFrontEndStack.html&quot;&gt;http://kennethhutw.github.io/WebFrontEndStack/WebFrontEndStack.html&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">

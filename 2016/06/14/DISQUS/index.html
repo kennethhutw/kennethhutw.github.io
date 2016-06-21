@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="disqus," />
 
 
 
@@ -86,16 +86,18 @@
 
 
 
-<meta name="description">
+<meta name="description" content="多说 DISQUSDisqus是一家第三方社会化评论系统，主要为网站主提供评论托管服务。Disqus由Danniel Ha于2007年5月5日创办，和Dropbox、Reddit等知名网站一样，是Y Combinator孵化的一家公司。创办至今已获得Y-Combinator、Union Square Ventures、North Bridge等投资机构共计1450万美元投资。当前有80万家第三方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DISQUS">
+<meta property="og:title" content="设置多说DISQUS">
 <meta property="og:url" content="https://kennethhutw.github.io/2016/06/14/DISQUS/index.html">
 <meta property="og:site_name" content="Kenneth">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-06-14T06:10:03.400Z">
+<meta property="og:description" content="多说 DISQUSDisqus是一家第三方社会化评论系统，主要为网站主提供评论托管服务。Disqus由Danniel Ha于2007年5月5日创办，和Dropbox、Reddit等知名网站一样，是Y Combinator孵化的一家公司。创办至今已获得Y-Combinator、Union Square Ventures、North Bridge等投资机构共计1450万美元投资。当前有80万家第三方">
+<meta property="og:image" content="https://disqus-cloudfront.s3.amazonaws.com/docs/ERM-hide-media.png">
+<meta property="og:updated_time" content="2016-06-21T07:58:53.996Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DISQUS">
-<meta name="twitter:description">
+<meta name="twitter:title" content="设置多说DISQUS">
+<meta name="twitter:description" content="多说 DISQUSDisqus是一家第三方社会化评论系统，主要为网站主提供评论托管服务。Disqus由Danniel Ha于2007年5月5日创办，和Dropbox、Reddit等知名网站一样，是Y Combinator孵化的一家公司。创办至今已获得Y-Combinator、Union Square Ventures、North Bridge等投资机构共计1450万美元投资。当前有80万家第三方">
+<meta name="twitter:image" content="https://disqus-cloudfront.s3.amazonaws.com/docs/ERM-hide-media.png">
 
 
 
@@ -113,7 +115,7 @@
   };
 </script>
 
-  <title> DISQUS | Kenneth </title>
+  <title> 设置多说DISQUS | Kenneth </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -262,7 +264,7 @@
             
             
               
-                DISQUS
+                设置多说DISQUS
               
             
           </h1>
@@ -279,6 +281,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/disqus/" itemprop="url" rel="index">
+                    <span itemprop="name">disqus</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -309,7 +330,30 @@
       
 
       
-        
+        <p><img src="https://disqus-cloudfront.s3.amazonaws.com/docs/ERM-hide-media.png" alt="image"></p>
+<h2 id="多说-DISQUS"><a href="#多说-DISQUS" class="headerlink" title="多说 DISQUS"></a>多说 DISQUS</h2><p>Disqus是一家第三方社会化评论系统，主要为网站主提供评论托管服务。Disqus由Danniel Ha于2007年5月5日创办，和Dropbox、Reddit等知名网站一样，是Y Combinator孵化的一家公司。创办至今已获得Y-Combinator、Union Square Ventures、North Bridge等投资机构共计1450万美元投资。<br>当前有80万家第三方网站在使用Disqus提供的第三方评论系统，其评论系统每月的独立用户访问量已接近5亿，这一数字较2010年增长了500%。包括CNN、NBC、Fox News、Engadget、Time等知名网站均使用了Disqus提供的社会化评论系统。WordPress、Blogger、Tumblr等第三方博客平台均提供了Disqus第三方评论插件，目前，第三方社会化评论系统在美国，基本是主流网站的标配。</p>
+<a id="more"></a>
+<p>添加 多说 或者 Disqus 第三方评论系统。当同时设置了 多说 和 Disqus 时，优先选择多说。</p>
+<blockquote>
+<p>NexT 主题为多说提供了一套自定义的样式。</p>
+</blockquote>
+<h2 id="使用多说"><a href="#使用多说" class="headerlink" title="使用多说"></a>使用多说</h2><ol>
+<li><p>使用多说前需要先在 <a href="http://duoshuo.com/" target="_blank" rel="external">多说</a> 创建一个站点。具体步骤如下：</p>
+<ol>
+<li>登录后在首页选择 “我要安装”。</li>
+<li>创建站点，填写站点相关信息。注意，<em>多说域名</em> 这一栏填写的即是你的 <code>duoshuo_shortname</code>。</li>
+</ol>
+</li>
+<li><p>编辑<strong>站点</strong>的 <code>_config.yml</code> _注意，不是主题的<code>_config.yml</code>文件_ ，添加 <code>duoshuo_shortname</code> 字段，设置如下</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">duoshuo_shortname: your-duoshuo-shortname</span><br></pre></td></tr></table></figure>
+<p> （注）duoshuo short name: 你的多说二级域名去掉 .duoshuo.com 部分</p>
+</li>
+</ol>
+<hr>
+<h2 id="使用-Disqus"><a href="#使用-Disqus" class="headerlink" title="使用 Disqus"></a>使用 <a href="https://disqus.com" target="_blank" rel="external">Disqus</a></h2><p>编辑<strong>站点</strong>的 <code>_config.yml</code> ，添加 <code>disqus_shortname</code> 字段，设置如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disqus_shortname: your-disqus-shortname</span><br></pre></td></tr></table></figure>
+<p>如需取消某个页面的评论，在md文件的front-matter中增加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">comments: false</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -328,6 +372,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/disqus/" rel="tag">#disqus</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -340,6 +390,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/21/Do-You-Take-Yourself-Seriously/" rel="prev" title="Do-You-Take-Yourself-Seriously">
+                Do-You-Take-Yourself-Seriously <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -414,7 +468,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -422,7 +476,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -431,7 +485,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -478,7 +532,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多说-DISQUS"><span class="nav-number">1.</span> <span class="nav-text">多说 DISQUS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用多说"><span class="nav-number">2.</span> <span class="nav-text">使用多说</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Disqus"><span class="nav-number">3.</span> <span class="nav-text">使用 Disqus</span></a></li></ol></div>
             
           </div>
         </section>
@@ -599,7 +653,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'kennethhutw';
       var disqus_identifier = '2016/06/14/DISQUS/';
-      var disqus_title = 'DISQUS';
+      var disqus_title = '设置多说DISQUS';
       var disqus_url = 'https://kennethhutw.github.io/2016/06/14/DISQUS/';
 
       function run_disqus_script(disqus_script){

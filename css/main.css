@@ -869,7 +869,8 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: #fff;
+  background-image: url("http://assets.alpineexposures.com/_1900x1400_fit_center-center/P1010469-header.jpg");
+/*background: $head-bg; */
 }
 .header-inner {
   position: relative;
@@ -892,7 +893,8 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #222;
+/* background: $brand-bg;*/
+  font-size: 48px;
   border-bottom: none;
 }
 .brand:hover {
@@ -908,7 +910,8 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 20px;
+/* font-size: $logo-font-size; */
+  font-size: 48px;
   font-weight: normal;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
@@ -979,7 +982,8 @@ pre .javascript .function {
 }
 .menu .menu-item a {
   display: block;
-  font-size: 13px;
+  color: #fff;
+  font-size: 15px;
   text-transform: capitalize;
   line-height: inherit;
   border-bottom: 1px solid transparent;
@@ -1548,7 +1552,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9c25ff;
+  background: #c1da50;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2125,7 +2129,6 @@ a.search-result {
 }
 .custom-logo .site-title {
   margin: 10px auto 0;
-  font-size: 24px;
   color: #222;
 }
 .custom-logo .site-title a {

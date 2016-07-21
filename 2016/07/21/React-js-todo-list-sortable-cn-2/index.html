@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React-js," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kenneth" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component
+在这节，我们要改进Components，并删除项目。让使用者可以删除项目和当项目项目已经完成，项目的复选框可以被标记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-js-todo-list-sortable-cn(2)">
+<meta property="og:url" content="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/index.html">
+<meta property="og:site_name" content="Kenneth">
+<meta property="og:description" content="Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component
+在这节，我们要改进Components，并删除项目。让使用者可以删除项目和当项目项目已经完成，项目的复选框可以被标记。">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Step2.gif">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Step2.png">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Step3.gif">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Step2.png">
+<meta property="og:updated_time" content="2016-07-21T04:07:58.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React-js-todo-list-sortable-cn(2)">
+<meta name="twitter:description" content="Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component
+在这节，我们要改进Components，并删除项目。让使用者可以删除项目和当项目项目已经完成，项目的复选框可以被标记。">
+<meta name="twitter:image" content="https://kennethhutw.github.io/images/Step2.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> React-js-todo-list-sortable-cn(2) | Kenneth </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-65211878-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kenneth</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            guestbook
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-contact">
+          <a href="/contact" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.contact
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React-js-todo-list-sortable-cn(2)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-07-21T10:23:40+08:00" content="2016-07-21">
+              2016-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/21/React-js-todo-list-sortable-cn-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/21/React-js-todo-list-sortable-cn-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component"><a href="#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component" class="headerlink" title=" Building a Todo app with React.js (2) - Improve Component &amp; Remove Component"></a> Building a Todo app with React.js (2) - Improve Component &amp; Remove Component</h1><p><img src="/images/Step2.gif" alt="TodoListApp"></p>
+<p>在这节，我们要改进Components，并删除项目。让使用者可以删除项目和当项目项目已经完成，项目的复选框可以被标记。</p>
+<a id="more"></a>
+<h1 id="Redeclare-Items"><a href="#Redeclare-Items" class="headerlink" title=" Redeclare Items"></a><strong> Redeclare Items</strong></h1><p>为了添加复选框，我们必须重新定义项和修改updateItems功能。阵列中的每个项目都会有一个项目，一个布尔值，特定的任务是否剩余或已完成。布尔值将绑定到TodoListItem复选框。</p>
+<pre><code>getInitialState : function(){
+    return {items:[{item:&apos;Todo itme #1&apos;,isDone:false},{item:&apos;Todo itme #2&apos;,isDone:true}]};
+},
+updateItems: function(newItem){
+    var item = {item:newItem,isDone:false};
+    var allItems = this.state.items.concat([item]);
+    this.setState({
+        items: allItems
+    });
+},
+</code></pre><h1 id="Improve-TodoListItem"><a href="#Improve-TodoListItem" class="headerlink" title=" Improve TodoListItem"></a><strong> Improve TodoListItem</strong></h1><p>我们将添加到复选框，并TodoListItem绑定事件 - changeHandler 。在changeHandler ，它将更新所选项目的状态。当渲染组件，它会看到是否应用样式。</p>
+<pre><code>var TodoListItem = React.createClass({
+        changeHandler: function(e){
+            this.setState({
+              value: e.target.checked
+            });
+            this.props.children.isDone = e.target.checked;
+        },
+        render: function(){
+            var _style = &quot;line-through&quot;;
+            if(!this.props.children.isDone)
+            _style =&quot;none&quot;;
+            return (
+              &lt;li data-id={this.props.value} 
+                        key={this.props.value}&gt;&lt;input type=&quot;checkbox&quot; onChange={this.changeHandler} defaultChecked={this.props.children.isDone} /&gt;&lt;span style={{"textDecoration": _style}}&gt;{this.props.children.item}&lt;/span&gt;&lt;/li&gt;
+            );
+        }
+    });
+</code></pre><p>当您选中或取消选中该单选框，你将看到如何变化。你现在应该有下面的截图。</p>
+<p><img src="/images/Step2.png" alt="TodoListApp"></p>
+<p>The complete working <a href="http://kennethhutw.github.io/demo/ReactJs/Step2/index">demo</a> can be found here .</p>
+<h1 id="Remove-TodoListItem"><a href="#Remove-TodoListItem" class="headerlink" title=" Remove TodoListItem"></a><strong> Remove TodoListItem</strong></h1><p><img src="/images/Step3.gif" alt="TodoListApp"></p>
+<p>我们将了解如何将功能绑定到一个组件。我们应该能够删除旧的TodoListItem</p>
+<p>在TodoApp组件，我们创建了一个deleteItem功能，绑定此功能到TodoList的组件。 </p>
+<pre><code>deleteItem : function(index){
+            var newData = this.state.items.slice(); //copy array
+            newData.splice(index, 1); //remove element
+            this.setState({
+                items: newData
+            });
+        },
+render: function(){
+            return (
+                &lt;div&gt;
+                    &lt;ToDoBanner/&gt;
+                    &lt;TodoForm onFormSubmit={this.updateItems} /&gt;
+                    &lt;TodoList items={this.state.items} onDelete={this.deleteItem} /&gt;
+                &lt;/div&gt;
+            );
+}
+</code></pre><p>在TodoList组件，也创造了删除功能并绑定到TodoListITem 。</p>
+<pre><code>var TodoList = React.createClass({
+    Remove: function(e){
+       this.props.onDelete(e);
+    },
+    render: function() {
+        var createItem = function(itemText, i) {
+        return (
+                &lt;TodoListItem key={i} value={i} onRemove = {this.Remove}&gt;{itemText}&lt;/TodoListItem&gt;
+              );
+          };
+        return &lt;ul&gt;{this.props.items.map(createItem, this)}&lt;/ul&gt;;
+    }
+});
+</code></pre><p>在 TodoListItem 组件 , 添加按钮到li元素，并创建一个remove函数绑定到这个按钮。</p>
+<pre><code>RemoveHandler: function(){
+       this.props.onRemove(this.props.value);
+},
+render: function(){
+        var _style = &quot;line-through&quot;;
+        if(!this.props.children.isDone)
+        _style =&quot;none&quot;;
+        return (
+          &lt;li data-id={this.props.value} 
+                    key={this.props.value}&gt;&lt;button type=&quot;button&quot; className=&quot;close pull-right&quot; aria-hidden=&quot;true&quot; onClick={this.RemoveHndler}&gt;&amp;times;&lt;/button&gt;&lt;input type=&quot;checkbox&quot; onChange={this.changeHandler} defaultChecked={this.props.children.isDone} /&gt;&lt;span style={{"textDecoration": _style}}&gt;{this.props.children.item}&lt;/span&gt;&lt;/li&gt;
+        );
+}
+</code></pre><p>你现在应该有下面的截图<br><img src="/images/Step2.png" alt="TodoListApp"><br>The complete working <a href="http://kennethhutw.github.io/demo/ReactJs/Step3/index">demo</a> can be found here .</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-js/" rel="tag">#React-js</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/21/React-js-todo-list-sortable-cn-1/" rel="next" title="React-js-todo-list-sortable-cn(1)">
+                <i class="fa fa-chevron-left"></i> React-js-todo-list-sortable-cn(1)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/21/React-js-todo-list-sortable-cn-3/" rel="prev" title="React-js-todo-list-sortable-cn(3)">
+                React-js-todo-list-sortable-cn(3) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Kenneth_hu" />
+          <p class="site-author-name" itemprop="name">Kenneth_hu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kennethhutw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component"><span class="nav-number">1.</span> <span class="nav-text"> Building a Todo app with React.js (2) - Improve Component & Remove Component</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redeclare-Items"><span class="nav-number">2.</span> <span class="nav-text"> Redeclare Items</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Improve-TodoListItem"><span class="nav-number">3.</span> <span class="nav-text"> Improve TodoListItem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remove-TodoListItem"><span class="nav-number">4.</span> <span class="nav-text"> Remove TodoListItem</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kenneth_hu</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'kennethhutw';
+      var disqus_identifier = '2016/07/21/React-js-todo-list-sortable-cn-2/';
+      var disqus_title = 'React-js-todo-list-sortable-cn(2)';
+      var disqus_url = 'https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

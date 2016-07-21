@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React-js," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kenneth" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Building a Todo app with React.js (4) - Multiple Todos
+The next step will be the ability to add multiple todos. For example we might have a list that is used only for grocey lists, the other might be">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-js-todo-list-sortable(4)">
+<meta property="og:url" content="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/index.html">
+<meta property="og:site_name" content="Kenneth">
+<meta property="og:description" content="Building a Todo app with React.js (4) - Multiple Todos
+The next step will be the ability to add multiple todos. For example we might have a list that is used only for grocey lists, the other might be">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Step5.gif">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Step5.gif">
+<meta property="og:updated_time" content="2016-07-21T02:04:19.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React-js-todo-list-sortable(4)">
+<meta name="twitter:description" content="Building a Todo app with React.js (4) - Multiple Todos
+The next step will be the ability to add multiple todos. For example we might have a list that is used only for grocey lists, the other might be">
+<meta name="twitter:image" content="https://kennethhutw.github.io/images/Step5.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> React-js-todo-list-sortable(4) | Kenneth </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-65211878-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kenneth</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            guestbook
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-contact">
+          <a href="/contact" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.contact
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React-js-todo-list-sortable(4)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-07-21T01:53:54+08:00" content="2016-07-21">
+              2016-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/21/React-js-todo-list-sortable-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/21/React-js-todo-list-sortable-4/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Building-a-Todo-app-with-React-js-4-Multiple-Todos"><a href="#Building-a-Todo-app-with-React-js-4-Multiple-Todos" class="headerlink" title=" Building a Todo app with React.js (4) - Multiple Todos"></a> Building a Todo app with React.js (4) - Multiple Todos</h1><p><img src="/images/Step5.gif" alt="TodoListApp"></p>
+<p>The next step will be the ability to add multiple todos. For example we might have a list that is used only for grocey lists, the other might be a list of planned blog posts or a list of the things to do todays. That’s why it’s important to have ability to sort the todos in different lists. </p>
+<pre><code>- TODO CATELOG FORM
+- TODO CATELOG
+</code></pre><a id="more"></a>
+<h1 id="Component-1-ToDo-Catelog-Form"><a href="#Component-1-ToDo-Catelog-Form" class="headerlink" title="Component 1  - ToDo Catelog Form"></a><strong>Component 1  - ToDo Catelog Form</strong></h1><p>It contains a text field followed by a button to trigger the addition of catelog in the Todo list.</p>
+<pre><code>var ToDoCatalogForm = React.createClass({
+    getInitialState: function() {
+        return {item: &apos;&apos;};
+    },
+    handleSubmit: function(e){
+        e.preventDefault();
+        this.props.onFormSubmit(this.state.item);
+        this.setState({item: &apos;&apos;});
+        ReactDOM.findDOMNode(this.refs.item).focus();
+        return;
+    },
+    onChange: function(e){
+        this.setState({
+          item: e.target.value
+        });
+    },
+    render: function(){
+        return (
+            &lt;div className=&quot;row&quot;&gt;
+              &lt;form  onSubmit={this.handleSubmit}&gt;
+                &lt;div className=&quot;form-group &quot;&gt;
+                    &lt;input type=&apos;text&apos; className=&quot;newTodoCatalogField form-control&quot;  ref=&apos;item&apos; onChange={this.onChange} value={this.state.item}/&gt;
+                    &lt;input type=&apos;submit&apos; className=&quot;btn btn-default&quot; style={{"float":"left","marginLeft":"5px"}} value=&apos;Add&apos;/&gt;
+                &lt;/div&gt;
+              &lt;/form&gt;
+              &lt;/div&gt;
+
+        );
+    }
+});
+</code></pre><h1 id="Component-2-ToDo-Catelog"><a href="#Component-2-ToDo-Catelog" class="headerlink" title="Component 2  - ToDo Catelog"></a><strong>Component 2  - ToDo Catelog</strong></h1><p>It will show all todos list. </p>
+<p>selectedID is the variable which will store the current todos being shown. The todos-list will update according to selectedID.</p>
+<pre><code>var ToDoCatelog  = React.createClass({
+    changeTodo : function(e){
+        this.props.onSelected( e.currentTarget.dataset.id);
+    },
+    checkActive:function(i){
+        if (i == this.props.selectedID)
+        {
+            return &quot;list-group-item active&quot;;
+        }
+        else
+        {
+            return &quot;list-group-item &quot;;
+        }
+    },
+    render: function(){    
+        var selectedID = this .props.selectedID;
+        var allitems =this.props.Todos;
+
+        return &lt;div className=&quot;list-group&quot;&gt;
+        {
+            allitems.map(function(item,i){ 
+            var _class = &quot;&quot;;
+            if (i == this.props.selectedID)
+            {
+                _class =  &quot;list-group-item active&quot;;
+            }
+            else
+            {
+                _class =  &quot;list-group-item &quot;;
+            }
+            return(
+                 &lt;a href=&quot;#&quot; key={i} data-id={i} className={_class} onClick={this.changeTodo} &gt;&lt;span className=&quot;badge&quot; &gt;{item.items.length}&lt;/span&gt;{item.name}&lt;/a&gt;
+            )
+        },this)}&lt;/div&gt;;
+    }
+});
+</code></pre><h1 id="Component-3-ToDoApp"><a href="#Component-3-ToDoApp" class="headerlink" title="Component 3  - ToDoApp"></a><strong>Component 3  - ToDoApp</strong></h1><p>We will redeclare the return value of getInitialState function.</p>
+<pre><code>getInitialState : function(){
+        return {Todo:[{name:&quot;parimary&quot;,items:[{item:&apos;Todo itmd #1&apos;,isDone:false},{item:&apos;Todo itmd #2&apos;,isDone:true},{item:&apos;aaaa&apos;,isDone:true},{item:&apos;dddd&apos;,isDone:true}
+        ]},{name:&quot;Secondary&quot;,items:[{item:&apos;Todo itmd #1&apos;,isDone:false},{item:&apos;Todo itmd #2&apos;,isDone:true},{item:&apos;Todo itmd #3&apos;,isDone:true}
+        ]}],filter:[{keyword:&apos;&apos;,Status:&quot;SHOW_ALL&quot;}],selectedCatelog:&quot;0&quot;};
+},
+</code></pre><p>We create AddCatelog function and setSelectedCatalog function. </p>
+<pre><code>// Here is the Add Catelog function 
+AddCatelog: function(newCatalog){
+    var Catalog = {name:newCatalog,items:[{item:&apos;Todo itmd #1&apos;,isDone:false}]};
+    var newtodo = this.state.Todo.concat([Catalog]);
+    this.setState({
+        Todo: newtodo
+    });
+},
+setSelectedCatalog: function(index){
+    this.state.selectedCatelog = index;
+    this.setState({
+        selectedCatelog: index
+    });
+},
+</code></pre><p>In the meantime, we also need to modify updateItems function and deleteItem function. Updating Item or Deleting Item based on the selectedCatelog. </p>
+<pre><code>updateItems: function(newItem){    
+        var item = {item:newItem,isDone:false};
+        var newtodo = this.state.Todo;
+        var allItems = this.state.Todo[this.state.selectedCatelog].items.concat([item]);
+        newtodo[this.state.selectedCatelog].items = allItems;
+        this.setState({
+            Todo: newtodo
+        });
+    },
+deleteItem : function(index){
+        var newtodo = this.state.Todo;
+        var allItems = this.state.Todo[this.state.selectedCatelog].items.slice(); //copy array
+        allItems.splice(index, 1); //remove element
+        newtodo[this.state.selectedCatelog].items = allItems;
+        this.setState({
+            Todo: newtodo
+        });
+},
+</code></pre><p> At last, We insert ToDoCatalogForm Component and ToDoCatelog Component into render function and pass items based on selectedCatelog.  </p>
+<pre><code>render: function(){
+    return (
+        &lt;div className=&quot;row&quot;&gt;
+            &lt;div className=&quot;col-xs-3&quot;&gt;
+                &lt;ToDoCatalogForm onFormSubmit = {this.AddCatelog} /&gt;
+                &lt;ToDoCatelog selectedID = {this.state.selectedCatelog} onSelected={this.setSelectedCatalog} Todos = {this.state.Todo} /&gt;
+            &lt;/div&gt;
+            &lt;div className=&quot;col-xs-6&quot;&gt;
+                &lt;ToDoBanner/&gt;
+                &lt;ToDoFilter onFilter = {this.filterItem} onSearch = {this.searchItem} filter={this.state.filter}/&gt;
+                &lt;ToDoForm onFormSubmit = {this.updateItems} /&gt;
+                &lt;ToDoList  items = {this.state.Todo[this.state.selectedCatelog].items} filter = {this.state.filter} onDelete={this.deleteItem}/&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+}
+</code></pre><p>You should now have following screenshot<br><img src="/images/Step5.gif" alt="TodoListApp"><br>The complete working <a href="http://kennethhutw.github.io/demo/ReactJs/Step5/index">demo</a> can be found here .</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-js/" rel="tag">#React-js</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/20/React-js-todo-list-sortable-3/" rel="next" title="React-js-todo-list-sortable(3)">
+                <i class="fa fa-chevron-left"></i> React-js-todo-list-sortable(3)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/21/React-js-todo-list-sortable-5/" rel="prev" title="React-js-todo-list-sortable(5)">
+                React-js-todo-list-sortable(5) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Kenneth_hu" />
+          <p class="site-author-name" itemprop="name">Kenneth_hu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kennethhutw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-a-Todo-app-with-React-js-4-Multiple-Todos"><span class="nav-number">1.</span> <span class="nav-text"> Building a Todo app with React.js (4) - Multiple Todos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-1-ToDo-Catelog-Form"><span class="nav-number">2.</span> <span class="nav-text">Component 1  - ToDo Catelog Form</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-2-ToDo-Catelog"><span class="nav-number">3.</span> <span class="nav-text">Component 2  - ToDo Catelog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-3-ToDoApp"><span class="nav-number">4.</span> <span class="nav-text">Component 3  - ToDoApp</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kenneth_hu</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'kennethhutw';
+      var disqus_identifier = '2016/07/21/React-js-todo-list-sortable-4/';
+      var disqus_title = 'React-js-todo-list-sortable(4)';
+      var disqus_url = 'https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

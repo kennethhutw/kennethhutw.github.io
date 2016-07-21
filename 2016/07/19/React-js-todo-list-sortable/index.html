@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="React-js," />
 
 
 
@@ -86,16 +86,37 @@
 
 
 
-<meta name="description">
+<meta name="description" content="Building a Todo app with React.jsLets start.You can follow the steps from the github repo for this tutorial.
+
+##Demo
+##Download
+##Practice
+
+This is my first attempt with React-js to build a Todo App.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React-js-todo-list-sortable">
+<meta property="og:title" content="React-js-todo-list-sortable (1)">
 <meta property="og:url" content="https://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/index.html">
 <meta property="og:site_name" content="Kenneth">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-07-19T04:38:43.633Z">
+<meta property="og:description" content="Building a Todo app with React.jsLets start.You can follow the steps from the github repo for this tutorial.
+
+##Demo
+##Download
+##Practice
+
+This is my first attempt with React-js to build a Todo App.">
+<meta property="og:image" content="https://kennethhutw.github.io/images/ToDoList.png">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Step1.gif">
+<meta property="og:updated_time" content="2016-07-21T02:20:16.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React-js-todo-list-sortable">
-<meta name="twitter:description">
+<meta name="twitter:title" content="React-js-todo-list-sortable (1)">
+<meta name="twitter:description" content="Building a Todo app with React.jsLets start.You can follow the steps from the github repo for this tutorial.
+
+##Demo
+##Download
+##Practice
+
+This is my first attempt with React-js to build a Todo App.">
+<meta name="twitter:image" content="https://kennethhutw.github.io/images/ToDoList.png">
 
 
 
@@ -113,7 +134,7 @@
   };
 </script>
 
-  <title> React-js-todo-list-sortable | Kenneth </title>
+  <title> React-js-todo-list-sortable (1) | Kenneth </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -272,7 +293,7 @@
             
             
               
-                React-js-todo-list-sortable
+                React-js-todo-list-sortable (1)
               
             
           </h1>
@@ -289,6 +310,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -319,7 +359,123 @@
       
 
       
-        
+        <h1 id="Building-a-Todo-app-with-React-js"><a href="#Building-a-Todo-app-with-React-js" class="headerlink" title=" Building a Todo app with React.js"></a> Building a Todo app with React.js</h1><p>Lets start.You can follow the steps from the github repo for this tutorial.</p>
+<ol>
+<li>##<a href="http://kennethhutw.github.io/demo/ReactJs/Step6/index">Demo</a></li>
+<li>##<a href="https://github.com/kennethhutw/React-js-todolist/archive/master.zip" target="_blank" rel="external">Download</a></li>
+<li>##<a href="https://github.com/kennethhutw/React-js-todolist/archive/practice.zip" target="_blank" rel="external">Practice</a></li>
+</ol>
+<p><img src="/images/ToDoList.png" alt="TodoListApp"><br>This is my first attempt with React-js to build a Todo App. React has gained massive traction as a JavaScript library for building user interfaces largely because it is built by Facebook. We’ll learn how.</p>
+<a id="more"></a>
+<p>In this article, we’ll build an extremely an app using Facebook’s <a href="https://facebook.github.io/react/" target="_blank" rel="external">react.js</a>. If you are unfamiliar with this library, then I would strongly recommend reading the complete tutorial on building a <a href="https://facebook.github.io/react/docs/tutorial.html" target="_blank" rel="external">Comment system</a> using React.</p>
+<h1 id="Thinking-in-components"><a href="#Thinking-in-components" class="headerlink" title="Thinking in components"></a><strong>Thinking in components</strong></h1><p>The fundamental way of building a React.js app is to break down your app into bunch of useful components and then work your way backwards to build them separately. Once the individual components are ready, we can wire them up to exchange data between the components. For instance, our Todo app can be decomposed into the following components and hierarchies,</p>
+<pre><code>- TODO APP
+    - TODO BANNER
+    - TODO FORM
+    - TODO LIST
+        - TODO LIST ITEM #1
+        - TODO LIST ITEM #2
+        ...
+        - TODO LIST ITEM #n
+</code></pre><h1 id="Basic-Skeleton"><a href="#Basic-Skeleton" class="headerlink" title="Basic Skeleton"></a><strong>Basic Skeleton</strong></h1><pre><code>/* [TODO APP] */ 
+var TodoApp = React.createClass({ ... }); 
+    /* [TODO BANNER] &amp;&amp; [TODO LIST] */ 
+    var TodoBanner = React.createClass({ ... });
+    /* [TODO FORM] */ 
+    var TodoForm = React.createClass({ ... });                     
+    var TodoList = React.createClass({ ... }); 
+        /* [TODO LIST ITEM] */ 
+        var TodoListItem = React.createClass({ ... }); 
+
+React.render(&lt;TodoApp/&gt;, document.body);
+</code></pre><h1 id="Component-1-TodoApp"><a href="#Component-1-TodoApp" class="headerlink" title="Component 1 - TodoApp"></a><strong>Component 1 - TodoApp</strong></h1><p>This component will hold a list of todo items that will be shared by its child components in various forms. The initial state of <em>items</em> will be a blank list. The list will be updated as soon as a new item is added via the <em>TodoForm</em> component.</p>
+<pre><code>/* [TODO APP] */ 
+var TodoApp = React.createClass({ 
+    getInitialState: function(){ 
+        return {items: []}; 
+    }, 
+    updateItems: function(newItem){ 
+        var allItems = this.state.items.concat([newItem]); 
+        this.setState({items: allItems});
+    }, 
+    render: function(){ 
+        return ( 
+            &lt;div&gt; 
+                &lt;TodoBanner/&gt;
+                &lt;TodoForm onFormSubmit={this.updateItems}/&gt;                                 
+                &lt;TodoList items={this.state.items}/&gt;     
+            &lt;/div&gt; 
+        ); 
+    } 
+});
+</code></pre><h1 id="Component-2-TodoBanner"><a href="#Component-2-TodoBanner" class="headerlink" title="Component 2 - TodoBanner"></a><strong>Component 2 - TodoBanner</strong></h1><p>It simply contains a heading tag.</p>
+<pre><code>/* [TODO BANNER] */ 
+var TodoBanner = React.createClass({ 
+    render: function(){ 
+        return ( 
+        &lt;h3&gt;TODO....react.js&lt;/h3&gt; 
+        ); 
+    } 
+});
+</code></pre><h1 id="Component-3-TodoList"><a href="#Component-3-TodoList" class="headerlink" title="Component 3 - TodoList"></a><strong>Component 3 - TodoList</strong></h1><p>It accepts a list of items and wraps each item around a TodoListItem component. The final result is then wrapped with &lt;ul&gt; tag.</p>
+<pre><code>/* [TODO LIST] */ 
+var TodoList = React.createClass({ 
+    render: function() { 
+    var createItem = function(itemText) { 
+        return ( 
+            &lt;TodoListItem&gt;{itemText}&lt;/TodoListItem&gt; 
+            );
+        }; 
+        return &lt;ul&gt;{this.props.items.map(createItem)}&lt;/ul&gt;;
+    } 
+});
+</code></pre><h1 id="Component-4-TodoListItem"><a href="#Component-4-TodoListItem" class="headerlink" title="Component 4 - TodoListItem"></a><strong>Component 4 - TodoListItem</strong></h1><p>It wraps list elements with &lt;li&gt; so that it renders as a list block in the final HTML. this.props.children predictably contains all the descendents passed to the TodoListItem tag from its parent component.</p>
+<pre><code>/* [TODO LISTITEM] */
+var TodoListItem = React.createClass({
+    render: function(){
+        return (
+            &lt;li data-id={this.props.value} key={this.props.value}&gt;{this.props.children}&lt;/li&gt;
+        );
+    }
+});
+</code></pre><h1 id="Component-5-TodoForm"><a href="#Component-5-TodoForm" class="headerlink" title="Component 5 - TodoForm"></a><strong>Component 5 - TodoForm</strong></h1><p>It contains a text field followed by a button to trigger the addition of item in the Todo list. This component will hold the current item entered in the textfield and both of them are kept in sync using the onChange event. As soon as the submit button is pressed, the item is passed to its parent component and the focus is returned back to the textfield.</p>
+<pre><code>/* [TODO FORM] */
+var TodoForm = React.createClass({
+    getInitialState: function() {
+        return {item: &apos;&apos;};
+    },
+    handleSubmit: function(e){
+        e.preventDefault();
+        this.props.onFormSubmit(this.state.item);
+        this.setState({item: &apos;&apos;});
+        ReactDOM.findDOMNode(this.refs.item).focus();
+        return;
+    },
+    onChange: function(e){
+        this.setState({
+            item: e.target.value
+        });
+    },
+    render: function(){
+        return (
+            &lt;div className=&quot;row&quot;&gt;
+              &lt;form  onSubmit={this.handleSubmit}&gt;
+                &lt;div className=&quot;form-group col-sm-10&quot;&gt;
+                    &lt;input type=&apos;text&apos; className=&quot;todoField form-control&quot;  ref=&apos;item&apos; onChange={this.onChange} value={this.state.item}/&gt;
+                    &lt;input type=&apos;submit&apos; className=&quot;btn btn-default&quot; style={{"float":"left","marginLeft":"5px"}} value=&apos;Add&apos;/&gt;
+                &lt;/div&gt;
+              &lt;/form&gt;
+            &lt;/div&gt;
+        );
+    }
+});
+</code></pre><h1 id="Render-TodoApp"><a href="#Render-TodoApp" class="headerlink" title="Render - TodoApp"></a><strong>Render - TodoApp</strong></h1><p>The last step is to render TodoApp</p>
+<pre><code>ReactDOM.render(
+        &lt;TodoApp/&gt;,
+        document.getElementById(&apos;todo&apos;)
+      );
+</code></pre><p>When you finish , you can see the TodoApp.<br><img src="/images/Step1.gif" alt="TodoListApp"><br>The complete working <a href="http://kennethhutw.github.io/demo/ReactJs/Step1/index">demo</a> can be found here .</p>
+
       
     </div>
 
@@ -338,6 +494,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/React-js/" rel="tag">#React-js</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -350,6 +512,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/React-js-todo-list-sortable-2/" rel="prev" title="React-js-todo-list-sortable(2)">
+                React-js-todo-list-sortable(2) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -424,7 +590,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -432,7 +598,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -441,7 +607,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -488,7 +654,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-a-Todo-app-with-React-js"><span class="nav-number">1.</span> <span class="nav-text"> Building a Todo app with React.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thinking-in-components"><span class="nav-number">2.</span> <span class="nav-text">Thinking in components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Skeleton"><span class="nav-number">3.</span> <span class="nav-text">Basic Skeleton</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-1-TodoApp"><span class="nav-number">4.</span> <span class="nav-text">Component 1 - TodoApp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-2-TodoBanner"><span class="nav-number">5.</span> <span class="nav-text">Component 2 - TodoBanner</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-3-TodoList"><span class="nav-number">6.</span> <span class="nav-text">Component 3 - TodoList</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-4-TodoListItem"><span class="nav-number">7.</span> <span class="nav-text">Component 4 - TodoListItem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Component-5-TodoForm"><span class="nav-number">8.</span> <span class="nav-text">Component 5 - TodoForm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Render-TodoApp"><span class="nav-number">9.</span> <span class="nav-text">Render - TodoApp</span></a></li></ol></div>
             
           </div>
         </section>
@@ -609,7 +775,7 @@
     <script type="text/javascript">
       var disqus_shortname = 'kennethhutw';
       var disqus_identifier = '2016/07/19/React-js-todo-list-sortable/';
-      var disqus_title = 'React-js-todo-list-sortable';
+      var disqus_title = 'React-js-todo-list-sortable (1)';
       var disqus_url = 'https://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/';
 
       function run_disqus_script(disqus_script){

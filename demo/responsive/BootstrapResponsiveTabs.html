@@ -1,0 +1,619 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Responsive Tabs</title>
+  <meta name="description" content="Responsive Tabs">
+  <meta name="author" content="Kenneth Hu"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href="css/BootstrapResponsiveTabsDemoMain.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive-tabs.css" rel="stylesheet">
+  <link href="css/prettify.css" rel="stylesheet">
+   <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+  <style>
+  ol.linenums {
+  margin: 0 0 0 -5px !important; /* IE indents via margin-left */
+} 
+ #navbar-container{
+  background-color: #222222 !important;
+ 
+ }
+ .navbar .nav .active>.dropdown-toggle:hover {
+    color: #ffffff;
+}
+
+.navbar .nav .active>a, .navbar .nav .active>a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #222222;
+}
+
+  </style>
+  <style>
+     
+    </style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="js/lorem.js"></script>
+  <script src="js/bootstrap-responsive-tabs.js"></script>
+  <script src="js/prettify.js"></script>
+<script>
+		$(function(){
+			prettyPrint();
+		});
+	</script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+ <div class="navbar navbar-default navbar-fixed-top">
+        <div id="navbar-container" class="container-fluid">
+          <a class="navbar-header" data-toggle="collapse" data-target=".nav-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+          </a>
+          <a class="navbar-brand" href="#" style="color:#ffffff; font-size:20px;">Responsive UI</a>
+          
+            <ul class="nav navbar-nav">
+			 <li><a href="BootstrapResponsiveTable.html">
+                Responsive Tables</a>
+              </li>
+            <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style=" background-color: #222222 !important;color:#ffffff;">Responsive Tabs <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+					<li><a href="#Bootstrap-Responsive-Tabs">Bootstrap Responsive Tabs</a></li>
+					<li><a href="#Responsive-tabs">Responsive Tabs</a></li>
+                </ul>
+              </li>
+            </ul>
+			  <p class="navbar-text pull-right">Collect by <a href="http://kennethhutw.github.io/">Kenneth</a></p>
+          </div><!--/.nav-collapse -->
+        
+
+    </div>
+    <div class="container-fluid" style="margin-top:20px">
+		<section id="Bootstrap-Responsive-Tabs">
+			<h1>Bootstrap Responsive Tabs</h1>
+			<hr>
+			<p>This technique was developed by <a href="https://github.com/openam"> Michael Tuttle </a>  and described in his post responsive tabs at <a href="http://openam.github.io/bootstrap-responsive-tabs/">here</a>. While you're there, you should probably check out the Responsive Tabs Roundup post, which showcases all these techniques and more.</p>
+			<h4>Source :</h4>
+			<p>You may download the source code from <a href="https://github.com/openam/bootstrap-responsive-tabs">GitHub</a>.</p>
+			<h4>Notes on design:</h4>
+			<ol>
+			  <li>Inspired by Safari-style browser tabs.</li>
+				<li>Tabs shrink/grow based on specified min and max width.</li>
+			  <li>There is a 300ms delay after a resize, for performance reasons.</li>
+			  <li>If tabs don't fit across the container width, a dropdown appears to the right of tabs.
+				<li>For devices with screen width of < 768px, the tabs dropdown becomes an overlay.</li>
+			</ol>
+
+			<br>
+
+			<p class="instructions"><strong>How to Test:</strong> Resize your browser window to see how tabs scale / respond.</p>
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs js-example" role="tablist">
+				<li class="active"><a href="#tab1" role="tab" data-toggle="tab">Tab1</a></li>
+				<li><a href="#tab2" role="tab" data-toggle="tab">Tab2</a></li>
+				<li><a href="#tab3" role="tab" data-toggle="tab">Tab3</a></li>
+				<li><a href="#tab4" role="tab" data-toggle="tab">Tab4</a></li>
+				<li><a href="#tab5" role="tab" data-toggle="tab">Tab5</a></li>
+				<li><a href="#tab6" role="tab" data-toggle="tab">Tab6</a></li>
+				<li><a href="#tab7" role="tab" data-toggle="tab">Tab7</a></li>
+				<li><a href="#tab8" role="tab" data-toggle="tab">Tab8</a></li>
+				<li><a href="#tab9" role="tab" data-toggle="tab">Tab9</a></li>
+				<li><a href="#tab10" role="tab" data-toggle="tab">Tab10</a></li>
+				<li><a href="#tab11" role="tab" data-toggle="tab">Tab11</a></li>
+				<li><a href="#tab12" role="tab" data-toggle="tab">Tab12</a></li>
+				<li><a href="#tab13" role="tab" data-toggle="tab">Tab13</a></li>
+				<li><a href="#tab14" role="tab" data-toggle="tab">Tab14</a></li>
+				<li><a href="#tab15" role="tab" data-toggle="tab">Tab15</a></li>
+				<li><a href="#tab16" role="tab" data-toggle="tab">Tab16</a></li>
+				<li><a href="#tab17" role="tab" data-toggle="tab">Tab17</a></li>
+				<li><a href="#tab18" role="tab" data-toggle="tab">Tab18</a></li>
+				<li><a href="#tab19" role="tab" data-toggle="tab">Tab19</a></li>
+				<li><a href="#tab20" role="tab" data-toggle="tab">Tab20</a></li>
+			</ul>
+<!-- Tab panes -->
+			<div class="tab-content">
+				<div data-lorem="p10" class="tab-pane lorem-marker active" id="tab1">
+					<p>Nulla corrupti qui nobis optio ullamco est dolore do. Iusto sit adipisicing ea dolor. Id deserunt irure nobis culpa officia et sint vero. Vero ullamco animi consequat consequat pariatur.</p>
+					<p>Velit ut velit nostrud in officia dolor anim. Deserunt sunt placeat culpa magna placeat dolore officia. Tempor lorem maxime distinctio ut dolor. Nulla dolores aute duis sint in. Deserunt commodo dolore anim nam dolores ad. Ducimus dolor magna impedit consequat. Id cumque mollit non at.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab2">
+					<p>Voluptate nihil provident praesentium facilis non placeat cum. Pariatur est pariatur non quos cupidatat. Libero ducimus soluta anim occaecat non duis cillum atque. Facere provident est enim ut laboris molestias.</p>
+					<p>Deserunt est distinctio quidem sint. Vero voluptas tempore nulla distinctio est maxime veniam cupidatat. Excepturi voluptatum adipisicing iusto officia. Adipisicing nostrud reprehenderit similique similique blanditiis. Consectetur laboris sit quidem cillum optio id.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab3">
+					<p>Deleniti non irure sunt et mollit commodo. Dolor do molestias placeat voluptas labore proident. Velit assumenda odio cum. Voluptas eligendi dolore id ut duis reprehenderit id. Assumenda sit praesentium obcaecati aute eiusmod.</p>
+					<p>Eos qui ducimus quod laborum. Dignissimos atque nam assumenda est culpa. Laborum omnis enim assumenda mollit est. Dolorum est distinctio qui et. Provident eos minus voluptatum cum exercitation excepturi.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab4">
+					<p>Cum et quod nulla possimus. Ipsum animi nostrud tempor rerum elit veniam harum. Laboris proident provident ea tempor in sunt et. Velit minus assumenda minus do facere excepteur. Aliquip maxime elit in ut. Non lorem at fuga laborum culpa ex.</p>
+					<p>Animi consectetur commodo est est adipisicing animi amet. Assumenda mollit nam soluta obcaecati occaecat. Et deleniti in cum molestias. Laborum cumque ut est ut pariatur.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab5">
+					<p>Fugiat omnis cillum eu. Est omnis officia cupiditate culpa. Et soluta nobis et harum obcaecati. Cum repellendus amet eligendi veniam expedita nam. Vero proident libero optio quidem ea esse harum accusamus. Dolor in et mollitia.</p>
+					<p>Distinctio nobis ducimus ex obcaecati laboris eos dignissimos. Praesentium fugiat ut in ullamco. Voluptatum enim pariatur et nobis. Laboris ut do id cumque veniam harum. Quidem blanditiis qui incididunt.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab6">
+					<p>Deleniti labore deserunt qui est labore distinctio. Quo harum pariatur soluta obcaecati. Qui quis excepturi expedita lorem. Cillum sint amet in duis in. Cillum cumque corrupti praesentium et ullamco quos sit.</p>
+					<p>Cumque accusamus cumque eiusmod qui esse soluta odio est. Consectetur minus qui labore optio officia provident. Velit cupiditate in libero. Dolorum nulla libero excepteur.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab7">
+					<p>Occaecat minim et culpa dolore ad aliquip. Est sint est in sunt officia nam. Nulla optio ducimus cillum. Proident et facilis ut dolor. Molestias sint est id dolorum omnis mollitia at. Exercitation eos est est qui cum optio fuga.</p>
+					<p>Velit culpa id iusto deserunt deserunt. Quis sint id est duis. Sed est qui dolores. Dolorum sit distinctio ex cum ullamco.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab8">
+					<p>Nulla similique minus ut ut sint aliqua. Dolores rerum maxime proident deserunt obcaecati. Nam facere in placeat est nisi. Nam tempore ut similique blanditiis ipsum reprehenderit placeat. Adipisicing qui accusamus dolores molestias fugiat possimus similique. Commodo dolor et ex eligendi. Dignissimos minim iusto possimus sint.</p>
+					<p>Nulla possimus soluta eligendi est rerum blanditiis. Quos cupidatat atque molestias impedit. Et mollitia nisi eiusmod harum nihil dolor sed. Quo est est animi praesentium mollitia odio qui consequat. At sint quis distinctio reprehenderit laborum. Laborum provident tempor harum placeat dolore ullamco incididunt harum.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab9">
+					<p>Minus amet quis dolorum incididunt excepturi eos. Cum nobis aute non nulla sint excepteur cum. Nam atque est praesentium culpa. Reprehenderit quidem mollitia dolorum.</p>
+					<p>Quod est et provident eligendi. Quod est omnis ex. Sit veniam in libero consectetur voluptatum sit. Pariatur possimus tempor voluptatum tempor expedita. Dolor qui duis nisi. Laborum deleniti proident dolores minim atque.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab10">
+					<p>Deleniti anim et quas est cumque aliquip in. Optio deserunt esse consequat obcaecati facere eiusmod excepturi. Fugiat cupiditate maxime aliquip. Esse assumenda in adipisicing est minim. Voluptate culpa dolor optio culpa libero nulla ex.</p>
+					<p>Aliqua deleniti mollit pariatur. Voluptas sunt provident ut deserunt sint eu et. Id ducimus rerum quidem officia. At dolor quod nisi consectetur.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab11">
+					<p>Est dolorum dolor accusamus et in expedita minim. Nam at iusto animi quod anim sint molestias. Quod cupiditate proident non cumque sed dolore. Rerum in sint veniam elit eos. Vero corrupti optio rerum omnis pariatur.</p>
+					<p>Ut irure placeat duis qui. Culpa officia ut deserunt reprehenderit minim. Facilis facilis et obcaecati ut officia praesentium anim. Ea optio blanditiis sint dignissimos quod iusto facilis. Dolor qui cumque mollitia laborum et ut id. Atque est expedita tempore soluta soluta.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab12">
+					<p>Praesentium et laborum id anim quas aute maxime. Tempore ea id eu. Cumque assumenda sunt dignissimos quod aliquip sit harum placeat. Excepturi reprehenderit aute aute excepteur sunt mollitia. Proident deleniti est commodo minus. Facilis ipsum adipisicing omnis ut.</p>
+					<p>Provident eiusmod expedita et dolore culpa. Est nisi non irure est nulla pariatur. Ea aliquip harum sint expedita nisi at et. Duis et quos eligendi labore non adipisicing impedit dignissimos. Officia occaecat cillum est similique similique. Impedit nam culpa nihil nam minim dolor in. Ut eos voluptatum dolor ea.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab13">
+					<p>Labore esse enim accusamus nobis blanditiis. Distinctio dolor nisi deleniti fugiat est. In optio exercitation aliquip ullamco ducimus nostrud harum exercitation. Deserunt dolor nisi cillum et dolore. Eiusmod enim optio animi duis fugiat. Dignissimos harum excepteur possimus excepteur.</p>
+					<p>Aliquip pariatur quas et harum qui. Deleniti deserunt fuga voluptas dolor tempore eiusmod occaecat. Reprehenderit occaecat labore et. Dolore dolor accusamus consectetur qui possimus.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab14">
+					<p>Ut voluptas qui nulla exercitation veniam ut distinctio sunt. Cupidatat dolorum repellendus voluptate et laborum excepturi. Qui id labore sunt et ullamco enim. Aliqua et est incididunt amet culpa. Est aliqua et et provident est quis.</p>
+					<p>Est facilis eligendi id culpa. Facere consequat qui nulla cupidatat. Sint ut nam ullamco eos in molestias. Voluptas sint omnis do minus praesentium blanditiis magna. Esse dolor elit laboris nulla similique do. Et ipsum ea qui ex est fugiat.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab15">
+					<p>Non corrupti fugiat ducimus ut. Ipsum cumque officia at quo incididunt proident omnis. Ex similique cumque amet id esse facilis. Ut elit omnis eligendi sit cupidatat. Dolores cupiditate et sit. Dolor dolor id fuga occaecat enim et non. In et odio dolorum minus enim minim est.</p>
+					<p>Labore excepteur tempore minim officia rerum. Id ad dolor deleniti est eiusmod et. Proident exercitation ad cum blanditiis consequat impedit officia. Assumenda nam libero excepturi. At fuga minim veniam dolores commodo provident quo distinctio.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab16">
+					<p>Reprehenderit obcaecati sit voluptate ut. Minim et velit minim labore sunt in consequat. Maxime aliqua dolorum quidem aliqua assumenda et. Laborum enim sint deserunt cupiditate voluptatum enim aliquip. Cum officia facilis non fugiat minim sit omnis.</p>
+					<p>Sit cupiditate minim tempore deserunt atque. Similique repellendus et nam consectetur exercitation. Eligendi voluptatum quis duis deleniti aute. Soluta rerum excepturi distinctio occaecat ex veniam nulla. Nobis veniam impedit deleniti culpa. Qui laborum quas culpa dolor accusamus.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab17">
+					<p>Dignissimos id animi labore eu atque voluptas. Laborum est et laborum est dolore ut est. Anim quis placeat blanditiis excepteur nihil fuga minus. Id possimus magna fugiat rerum in est vero non. Laborum voluptas dignissimos proident officia. Expedita impedit id sit laborum ad. Rerum esse placeat nobis proident est tempore.</p>
+					<p>Elit culpa laboris et excepteur. Placeat commodo quo sed laborum est. Facilis est eligendi tempore incididunt nihil fugiat. Adipisicing in sunt elit minim nobis. Optio animi in ex est non tempore tempore. Corrupti quos expedita in voluptas ea nam quo.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab18">
+					<p>Molestias do nostrud reprehenderit. Iusto obcaecati sunt ipsum minim sit cillum non. Est dignissimos iusto voluptate et et adipisicing duis. Ex dolore dolore adipisicing deleniti libero sed. Similique rerum elit enim id distinctio.</p>
+					<p>Id nam praesentium animi odio. Impedit qui at quo esse. Cumque eos ut commodo iusto est blanditiis. Qui ex similique non in in elit minus maxime. Proident aliqua aliquip elit in ea.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab19">
+					<p>Labore eu irure assumenda. Libero est cumque consequat cillum sed. Aliquip facilis et veniam qui incididunt excepturi. Ut optio deleniti fugiat impedit non. Deserunt dolores et sint occaecat accusamus esse excepturi enim. Dolores est esse in quo veniam culpa.</p>
+					<p>Est nobis distinctio anim consectetur occaecat. Minus deserunt sint magna. Soluta repellendus in voluptas provident est fugiat. Repellendus dolore sunt eos officia veniam nulla est. Dolorum id iusto ad. In quas quos in odio nihil non.</p>
+				</div>
+				<div data-lorem="p10" class="tab-pane lorem-marker" id="tab20">
+					<p>Quod voluptate ducimus et velit corrupti pariatur velit est. Culpa eos in quas eiusmod assumenda officia id. Sint id consectetur nam. Repellendus voluptate quas cupidatat tempor cum duis.</p>
+					<p>Omnis odio non facere. Et iusto libero sit maxime id anim irure. Nisi eiusmod enim culpa mollit esse dolore eos. Corrupti in possimus nam irure praesentium qui. Qui nisi placeat eos laborum. In quidem quo nihil id magna cupidatat.</p>
+				</div>
+			</div>
+	
+	  <h3>Code</h3>
+		  <p>The approach I've presented here assumes you know the index of the columns to be hidden. This probably isn't always appropriate, and isn't all that <a href="http://en.wikipedia.org/wiki/Semantic_Web">semantic</a>. Another option is to give the <code>&lt;th></code> and <code>&lt;td></code> classes based on importance level and code your CSS accordingly.</p>
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#html-1" data-toggle="tab">HTML</a></li>
+					<li><a href="#css-1" data-toggle="tab">CSS</a></li>
+					<li><a href="#JS-1" data-toggle="tab">JS</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="html-1">
+						<pre class="prettyprint lang-html linenums">
+&#x3C;ul class=&#x22;nav nav-tabs js-example&#x22; role=&#x22;tablist&#x22;&#x3E;
+    &#x3C;li class=&#x22;active&#x22;&#x3E;&#x3C;a href=&#x22;#tab1&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab1&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab2&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab2&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab3&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab3&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab4&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab4&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab5&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab5&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab6&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab6&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab7&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab7&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab8&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab8&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab9&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab9&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab10&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab10&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab11&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab11&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab12&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab12&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab13&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab13&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab14&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab14&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab15&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab15&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab16&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab16&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab17&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab17&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab18&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab18&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab19&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab19&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a href=&#x22;#tab20&#x22; role=&#x22;tab&#x22; data-toggle=&#x22;tab&#x22;&#x3E;Tab20&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+&#x3C;!-- Tab panes --&#x3E;
+&#x3C;div class=&#x22;tab-content&#x22;&#x3E;&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker active&#x22; id=&#x22;tab1&#x22;&#x3E;
+    &#x3C;p&#x3E;Nulla corrupti qui nobis optio ullamco est dolore do. Iusto sit adipisicing ea dolor. Id deserunt irure nobis culpa officia et sint vero. Vero ullamco animi consequat consequat pariatur.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Velit ut velit nostrud in officia dolor anim. Deserunt sunt placeat culpa magna placeat dolore officia. Tempor lorem maxime distinctio ut dolor. Nulla dolores aute duis sint in. Deserunt commodo dolore anim nam dolores ad. Ducimus dolor magna impedit consequat. Id cumque mollit non at.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab2&#x22;&#x3E;
+    &#x3C;p&#x3E;Voluptate nihil provident praesentium facilis non placeat cum. Pariatur est pariatur non quos cupidatat. Libero ducimus soluta anim occaecat non duis cillum atque. Facere provident est enim ut laboris molestias.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Deserunt est distinctio quidem sint. Vero voluptas tempore nulla distinctio est maxime veniam cupidatat. Excepturi voluptatum adipisicing iusto officia. Adipisicing nostrud reprehenderit similique similique blanditiis. Consectetur laboris sit quidem cillum optio id.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab3&#x22;&#x3E;
+    &#x3C;p&#x3E;Deleniti non irure sunt et mollit commodo. Dolor do molestias placeat voluptas labore proident. Velit assumenda odio cum. Voluptas eligendi dolore id ut duis reprehenderit id. Assumenda sit praesentium obcaecati aute eiusmod.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Eos qui ducimus quod laborum. Dignissimos atque nam assumenda est culpa. Laborum omnis enim assumenda mollit est. Dolorum est distinctio qui et. Provident eos minus voluptatum cum exercitation excepturi.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab4&#x22;&#x3E;
+    &#x3C;p&#x3E;Cum et quod nulla possimus. Ipsum animi nostrud tempor rerum elit veniam harum. Laboris proident provident ea tempor in sunt et. Velit minus assumenda minus do facere excepteur. Aliquip maxime elit in ut. Non lorem at fuga laborum culpa ex.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Animi consectetur commodo est est adipisicing animi amet. Assumenda mollit nam soluta obcaecati occaecat. Et deleniti in cum molestias. Laborum cumque ut est ut pariatur.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab5&#x22;&#x3E;
+    &#x3C;p&#x3E;Fugiat omnis cillum eu. Est omnis officia cupiditate culpa. Et soluta nobis et harum obcaecati. Cum repellendus amet eligendi veniam expedita nam. Vero proident libero optio quidem ea esse harum accusamus. Dolor in et mollitia.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Distinctio nobis ducimus ex obcaecati laboris eos dignissimos. Praesentium fugiat ut in ullamco. Voluptatum enim pariatur et nobis. Laboris ut do id cumque veniam harum. Quidem blanditiis qui incididunt.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab6&#x22;&#x3E;
+    &#x3C;p&#x3E;Deleniti labore deserunt qui est labore distinctio. Quo harum pariatur soluta obcaecati. Qui quis excepturi expedita lorem. Cillum sint amet in duis in. Cillum cumque corrupti praesentium et ullamco quos sit.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Cumque accusamus cumque eiusmod qui esse soluta odio est. Consectetur minus qui labore optio officia provident. Velit cupiditate in libero. Dolorum nulla libero excepteur.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab7&#x22;&#x3E;
+    &#x3C;p&#x3E;Occaecat minim et culpa dolore ad aliquip. Est sint est in sunt officia nam. Nulla optio ducimus cillum. Proident et facilis ut dolor. Molestias sint est id dolorum omnis mollitia at. Exercitation eos est est qui cum optio fuga.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Velit culpa id iusto deserunt deserunt. Quis sint id est duis. Sed est qui dolores. Dolorum sit distinctio ex cum ullamco.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab8&#x22;&#x3E;
+    &#x3C;p&#x3E;Nulla similique minus ut ut sint aliqua. Dolores rerum maxime proident deserunt obcaecati. Nam facere in placeat est nisi. Nam tempore ut similique blanditiis ipsum reprehenderit placeat. Adipisicing qui accusamus dolores molestias fugiat possimus similique. Commodo dolor et ex eligendi. Dignissimos minim iusto possimus sint.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Nulla possimus soluta eligendi est rerum blanditiis. Quos cupidatat atque molestias impedit. Et mollitia nisi eiusmod harum nihil dolor sed. Quo est est animi praesentium mollitia odio qui consequat. At sint quis distinctio reprehenderit laborum. Laborum provident tempor harum placeat dolore ullamco incididunt harum.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab9&#x22;&#x3E;
+    &#x3C;p&#x3E;Minus amet quis dolorum incididunt excepturi eos. Cum nobis aute non nulla sint excepteur cum. Nam atque est praesentium culpa. Reprehenderit quidem mollitia dolorum.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Quod est et provident eligendi. Quod est omnis ex. Sit veniam in libero consectetur voluptatum sit. Pariatur possimus tempor voluptatum tempor expedita. Dolor qui duis nisi. Laborum deleniti proident dolores minim atque.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab10&#x22;&#x3E;
+    &#x3C;p&#x3E;Deleniti anim et quas est cumque aliquip in. Optio deserunt esse consequat obcaecati facere eiusmod excepturi. Fugiat cupiditate maxime aliquip. Esse assumenda in adipisicing est minim. Voluptate culpa dolor optio culpa libero nulla ex.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Aliqua deleniti mollit pariatur. Voluptas sunt provident ut deserunt sint eu et. Id ducimus rerum quidem officia. At dolor quod nisi consectetur.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab11&#x22;&#x3E;
+    &#x3C;p&#x3E;Est dolorum dolor accusamus et in expedita minim. Nam at iusto animi quod anim sint molestias. Quod cupiditate proident non cumque sed dolore. Rerum in sint veniam elit eos. Vero corrupti optio rerum omnis pariatur.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Ut irure placeat duis qui. Culpa officia ut deserunt reprehenderit minim. Facilis facilis et obcaecati ut officia praesentium anim. Ea optio blanditiis sint dignissimos quod iusto facilis. Dolor qui cumque mollitia laborum et ut id. Atque est expedita tempore soluta soluta.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab12&#x22;&#x3E;
+    &#x3C;p&#x3E;Praesentium et laborum id anim quas aute maxime. Tempore ea id eu. Cumque assumenda sunt dignissimos quod aliquip sit harum placeat. Excepturi reprehenderit aute aute excepteur sunt mollitia. Proident deleniti est commodo minus. Facilis ipsum adipisicing omnis ut.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Provident eiusmod expedita et dolore culpa. Est nisi non irure est nulla pariatur. Ea aliquip harum sint expedita nisi at et. Duis et quos eligendi labore non adipisicing impedit dignissimos. Officia occaecat cillum est similique similique. Impedit nam culpa nihil nam minim dolor in. Ut eos voluptatum dolor ea.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab13&#x22;&#x3E;
+    &#x3C;p&#x3E;Labore esse enim accusamus nobis blanditiis. Distinctio dolor nisi deleniti fugiat est. In optio exercitation aliquip ullamco ducimus nostrud harum exercitation. Deserunt dolor nisi cillum et dolore. Eiusmod enim optio animi duis fugiat. Dignissimos harum excepteur possimus excepteur.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Aliquip pariatur quas et harum qui. Deleniti deserunt fuga voluptas dolor tempore eiusmod occaecat. Reprehenderit occaecat labore et. Dolore dolor accusamus consectetur qui possimus.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab14&#x22;&#x3E;
+    &#x3C;p&#x3E;Ut voluptas qui nulla exercitation veniam ut distinctio sunt. Cupidatat dolorum repellendus voluptate et laborum excepturi. Qui id labore sunt et ullamco enim. Aliqua et est incididunt amet culpa. Est aliqua et et provident est quis.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Est facilis eligendi id culpa. Facere consequat qui nulla cupidatat. Sint ut nam ullamco eos in molestias. Voluptas sint omnis do minus praesentium blanditiis magna. Esse dolor elit laboris nulla similique do. Et ipsum ea qui ex est fugiat.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab15&#x22;&#x3E;
+    &#x3C;p&#x3E;Non corrupti fugiat ducimus ut. Ipsum cumque officia at quo incididunt proident omnis. Ex similique cumque amet id esse facilis. Ut elit omnis eligendi sit cupidatat. Dolores cupiditate et sit. Dolor dolor id fuga occaecat enim et non. In et odio dolorum minus enim minim est.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Labore excepteur tempore minim officia rerum. Id ad dolor deleniti est eiusmod et. Proident exercitation ad cum blanditiis consequat impedit officia. Assumenda nam libero excepturi. At fuga minim veniam dolores commodo provident quo distinctio.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab16&#x22;&#x3E;
+    &#x3C;p&#x3E;Reprehenderit obcaecati sit voluptate ut. Minim et velit minim labore sunt in consequat. Maxime aliqua dolorum quidem aliqua assumenda et. Laborum enim sint deserunt cupiditate voluptatum enim aliquip. Cum officia facilis non fugiat minim sit omnis.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Sit cupiditate minim tempore deserunt atque. Similique repellendus et nam consectetur exercitation. Eligendi voluptatum quis duis deleniti aute. Soluta rerum excepturi distinctio occaecat ex veniam nulla. Nobis veniam impedit deleniti culpa. Qui laborum quas culpa dolor accusamus.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab17&#x22;&#x3E;
+    &#x3C;p&#x3E;Dignissimos id animi labore eu atque voluptas. Laborum est et laborum est dolore ut est. Anim quis placeat blanditiis excepteur nihil fuga minus. Id possimus magna fugiat rerum in est vero non. Laborum voluptas dignissimos proident officia. Expedita impedit id sit laborum ad. Rerum esse placeat nobis proident est tempore.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Elit culpa laboris et excepteur. Placeat commodo quo sed laborum est. Facilis est eligendi tempore incididunt nihil fugiat. Adipisicing in sunt elit minim nobis. Optio animi in ex est non tempore tempore. Corrupti quos expedita in voluptas ea nam quo.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab18&#x22;&#x3E;
+    &#x3C;p&#x3E;Molestias do nostrud reprehenderit. Iusto obcaecati sunt ipsum minim sit cillum non. Est dignissimos iusto voluptate et et adipisicing duis. Ex dolore dolore adipisicing deleniti libero sed. Similique rerum elit enim id distinctio.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Id nam praesentium animi odio. Impedit qui at quo esse. Cumque eos ut commodo iusto est blanditiis. Qui ex similique non in in elit minus maxime. Proident aliqua aliquip elit in ea.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab19&#x22;&#x3E;
+    &#x3C;p&#x3E;Labore eu irure assumenda. Libero est cumque consequat cillum sed. Aliquip facilis et veniam qui incididunt excepturi. Ut optio deleniti fugiat impedit non. Deserunt dolores et sint occaecat accusamus esse excepturi enim. Dolores est esse in quo veniam culpa.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Est nobis distinctio anim consectetur occaecat. Minus deserunt sint magna. Soluta repellendus in voluptas provident est fugiat. Repellendus dolore sunt eos officia veniam nulla est. Dolorum id iusto ad. In quas quos in odio nihil non.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div data-lorem=&#x22;p10&#x22; class=&#x22;tab-pane lorem-marker&#x22; id=&#x22;tab20&#x22;&#x3E;
+    &#x3C;p&#x3E;Quod voluptate ducimus et velit corrupti pariatur velit est. Culpa eos in quas eiusmod assumenda officia id. Sint id consectetur nam. Repellendus voluptate quas cupidatat tempor cum duis.&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;Omnis odio non facere. Et iusto libero sit maxime id anim irure. Nisi eiusmod enim culpa mollit esse dolore eos. Corrupti in possimus nam irure praesentium qui. Qui nisi placeat eos laborum. In quidem quo nihil id magna cupidatat.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+						</pre>
+					</div>
+					<div class="tab-pane" id="css-1">
+						<pre class="prettyprint lang-css linenums">
+html {
+    font - size: 10 px;
+    background: #FFF;
+}
+
+body {
+    font - size: 1.3 rem;
+    background: white;
+    color: #444444;
+  padding: 30px;
+  border-radius: 5px; }
+
+.nav-tabs {
+  width: 100%;
+  float: left;
+  border-bottom-color: # d9d9d9;
+}
+.nav - tabs > li a {
+        text - align: center;
+        border - width: 1 px 1 px 0 1 px;
+        border - style: solid;
+        border - color: #e0e0e0;
+        color: #444444;
+    background: # f2f2f2;
+}
+.nav - tabs > li a: hover {
+        background: #F9F9F9;
+        border - color: #d9d9d9;
+}
+.nav - tabs > li.active a, .nav - tabs > li.active: hover a {
+        color: #444444;
+    background: white;
+    border-color: # d9d9d9;
+        border - bottom - color: transparent;
+}
+
+.instructions {
+    text - align: center;
+    padding: 10 px 0;
+}
+
+.tabs - dropdown.dropdown - toggle {
+    border - width: 1 px 1 px 0 1 px;
+    border - style: solid;
+    border - color: #e0e0e0;
+    border - radius: 4 px 4 px 0 0;
+    color: #444444;
+	background: # f2f2f2;
+}
+
+.tab - content {
+        padding: 10 px;
+        height: 300 px;
+        overflow: hidden;
+        overflow - y: scroll; -
+        webkit - overflow - scrolling: touch;
+        background: white;
+        border - width: 0 1 px 1 px 1 px;
+        border - style: solid;
+        border - color: #d9d9d9;
+        border - radius: 0 0 4 px 4 px;
+}
+.tab - content.tab - pane {
+        color: #566473; 
+}
+
+						</pre>
+					</div>
+					<div class="tab-pane" id="JS-1">
+						<pre class="prettyprint lang-css linenums">
+  $(document).ready(function () {
+    $('.js-example').bootstrapResponsiveTabs({
+      minTabWidth: 80,
+      maxTabWidth: 150
+    });
+  });
+						</pre>
+					</div>
+
+				</div>
+			</div>		 
+	</section>
+	<section id="Responsive-tabs">
+		<h1>Responsive tabs</h1>
+		<hr>
+<p>This technique was developed by <a href="http://gabrieltomescu.com/"> Gabriel Tomescu </a>  and described in his post boostrap responsive tabs at <a href="http://home.golden.net/~tomescu/bootstrap-responsive-tabs/demo/">home.golden.net</a>. While you're there, you should probably check out the Bootstrap Responsive Tabs Roundup post, which showcases all these techniques and more.</p>
+<h4>Source :</h4>
+<p>You may download the source code from <a href="https://github.com/openam/bootstrap-responsive-tabs">GitHub</a>.</p>
+
+
+		 <h2>Tabs with an assigned <code>id</code>.</h2>
+			<ol>
+				<li>First tab initialized as active.</li>
+				<li>First and third tab have a <code>deco-none</code> class and the first has an additional <code>red-class</code> that are copied to the anchor tags in the accordions.</li>
+				<li>First two tabs have extra class <code>test-class</code> that are copied to the <code>div.panel-default</code> in the accordions.</li>
+			</ol>
+			<ul class="nav nav-tabs responsive" id="myTab">
+				<li class="test-class active"><a class="deco-none red-class" href="#resp-tab1"><span class="glyphicon glyphicon-cog"></span> Tab 1</a></li>
+				<li class="test-class"><a href="#resp-tab2"><span class="glyphicon glyphicon-headphones"></span> Tab 2</a></li>
+				<li><a class="deco-none" href="#resp-tab3"><span class="glyphicon glyphicon-folder-open"></span> Tab 3</a></li>
+			</ul>
+
+			<div class="tab-content responsive">
+				<div class="tab-pane active" id="resp-tab1">Tab 1 ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu posuere tortor. Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla. <button class='btn btn-primary js-alert-test'>Test Event Maintained</button></div>
+				<div class="tab-pane" id="resp-tab2">Tab 2 ... Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae.</div>
+				<div class="tab-pane" id="resp-tab3">Tab 3 ... Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae. Mauris hendrerit, leo sit amet mollis bibendum, lacus augue auctor turpis, sed placerat augue libero quis massa.</div>
+			</div>
+
+				  <h3>Code</h3>
+		  <p>The approach I've presented here assumes you know the index of the columns to be hidden. This probably isn't always appropriate, and isn't all that <a href="http://en.wikipedia.org/wiki/Semantic_Web">semantic</a>. Another option is to give the <code>&lt;th></code> and <code>&lt;td></code> classes based on importance level and code your CSS accordingly.</p>
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#html-2" data-toggle="tab">HTML</a></li>
+					<li><a href="#JS-2" data-toggle="tab">JS</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="html-2">
+						<pre class="prettyprint lang-html linenums">
+&#x3C;ul class=&#x22;nav nav-tabs responsive&#x22; id=&#x22;myTab&#x22;&#x3E;
+    &#x3C;li class=&#x22;test-class active&#x22;&#x3E;&#x3C;a class=&#x22;deco-none red-class&#x22; href=&#x22;#resp-tab1&#x22;&#x3E;&#x3C;span class=&#x22;glyphicon glyphicon-cog&#x22;&#x3E;&#x3C;/span&#x3E; Tab 1&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li class=&#x22;test-class&#x22;&#x3E;&#x3C;a href=&#x22;#resp-tab2&#x22;&#x3E;&#x3C;span class=&#x22;glyphicon glyphicon-headphones&#x22;&#x3E;&#x3C;/span&#x3E; Tab 2&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+    &#x3C;li&#x3E;&#x3C;a class=&#x22;deco-none&#x22; href=&#x22;#resp-tab3&#x22;&#x3E;&#x3C;span class=&#x22;glyphicon glyphicon-folder-open&#x22;&#x3E;&#x3C;/span&#x3E; Tab 3&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+
+&#x3C;div class=&#x22;tab-content responsive&#x22;&#x3E;
+    &#x3C;div class=&#x22;tab-pane active&#x22; id=&#x22;resp-tab1&#x22;&#x3E;Tab 1 ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu posuere tortor. Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla. &#x3C;button class=&#x27;btn btn-primary js-alert-test&#x27;&#x3E;Test Event Maintained&#x3C;/button&#x3E;&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;tab-pane&#x22; id=&#x22;resp-tab2&#x22;&#x3E;Tab 2 ... Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae.&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;tab-pane&#x22; id=&#x22;resp-tab3&#x22;&#x3E;Tab 3 ... Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae. Mauris hendrerit, leo sit amet mollis bibendum, lacus augue auctor turpis, sed placerat augue libero quis massa.&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+						</pre>
+					</div>
+				
+					<div class="tab-pane" id="JS-2">
+						<pre class="prettyprint lang-css linenums">
+  ( function( $ ) {
+          // Test for making sure event are maintained
+          $( '.js-alert-test' ).click( function () {
+            alert( 'Button Clicked: Event was maintained' );
+          } );
+          fakewaffle.responsiveTabs( [ 'xs', 'sm' ] );
+      } )( jQuery );
+						</pre>
+					</div>
+
+				</div>
+			</div>		 
+
+			<hr>
+
+			<h2>Tabs without an assigned <code>id</code>.</h2>
+				<ol>
+				  <li>Second tab initialized as active.</li>
+				  <li>Tabs are inside a panel.</li>
+				  <li>Fourth tab has panels within it.</li>
+				</ol>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel containing responsive tabs</h3>
+					</div>
+					<div class="panel-body">
+						<ul class="nav nav-tabs responsive">
+							<li><a href="#home-test-new">Home</a></li>
+							<li class="active"><a href="#profile-test-new">Profile</a></li>
+							<li><a href="#messages-test-new">Messages</a></li>
+							<li><a href="#fourth-test-new">Fourth</a></li>
+						</ul>
+
+					  <div class="tab-content responsive">
+						  <div class="tab-pane active" id="home-test-new">Home ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu posuere tortor. Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla.</div>
+						  <div class="tab-pane" id="profile-test-new">Profile ... Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae.</div>
+						  <div class="tab-pane" id="messages-test-new">Messages ... Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae. Mauris hendrerit, leo sit amet mollis bibendum, lacus augue auctor turpis, sed placerat augue libero quis massa.</div>
+						  <div class="tab-pane" id="fourth-test-new">
+							<p>
+							  Fourth ...
+							</p>
+							<div class="panel panel-default">
+							  <div class="panel-heading">Panel heading without title</div>
+							  <div class="panel-body">
+								Panel content
+							  </div>
+							</div>
+
+							<div class="panel panel-default">
+							  <div class="panel-heading">
+								<h3 class="panel-title">Panel title</h3>
+							  </div>
+							  <div class="panel-body">
+								Panel content
+							  </div>
+							</div>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+				  <h3>Code</h3>
+		  <p>The approach I've presented here assumes you know the index of the columns to be hidden. This probably isn't always appropriate, and isn't all that <a href="http://en.wikipedia.org/wiki/Semantic_Web">semantic</a>. Another option is to give the <code>&lt;th></code> and <code>&lt;td></code> classes based on importance level and code your CSS accordingly.</p>
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#html-3" data-toggle="tab">HTML</a></li>
+					<li><a href="#JS-3" data-toggle="tab">JS</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="html-3">
+						<pre class="prettyprint lang-html linenums">
+&#x3C;div class=&#x22;panel panel-default&#x22;&#x3E;
+    &#x3C;div class=&#x22;panel-heading&#x22;&#x3E;
+        &#x3C;h3 class=&#x22;panel-title&#x22;&#x3E;Panel containing responsive tabs&#x3C;/h3&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;panel-body&#x22;&#x3E;
+        &#x3C;ul class=&#x22;nav nav-tabs responsive&#x22;&#x3E;
+            &#x3C;li&#x3E;&#x3C;a href=&#x22;#home-test-new&#x22;&#x3E;Home&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+            &#x3C;li class=&#x22;active&#x22;&#x3E;&#x3C;a href=&#x22;#profile-test-new&#x22;&#x3E;Profile&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;&#x3C;a href=&#x22;#messages-test-new&#x22;&#x3E;Messages&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;&#x3C;a href=&#x22;#fourth-test-new&#x22;&#x3E;Fourth&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+
+        &#x3C;div class=&#x22;tab-content responsive&#x22;&#x3E;
+            &#x3C;div class=&#x22;tab-pane active&#x22; id=&#x22;home-test-new&#x22;&#x3E;Home ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu posuere tortor. Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla.&#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;tab-pane&#x22; id=&#x22;profile-test-new&#x22;&#x3E;Profile ... Phasellus consectetur aliquet risus, in lacinia erat ullamcorper a. Suspendisse molestie porta metus, at cursus elit. Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae.&#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;tab-pane&#x22; id=&#x22;messages-test-new&#x22;&#x3E;Messages ... Quisque et neque nec velit tincidunt fringilla. Morbi eget nisi molestie, egestas turpis non, pharetra orci. Donec mattis sem ipsum, eu dapibus lacus rutrum in. Fusce blandit mi leo, non feugiat nunc tempus vitae. Mauris hendrerit, leo sit amet mollis bibendum, lacus augue auctor turpis, sed placerat augue libero quis massa.&#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;tab-pane&#x22; id=&#x22;fourth-test-new&#x22;&#x3E;
+                &#x3C;p&#x3E;
+                    Fourth ...
+                &#x3C;/p&#x3E;
+                &#x3C;div class=&#x22;panel panel-default&#x22;&#x3E;
+                    &#x3C;div class=&#x22;panel-heading&#x22;&#x3E;Panel heading without title&#x3C;/div&#x3E;
+                    &#x3C;div class=&#x22;panel-body&#x22;&#x3E;
+                        Panel content
+                    &#x3C;/div&#x3E;
+                &#x3C;/div&#x3E;
+
+                &#x3C;div class=&#x22;panel panel-default&#x22;&#x3E;
+                    &#x3C;div class=&#x22;panel-heading&#x22;&#x3E;
+                        &#x3C;h3 class=&#x22;panel-title&#x22;&#x3E;Panel title&#x3C;/h3&#x3E;
+                    &#x3C;/div&#x3E;
+                    &#x3C;div class=&#x22;panel-body&#x22;&#x3E;
+                        Panel content
+                    &#x3C;/div&#x3E;
+                &#x3C;/div&#x3E;
+            &#x3C;/div&#x3E;
+        &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+						</pre>
+					</div>
+					
+					<div class="tab-pane" id="JS-3">
+						<pre class="prettyprint lang-css linenums">
+  ( function( $ ) {
+          // Test for making sure event are maintained
+          $( '.js-alert-test' ).click( function () {
+            alert( 'Button Clicked: Event was maintained' );
+          } );
+          fakewaffle.responsiveTabs( [ 'xs', 'sm' ] );
+      } )( jQuery );
+						</pre>
+					</div>
+
+				</div>
+			</div>		 
+
+	</section>
+<script>
+  $(document).ready(function () {
+    $('.js-example').bootstrapResponsiveTabs({
+      minTabWidth: 80,
+      maxTabWidth: 150
+    });
+  });
+  
+</script>
+ <script src="js/responsive-tabs.js"></script>
+ <script type="text/javascript">
+
+      $( 'ul.nav.nav-tabs  a' ).click( function ( e ) {
+        e.preventDefault();
+        $( this ).tab( 'show' );
+      } );
+
+      ( function( $ ) {
+          // Test for making sure event are maintained
+          $( '.js-alert-test' ).click( function () {
+            alert( 'Button Clicked: Event was maintained' );
+          } );
+          fakewaffle.responsiveTabs( [ 'xs', 'sm' ] );
+      } )( jQuery );
+
+    </script>
+	</div>
+</body>
+</html>

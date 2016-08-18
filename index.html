@@ -274,8 +274,646 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/18/React-js-todo-list-sortable-tw-5/" itemprop="url">
+                  React-js-todo-list-sortable(5)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T10:24:07+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/React-js-todo-list-sortable-tw-5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/18/React-js-todo-list-sortable-tw-5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Building-a-Todo-app-with-React-js-5-sort-item"><a href="#Building-a-Todo-app-with-React-js-5-sort-item" class="headerlink" title=" Building a Todo app with React.js (5) - sort item"></a> Building a Todo app with React.js (5) - sort item</h1><p><img src="/images/Step6.gif" alt="TodoListApp"></p>
+<p>下一步是允許用戶使用拖放來改變ToDoListItem的序列（ DND）</p>
+<p>我們將允許用戶進行排序使用拖放一個數組。我們首先創建li元素。</p>
+<pre><code>var placeholder = document.createElement(&quot;li&quot;);
+    placeholder.className = &quot;placeholder&quot;;
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/18/React-js-todo-list-sortable-tw-5/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/18/React-js-todo-list-sortable-tw-4/" itemprop="url">
+                  React-js-todo-list-sortable(4)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T10:23:59+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/React-js-todo-list-sortable-tw-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/18/React-js-todo-list-sortable-tw-4/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Building-a-Todo-app-with-React-js-4-Multiple-Todos"><a href="#Building-a-Todo-app-with-React-js-4-Multiple-Todos" class="headerlink" title=" Building a Todo app with React.js (4) - Multiple Todos"></a> Building a Todo app with React.js (4) - Multiple Todos</h1><p><img src="/images/Step5.gif" alt="TodoListApp"></p>
+<p>下一步將是添加多個待辦事項的能力。例如，我們可能有僅用於grocey列出清單，其他的可能是計劃的博客文章列表或的事情要做今天的名單。這就是為什麽有在不同的列表中的待辦事項進行排序能力是很重要的。</p>
+<pre><code>- TODO CATELOG FORM
+- TODO CATELOG
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/18/React-js-todo-list-sortable-tw-4/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/18/React-js-todo-list-sortable-tw-3/" itemprop="url">
+                  React-js-todo-list-sortable(3)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T10:23:51+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/React-js-todo-list-sortable-tw-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/18/React-js-todo-list-sortable-tw-3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks"><a href="#Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks" class="headerlink" title=" Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks"></a> Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks</h1><p><img src="/images/Step4.gif" alt="TodoListApp"></p>
+<p>如果我們有很多待辦事項，很難通過它們進行搜索，並找到一個特定的待辦事項。它也變得更容易看到所有的完成，未完成任務的一次。</p>
+<pre><code>- TODO APP
+    - TODO BANNER
+    - **TODO FILTER**
+    - TODO FORM
+    - TODO LIST
+        - TODO LIST ITEM #1
+        - TODO LIST ITEM #2
+        ...
+        - TODO LIST ITEM #n
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/18/React-js-todo-list-sortable-tw-3/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/18/React-js-todo-list-sortable-tw-2/" itemprop="url">
+                  React-js-todo-list-sortable (2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T10:23:40+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/React-js-todo-list-sortable-tw-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/18/React-js-todo-list-sortable-tw-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component"><a href="#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component" class="headerlink" title=" Building a Todo app with React.js (2) - Improve Component &amp; Remove Component"></a> Building a Todo app with React.js (2) - Improve Component &amp; Remove Component</h1><p><img src="/images/Step2.gif" alt="TodoListApp"></p>
+<p>在這節，我們要改進Components，並刪除項目。讓使用者可以刪除項目和當項目項目已經完成，項目的復選框可以被標記。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/18/React-js-todo-list-sortable-tw-2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/18/React-js-todo-list-sortable-tw-1/" itemprop="url">
+                  React-js-todo-list-sortable(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T10:23:24+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-js/" itemprop="url" rel="index">
+                    <span itemprop="name">React-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/React-js-todo-list-sortable-tw-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/18/React-js-todo-list-sortable-tw-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Building-a-Todo-app-with-React-js"><a href="#Building-a-Todo-app-with-React-js" class="headerlink" title=" Building a Todo app with React.js"></a> Building a Todo app with React.js</h1><p>這是我首次嘗試用React-JS建立一個待辦事項應用。React-JS是一個JavaScript庫，用於構建用戶界面，主要是因為它是由Facebook的建立。我們將學習如何使用。</p>
+<p>讓我們開始.您可以按照從GitHub庫的步驟本教程</p>
+<ol>
+<li>##<a href="http://kennethhutw.github.io/demo/ReactJs/Step6/index">Demo</a></li>
+<li>##<a href="https://github.com/kennethhutw/React-js-todolist/archive/master.zip">Download</a></li>
+<li>##<a href="https://github.com/kennethhutw/React-js-todolist/archive/practice.zip">Practice</a></li>
+</ol>
+<p><img src="/images/ToDoList.png" alt="TodoListApp"></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/18/React-js-todo-list-sortable-tw-1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/21/React-js-todo-list-sortable-cn-5/" itemprop="url">
-                  React-js-todo-list-sortable-cn(5)
+                  React-js-todo-list-sortable(5)
                 </a>
               
             
@@ -402,7 +1040,7 @@
               
                 
                 <a class="post-title-link" href="/2016/07/21/React-js-todo-list-sortable-cn-4/" itemprop="url">
-                  React-js-todo-list-sortable-cn(4)
+                  React-js-todo-list-sortable(4)
                 </a>
               
             
@@ -528,7 +1166,7 @@
               
                 
                 <a class="post-title-link" href="/2016/07/21/React-js-todo-list-sortable-cn-3/" itemprop="url">
-                  React-js-todo-list-sortable-cn(3)
+                  React-js-todo-list-sortable(3)
                 </a>
               
             
@@ -661,7 +1299,7 @@
               
                 
                 <a class="post-title-link" href="/2016/07/21/React-js-todo-list-sortable-cn-2/" itemprop="url">
-                  React-js-todo-list-sortable-cn(2)
+                  React-js-todo-list-sortable (2)
                 </a>
               
             
@@ -784,7 +1422,7 @@
               
                 
                 <a class="post-title-link" href="/2016/07/21/React-js-todo-list-sortable-cn-1/" itemprop="url">
-                  React-js-todo-list-sortable-cn(1)
+                  React-js-todo-list-sortable(1)
                 </a>
               
             
@@ -891,648 +1529,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/21/React-js-todo-list-sortable-5/" itemprop="url">
-                  React-js-todo-list-sortable(5)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T01:54:06+08:00" content="2016-07-21">
-              2016-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React-js</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/21/React-js-todo-list-sortable-5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/21/React-js-todo-list-sortable-5/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Building-a-Todo-app-with-React-js-5-sort-item"><a href="#Building-a-Todo-app-with-React-js-5-sort-item" class="headerlink" title=" Building a Todo app with React.js (5) - sort item"></a> Building a Todo app with React.js (5) - sort item</h1><p><img src="/images/Step6.gif" alt="TodoListApp"></p>
-<p>The next step is to allows users to change the sequence of ToDoListItem using drag and drop (DnD)</p>
-<p>We will allow user to sort an array using drag and drop. We create li element first. </p>
-<pre><code>var placeholder = document.createElement(&quot;li&quot;);
-    placeholder.className = &quot;placeholder&quot;;
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/21/React-js-todo-list-sortable-5/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/21/React-js-todo-list-sortable-4/" itemprop="url">
-                  React-js-todo-list-sortable(4)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T01:53:54+08:00" content="2016-07-21">
-              2016-07-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React-js</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/21/React-js-todo-list-sortable-4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/21/React-js-todo-list-sortable-4/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Building-a-Todo-app-with-React-js-4-Multiple-Todos"><a href="#Building-a-Todo-app-with-React-js-4-Multiple-Todos" class="headerlink" title=" Building a Todo app with React.js (4) - Multiple Todos"></a> Building a Todo app with React.js (4) - Multiple Todos</h1><p><img src="/images/Step5.gif" alt="TodoListApp"></p>
-<p>The next step will be the ability to add multiple todos. For example we might have a list that is used only for grocey lists, the other might be a list of planned blog posts or a list of the things to do todays. That’s why it’s important to have ability to sort the todos in different lists. </p>
-<pre><code>- TODO CATELOG FORM
-- TODO CATELOG
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/21/React-js-todo-list-sortable-4/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/React-js-todo-list-sortable-3/" itemprop="url">
-                  React-js-todo-list-sortable(3)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T18:16:46+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React-js</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/20/React-js-todo-list-sortable-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/20/React-js-todo-list-sortable-3/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks"><a href="#Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks" class="headerlink" title=" Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks"></a> Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks</h1><p><img src="/images/Step4.gif" alt="TodoListApp"></p>
-<p>If we have a lot of todos, it becomes difficult to search through them and to find a particular todo. It also becomes easier to see all the completed and incompleted tasks at once. </p>
-<pre><code>- TODO APP
-    - TODO BANNER
-    - TODO FILTER
-    - TODO FORM
-    - TODO LIST
-        - TODO LIST ITEM #1
-        - TODO LIST ITEM #2
-        ...
-        - TODO LIST ITEM #n
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/20/React-js-todo-list-sortable-3/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/React-js-todo-list-sortable-2/" itemprop="url">
-                  React-js-todo-list-sortable(2)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T18:10:39+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React-js</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/20/React-js-todo-list-sortable-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/20/React-js-todo-list-sortable-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component"><a href="#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component" class="headerlink" title=" Building a Todo app with React.js (2) - Improve Component &amp; Remove Component"></a> Building a Todo app with React.js (2) - Improve Component &amp; Remove Component</h1><p><img src="/images/Step2.gif" alt="TodoListApp"></p>
-<p>In this session, we are going to improve Component and remove item. When item is completed, the checkbox of item is marked. </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/20/React-js-todo-list-sortable-2/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/19/React-js-todo-list-sortable/" itemprop="url">
-                  React-js-todo-list-sortable (1)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-19T12:38:43+08:00" content="2016-07-19">
-              2016-07-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/React-js/" itemprop="url" rel="index">
-                    <span itemprop="name">React-js</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/19/React-js-todo-list-sortable/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/19/React-js-todo-list-sortable/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Building-a-Todo-app-with-React-js"><a href="#Building-a-Todo-app-with-React-js" class="headerlink" title=" Building a Todo app with React.js"></a> Building a Todo app with React.js</h1><p>Lets start.You can follow the steps from the github repo for this tutorial.</p>
-<ol>
-<li>##<a href="http://kennethhutw.github.io/demo/ReactJs/Step6/index">Demo</a></li>
-<li>##<a href="https://github.com/kennethhutw/React-js-todolist/archive/master.zip">Download</a></li>
-<li>##<a href="https://github.com/kennethhutw/React-js-todolist/archive/practice.zip">Practice</a></li>
-</ol>
-<p><img src="/images/ToDoList.png" alt="TodoListApp"><br>This is my first attempt with React-js to build a Todo App. React has gained massive traction as a JavaScript library for building user interfaces largely because it is built by Facebook. We’ll learn how.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/19/React-js-todo-list-sortable/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1573,7 +1574,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

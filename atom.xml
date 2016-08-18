@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kennethhutw.github.io/"/>
-  <updated>2016-07-21T04:43:15.174Z</updated>
+  <updated>2016-08-18T01:57:13.213Z</updated>
   <id>https://kennethhutw.github.io/</id>
   
   <author>
@@ -16,11 +16,683 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>React-js-todo-list-sortable-cn(5)</title>
+    <title>React-js-todo-list-sortable(5)</title>
+    <link href="https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-5/"/>
+    <id>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-5/</id>
+    <published>2016-08-18T02:24:07.000Z</published>
+    <updated>2016-08-18T01:57:13.213Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-5-sort-item&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-5-sort-item&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (5) - sort item&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (5) - sort item&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step6.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下一步是允許用戶使用拖放來改變ToDoListItem的序列（ DND）&lt;/p&gt;
+&lt;p&gt;我們將允許用戶進行排序使用拖放一個數組。我們首先創建li元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var placeholder = document.createElement(&amp;quot;li&amp;quot;);
+    placeholder.className = &amp;quot;placeholder&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Component-1-ToDoList&quot;&gt;&lt;a href=&quot;#Component-1-ToDoList&quot; class=&quot;headerlink&quot; title=&quot;Component 1  - ToDoList&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 1  - ToDoList&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;我們創建DragStar功能， DragEnd功能的dragover函數來實現（拖放）的DnD過程。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DragStart: function(e){
+    this.dragged = e.currentTarget;
+    e.dataTransfer.effectAllowed = &amp;apos;move&amp;apos;;
+},
+DragEnd: function(e){
+    this.dragged.style.display=&amp;quot;&amp;quot;;
+    var IshasNode = false
+
+    Array.prototype.forEach.call (this.dragged.parentNode.childNodes, function (node) {
+        if(node.className==&amp;quot;placeholder&amp;quot;)
+                        IshasNode = true;
+
+    } );
+    if(!IshasNode)
+    return;
+    this.dragged.parentNode.removeChild(placeholder);
+    var data = this.props.items;
+    var from = Number(this.dragged.dataset.id);
+    var to = Number(this.over.dataset.id);
+    if(from &amp;lt; to) to--;
+    if(this.nodePlacement == &amp;quot;after&amp;quot;) to++;
+    data.splice(to, 0, data.splice(from, 1)[0]);
+    this.setState({data: data});    
+},
+DragOver: function(e) {
+
+    e.preventDefault();
+    this.dragged.style.display = &amp;quot;none&amp;quot;;
+
+    if(e.target.className == &amp;quot;placeholder&amp;quot;) return;
+    this.over = e.target;
+    // Inside the dragOver method
+    var relY = e.clientY - this.over.offsetTop;
+    var height = this.over.offsetHeight / 2;
+    var parent = e.target.parentNode;
+
+    if(relY &amp;gt; height) {
+      this.nodePlacement = &amp;quot;after&amp;quot;;
+      parent.insertBefore(placeholder, e.target.nextElementSibling);
+    }
+    else if(relY &amp;lt; height) {
+      this.nodePlacement = &amp;quot;before&amp;quot;
+      parent.insertBefore(placeholder, e.target);
+    }
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;DragStar功能和DragEnd功能被綁定到ToDoListItem組件。 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    var createItem = function(itemText,i) {
+        return (
+            &amp;lt;ToDoListItem key={i} value={i} onDragEnd={this.DragEnd}
+onDragStart={this.DragStart} onRemove = {this.Remove}&amp;gt;{itemText}&amp;lt;/ToDoListItem&amp;gt;
+        );
+    };
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;dragover功能被綁定到UI元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul onDragOver={this.DragOver}&amp;gt;{allitems.map(createItem,this)}&amp;lt;/ul&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-2-ToDoListItem&quot;&gt;&lt;a href=&quot;#Component-2-ToDoListItem&quot; class=&quot;headerlink&quot; title=&quot;Component 2  - ToDoListItem&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 2  - ToDoListItem&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;我們創造DragEndHandler功能， DragStartHandler功能觸發父的事件，並綁定到li元素。我們還需要設置 li元素上draggable = true屬性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DragEndHandler : function(e){
+    this.props.onDragEnd(e);
+},
+DragStartHandler : function(e){
+    this.props.onDragStart(e);
+},
+render: function(){
+    var _style = &amp;quot;line-through&amp;quot;;
+    if(!this.props.children.isDone)
+    _style =&amp;quot;none&amp;quot;;
+    return (
+      &amp;lt;li data-id={this.props.value} 
+                key={this.props.value} draggable=&amp;quot;true&amp;quot; onDragEnd={this.DragEndHandler}
+            onDragStart={this.DragStartHandler}&amp;gt;&amp;lt;button type=&amp;quot;button&amp;quot; className=&amp;quot;close pull-right&amp;quot; aria-hidden=&amp;quot;true&amp;quot; onClick={this.RemoveHandler}&amp;gt;&amp;amp;times;&amp;lt;/button&amp;gt;&amp;lt;input type=&amp;quot;checkbox&amp;quot; onChange={this.ChangeHandler} defaultChecked={this.props.children.isDone} /&amp;gt;&amp;lt;span style={{&quot;textDecoration&quot;: _style}}&amp;gt;{this.props.children.item}&amp;lt;/span&amp;gt;&amp;lt;/li&amp;gt;
+    );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你現在應該有下面的截圖&lt;br&gt;&lt;img src=&quot;/images/Step6.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step6/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Building-a-Todo-app-with-React-js-5-sort-item&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-5-sort-item&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (5) - sort item&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (5) - sort item&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step6.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下一步是允許用戶使用拖放來改變ToDoListItem的序列（ DND）&lt;/p&gt;
+&lt;p&gt;我們將允許用戶進行排序使用拖放一個數組。我們首先創建li元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var placeholder = document.createElement(&amp;quot;li&amp;quot;);
+    placeholder.className = &amp;quot;placeholder&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/categories/React-js/"/>
+    
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/tags/React-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-js-todo-list-sortable(4)</title>
+    <link href="https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-4/"/>
+    <id>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-4/</id>
+    <published>2016-08-18T02:23:59.000Z</published>
+    <updated>2016-08-18T01:57:18.221Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (4) - Multiple Todos&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (4) - Multiple Todos&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step5.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下一步將是添加多個待辦事項的能力。例如，我們可能有僅用於grocey列出清單，其他的可能是計劃的博客文章列表或的事情要做今天的名單。這就是為什麽有在不同的列表中的待辦事項進行排序能力是很重要的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- TODO CATELOG FORM
+- TODO CATELOG
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Component-1-ToDo-Catelog-Form&quot;&gt;&lt;a href=&quot;#Component-1-ToDo-Catelog-Form&quot; class=&quot;headerlink&quot; title=&quot;Component 1  - ToDo Catelog Form&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 1  - ToDo Catelog Form&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;它包含一個文本字段後跟一個按鈕來觸發待辦事項列表中增加新的代辦事項的目錄。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var ToDoCatalogForm = React.createClass({
+    getInitialState: function() {
+        return {item: &amp;apos;&amp;apos;};
+    },
+    handleSubmit: function(e){
+        e.preventDefault();
+        this.props.onFormSubmit(this.state.item);
+        this.setState({item: &amp;apos;&amp;apos;});
+        ReactDOM.findDOMNode(this.refs.item).focus();
+        return;
+    },
+    onChange: function(e){
+        this.setState({
+          item: e.target.value
+        });
+    },
+    render: function(){
+        return (
+            &amp;lt;div className=&amp;quot;row&amp;quot;&amp;gt;
+              &amp;lt;form  onSubmit={this.handleSubmit}&amp;gt;
+                &amp;lt;div className=&amp;quot;form-group &amp;quot;&amp;gt;
+                    &amp;lt;input type=&amp;apos;text&amp;apos; className=&amp;quot;newTodoCatalogField form-control&amp;quot;  ref=&amp;apos;item&amp;apos; onChange={this.onChange} value={this.state.item}/&amp;gt;
+                    &amp;lt;input type=&amp;apos;submit&amp;apos; className=&amp;quot;btn btn-default&amp;quot; style={{&quot;float&quot;:&quot;left&quot;,&quot;marginLeft&quot;:&quot;5px&quot;}} value=&amp;apos;Add&amp;apos;/&amp;gt;
+                &amp;lt;/div&amp;gt;
+              &amp;lt;/form&amp;gt;
+              &amp;lt;/div&amp;gt;
+
+        );
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-2-ToDo-Catelog&quot;&gt;&lt;a href=&quot;#Component-2-ToDo-Catelog&quot; class=&quot;headerlink&quot; title=&quot;Component 2  - ToDo Catelog&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 2  - ToDo Catelog&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;它會顯示所有的待辦事項列表。selectedID是將當前存儲待辦事項被示出的變量，在待辦事項列表會根據selectedID更新。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var ToDoCatelog  = React.createClass({
+    changeTodo : function(e){
+        this.props.onSelected( e.currentTarget.dataset.id);
+    },
+    checkActive:function(i){
+        if (i == this.props.selectedID)
+        {
+            return &amp;quot;list-group-item active&amp;quot;;
+        }
+        else
+        {
+            return &amp;quot;list-group-item &amp;quot;;
+        }
+    },
+    render: function(){    
+        var selectedID = this .props.selectedID;
+        var allitems =this.props.Todos;
+
+        return &amp;lt;div className=&amp;quot;list-group&amp;quot;&amp;gt;
+        {
+            allitems.map(function(item,i){ 
+            var _class = &amp;quot;&amp;quot;;
+            if (i == this.props.selectedID)
+            {
+                _class =  &amp;quot;list-group-item active&amp;quot;;
+            }
+            else
+            {
+                _class =  &amp;quot;list-group-item &amp;quot;;
+            }
+            return(
+                 &amp;lt;a href=&amp;quot;#&amp;quot; key={i} data-id={i} className={_class} onClick={this.changeTodo} &amp;gt;&amp;lt;span className=&amp;quot;badge&amp;quot; &amp;gt;{item.items.length}&amp;lt;/span&amp;gt;{item.name}&amp;lt;/a&amp;gt;
+            )
+        },this)}&amp;lt;/div&amp;gt;;
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-3-ToDoApp&quot;&gt;&lt;a href=&quot;#Component-3-ToDoApp&quot; class=&quot;headerlink&quot; title=&quot;Component 3  - ToDoApp&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 3  - ToDoApp&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;我們將重新聲明getInitialState函數的返回值，把項目歸納到目錄下面並增加一個selectedCatelog 變數來保存目前的目錄。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;getInitialState : function(){
+        return {Todo:[{name:&amp;quot;parimary&amp;quot;,items:[{item:&amp;apos;Todo itmd #1&amp;apos;,isDone:false},{item:&amp;apos;Todo itmd #2&amp;apos;,isDone:true},{item:&amp;apos;aaaa&amp;apos;,isDone:true},{item:&amp;apos;dddd&amp;apos;,isDone:true}
+        ]},{name:&amp;quot;Secondary&amp;quot;,items:[{item:&amp;apos;Todo itmd #1&amp;apos;,isDone:false},{item:&amp;apos;Todo itmd #2&amp;apos;,isDone:true},{item:&amp;apos;Todo itmd #3&amp;apos;,isDone:true}
+        ]}],filter:[{keyword:&amp;apos;&amp;apos;,Status:&amp;quot;SHOW_ALL&amp;quot;}],selectedCatelog:&amp;quot;0&amp;quot;};
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我們創造AddCatelog功能和setSelectedCatalog功能。 AddCatelog功能用來新增新的代辦事項的目錄，而setSelectedCatalog功能是用來保存現在查看那一個目錄。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Here is the Add Catelog function 
+AddCatelog: function(newCatalog){
+    var Catalog = {name:newCatalog,items:[{item:&amp;apos;Todo itmd #1&amp;apos;,isDone:false}]};
+    var newtodo = this.state.Todo.concat([Catalog]);
+    this.setState({
+        Todo: newtodo
+    });
+},
+setSelectedCatalog: function(index){
+    this.state.selectedCatelog = index;
+    this.setState({
+        selectedCatelog: index
+    });
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在此同時，我們還需要修改updateItems功能和deleteItem功能。更新項目或刪除項目都是根據selectedCatelog來進行的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;updateItems: function(newItem){    
+        var item = {item:newItem,isDone:false};
+        var newtodo = this.state.Todo;
+        var allItems = this.state.Todo[this.state.selectedCatelog].items.concat([item]);
+        newtodo[this.state.selectedCatelog].items = allItems;
+        this.setState({
+            Todo: newtodo
+        });
+    },
+deleteItem : function(index){
+        var newtodo = this.state.Todo;
+        var allItems = this.state.Todo[this.state.selectedCatelog].items.slice(); //copy array
+        allItems.splice(index, 1); //remove element
+        newtodo[this.state.selectedCatelog].items = allItems;
+        this.setState({
+            Todo: newtodo
+        });
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最後，我們插入ToDoCatalogForm組件和ToDoCatelog組件到渲染功能。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;render: function(){
+    return (
+        &amp;lt;div className=&amp;quot;row&amp;quot;&amp;gt;
+            &amp;lt;div className=&amp;quot;col-xs-3&amp;quot;&amp;gt;
+                &amp;lt;ToDoCatalogForm onFormSubmit = {this.AddCatelog} /&amp;gt;
+                &amp;lt;ToDoCatelog selectedID = {this.state.selectedCatelog} onSelected={this.setSelectedCatalog} Todos = {this.state.Todo} /&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div className=&amp;quot;col-xs-6&amp;quot;&amp;gt;
+                &amp;lt;ToDoBanner/&amp;gt;
+                &amp;lt;ToDoFilter onFilter = {this.filterItem} onSearch = {this.searchItem} filter={this.state.filter}/&amp;gt;
+                &amp;lt;ToDoForm onFormSubmit = {this.updateItems} /&amp;gt;
+                &amp;lt;ToDoList  items = {this.state.Todo[this.state.selectedCatelog].items} filter = {this.state.filter} onDelete={this.deleteItem}/&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+    );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你現在應該有下面的截圖&lt;br&gt;&lt;img src=&quot;/images/Step5.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step5/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (4) - Multiple Todos&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (4) - Multiple Todos&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step5.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下一步將是添加多個待辦事項的能力。例如，我們可能有僅用於grocey列出清單，其他的可能是計劃的博客文章列表或的事情要做今天的名單。這就是為什麽有在不同的列表中的待辦事項進行排序能力是很重要的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- TODO CATELOG FORM
+- TODO CATELOG
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/categories/React-js/"/>
+    
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/tags/React-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-js-todo-list-sortable(3)</title>
+    <link href="https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-3/"/>
+    <id>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-3/</id>
+    <published>2016-08-18T02:23:51.000Z</published>
+    <updated>2016-08-18T01:57:24.715Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step4.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果我們有很多待辦事項，很難通過它們進行搜索，並找到一個特定的待辦事項。它也變得更容易看到所有的完成，未完成任務的一次。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- TODO APP
+    - TODO BANNER
+    - **TODO FILTER**
+    - TODO FORM
+    - TODO LIST
+        - TODO LIST ITEM #1
+        - TODO LIST ITEM #2
+        ...
+        - TODO LIST ITEM #n
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Component-1-ToDo-Filter&quot;&gt;&lt;a href=&quot;#Component-1-ToDo-Filter&quot; class=&quot;headerlink&quot; title=&quot;Component 1 - ToDo Filter&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 1 - ToDo Filter&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;這個組件包含過濾器和搜索欄。以下是組件的代碼。 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var ToDoFilter = React.createClass({
+    isActive:function(value){
+        return &amp;apos;btn &amp;apos;+((value===this.props.filter[0].Status) ?&amp;apos;btn-primary&amp;apos;:&amp;apos;default&amp;apos;);
+    },
+    render: function(){
+        var onFilter1 = this.props.onFilter;
+        var onSearch1 = this.props.onSearch;
+        return(
+                &amp;lt;div className=&amp;quot;row&amp;quot;&amp;gt;
+                    &amp;lt;div className=&amp;quot;col-xs-7&amp;quot;&amp;gt;
+                        &amp;lt;div id=&amp;quot;todo-filter&amp;quot; className=&amp;quot;input-group&amp;quot;&amp;gt;
+                            &amp;lt;span className=&amp;quot;input-group-btn&amp;quot;&amp;gt;
+                                &amp;lt;button className=&amp;quot;btn btn-default&amp;quot; type=&amp;quot;button&amp;quot;&amp;gt;&amp;lt;span className=&amp;quot;glyphicon glyphicon-search&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/button&amp;gt;
+                                &amp;lt;/span&amp;gt;
+                                &amp;lt;input  type=&amp;quot;search&amp;quot; className=&amp;quot;form-control&amp;quot; ref=&amp;apos;filter&amp;apos; onChange={onSearch1} placeholder=&amp;quot;Search&amp;quot; &amp;gt;&amp;lt;/input&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div className=&amp;quot;col-xs-5&amp;quot;&amp;gt;
+                        &amp;lt;ul className=&amp;quot;nav nav-pills todo-filter&amp;quot;&amp;gt;
+                            &amp;lt;li&amp;gt;&amp;lt;a onClick={onFilter1} className={this.isActive(&amp;apos;SHOW_ALL&amp;apos;)} value=&amp;quot;SHOW_ALL&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;All&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                            &amp;lt;li&amp;gt;&amp;lt;a onClick={onFilter1} className={this.isActive(&amp;apos;false&amp;apos;)} value=&amp;quot;false&amp;quot;&amp;gt;Incomplete&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                             &amp;lt;li&amp;gt;&amp;lt;a onClick={onFilter1} className={this.isActive(&amp;apos;true&amp;apos;)} value=&amp;quot;true&amp;quot;&amp;gt;Complete&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+                        &amp;lt;/ul&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+        ); 
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-2-ToDoApp&quot;&gt;&lt;a href=&quot;#Component-2-ToDoApp&quot; class=&quot;headerlink&quot; title=&quot;Component 2 - ToDoApp &quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 2 - ToDoApp &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;在ToDoApp ，我們創建的FilterItem功能， searchItem功能，保存輸入值，然後添加到ToDoFilter渲染功能。&lt;/p&gt;
+&lt;p&gt;Here’s the code :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filterItem : function(e){
+    this.state.filter[0].Status = e.target.value;
+    this.setState({
+        filter: this.state.filter
+    });
+},
+searchItem : function(e){
+    this.state.filter[0].keyword = e.target.value;
+    this.setState({
+        filter: this.state.filter
+    });
+},
+render: function(){
+    return (
+        &amp;lt;div&amp;gt;
+            &amp;lt;ToDoBanner/&amp;gt;
+            &amp;lt;ToDoFilter onFilter = {this.filterItem} onSearch = {this.searchItem} filter={this.state.filter}/&amp;gt;
+            &amp;lt;ToDoForm onFormSubmit={this.updateItems} /&amp;gt;
+            &amp;lt;ToDoList items={this.state.items} filter = {this.state.filter}  onDelete={this.deleteItem} /&amp;gt;
+        &amp;lt;/div&amp;gt;
+    );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-3-ToDoList&quot;&gt;&lt;a href=&quot;#Component-3-ToDoList&quot; class=&quot;headerlink&quot; title=&quot;Component 3 - ToDoList &quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 3 - ToDoList &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;過濾器方面，用的React-js的filter方法來實現過濾功能。 過濾器將根據用戶輸入的待辦事項列表，來過濾的待辦事項列表。 &lt;/p&gt;
+&lt;p&gt;搜索功能方面，我用的indexOf （）方法來實現搜索功能。該的indexOf （）方法返回-1，如果關鍵字搜索不會發生。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;render: function() {    
+    var createItem = function(itemText,i) {
+        return (
+            &amp;lt;ToDoListItem key={i} value={i} onRemove = {this.Remove}&amp;gt;{itemText}&amp;lt;/ToDoListItem&amp;gt;
+        );
+    };
+    // Here is the filter function 
+    var allitems = this.props.items;
+
+    var status = this.props.filter[0].Status;
+    switch (status){
+        case &amp;apos;false&amp;apos;:
+         allitems = allitems.filter(t =&amp;gt; !t.isDone)
+         break;
+         case &amp;apos;true&amp;apos;:
+         allitems = allitems.filter(t =&amp;gt; t.isDone)
+    };
+
+    // Here is the search function 
+    var queryText = this.props.filter[0].keyword;
+
+    if(queryText){
+        var queryResult=[];
+        allitems.forEach(function(item){
+            if(item.item.toLowerCase().indexOf(queryText)!=-1)
+            queryResult.push(item);
+        });
+        return &amp;lt;ul&amp;gt;{queryResult.map(createItem,this)}&amp;lt;/ul&amp;gt;;
+    }
+
+    return &amp;lt;ul&amp;gt;{allitems.map(createItem,this)}&amp;lt;/ul&amp;gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你現在應該有下面的截圖&lt;br&gt;&lt;img src=&quot;/images/Step4.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step4/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step4.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果我們有很多待辦事項，很難通過它們進行搜索，並找到一個特定的待辦事項。它也變得更容易看到所有的完成，未完成任務的一次。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- TODO APP
+    - TODO BANNER
+    - **TODO FILTER**
+    - TODO FORM
+    - TODO LIST
+        - TODO LIST ITEM #1
+        - TODO LIST ITEM #2
+        ...
+        - TODO LIST ITEM #n
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/categories/React-js/"/>
+    
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/tags/React-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-js-todo-list-sortable (2)</title>
+    <link href="https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-2/"/>
+    <id>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-2/</id>
+    <published>2016-08-18T02:23:40.000Z</published>
+    <updated>2016-08-18T01:57:02.818Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step2.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在這節，我們要改進Components，並刪除項目。讓使用者可以刪除項目和當項目項目已經完成，項目的復選框可以被標記。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Redeclare-Items&quot;&gt;&lt;a href=&quot;#Redeclare-Items&quot; class=&quot;headerlink&quot; title=&quot; Redeclare Items&quot;&gt;&lt;/a&gt;&lt;strong&gt; Redeclare Items&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;為了添加復選框，我們必須重新定義項和修改updateItems功能。陣列中的每個項目都會有一個項目，一個布爾值，特定的任務是否剩余或已完成。布爾值將綁定到TodoListItem復選框。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;getInitialState : function(){
+    return {items:[{item:&amp;apos;Todo itme #1&amp;apos;,isDone:false},{item:&amp;apos;Todo itme #2&amp;apos;,isDone:true}]};
+},
+updateItems: function(newItem){
+    var item = {item:newItem,isDone:false};
+    var allItems = this.state.items.concat([item]);
+    this.setState({
+        items: allItems
+    });
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Improve-TodoListItem&quot;&gt;&lt;a href=&quot;#Improve-TodoListItem&quot; class=&quot;headerlink&quot; title=&quot; Improve TodoListItem&quot;&gt;&lt;/a&gt;&lt;strong&gt; Improve TodoListItem&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;我們將添加到復選框，並TodoListItem綁定事件 - changeHandler 。在changeHandler ，它將更新所選項目的狀態。當渲染組件，它會看到是否應用樣式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var TodoListItem = React.createClass({
+        changeHandler: function(e){
+            this.setState({
+              value: e.target.checked
+            });
+            this.props.children.isDone = e.target.checked;
+        },
+        render: function(){
+            var _style = &amp;quot;line-through&amp;quot;;
+            if(!this.props.children.isDone)
+            _style =&amp;quot;none&amp;quot;;
+            return (
+              &amp;lt;li data-id={this.props.value} 
+                        key={this.props.value}&amp;gt;&amp;lt;input type=&amp;quot;checkbox&amp;quot; onChange={this.changeHandler} defaultChecked={this.props.children.isDone} /&amp;gt;&amp;lt;span style={{&quot;textDecoration&quot;: _style}}&amp;gt;{this.props.children.item}&amp;lt;/span&amp;gt;&amp;lt;/li&amp;gt;
+            );
+        }
+    });
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;當您選中或取消選中該單選框，你將看到如何變化。你現在應該有下面的截圖。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Step2.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step2/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;h1 id=&quot;Remove-TodoListItem&quot;&gt;&lt;a href=&quot;#Remove-TodoListItem&quot; class=&quot;headerlink&quot; title=&quot; Remove TodoListItem&quot;&gt;&lt;/a&gt;&lt;strong&gt; Remove TodoListItem&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step3.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我們將了解如何將功能綁定到一個組件。我們應該能夠刪除舊的TodoListItem&lt;/p&gt;
+&lt;p&gt;在TodoApp組件，我們創建了一個deleteItem功能，綁定此功能到TodoList的組件。 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;deleteItem : function(index){
+            var newData = this.state.items.slice(); //copy array
+            newData.splice(index, 1); //remove element
+            this.setState({
+                items: newData
+            });
+        },
+render: function(){
+            return (
+                &amp;lt;div&amp;gt;
+                    &amp;lt;ToDoBanner/&amp;gt;
+                    &amp;lt;TodoForm onFormSubmit={this.updateItems} /&amp;gt;
+                    &amp;lt;TodoList items={this.state.items} onDelete={this.deleteItem} /&amp;gt;
+                &amp;lt;/div&amp;gt;
+            );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在TodoList組件，也創造了刪除功能並綁定到TodoListITem 。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var TodoList = React.createClass({
+    Remove: function(e){
+       this.props.onDelete(e);
+    },
+    render: function() {
+        var createItem = function(itemText, i) {
+        return (
+                &amp;lt;TodoListItem key={i} value={i} onRemove = {this.Remove}&amp;gt;{itemText}&amp;lt;/TodoListItem&amp;gt;
+              );
+          };
+        return &amp;lt;ul&amp;gt;{this.props.items.map(createItem, this)}&amp;lt;/ul&amp;gt;;
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 TodoListItem 組件 , 添加按鈕到li元素，並創建一個remove函數綁定到這個按鈕。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RemoveHandler: function(){
+       this.props.onRemove(this.props.value);
+},
+render: function(){
+        var _style = &amp;quot;line-through&amp;quot;;
+        if(!this.props.children.isDone)
+        _style =&amp;quot;none&amp;quot;;
+        return (
+          &amp;lt;li data-id={this.props.value} 
+                    key={this.props.value}&amp;gt;&amp;lt;button type=&amp;quot;button&amp;quot; className=&amp;quot;close pull-right&amp;quot; aria-hidden=&amp;quot;true&amp;quot; onClick={this.RemoveHndler}&amp;gt;&amp;amp;times;&amp;lt;/button&amp;gt;&amp;lt;input type=&amp;quot;checkbox&amp;quot; onChange={this.changeHandler} defaultChecked={this.props.children.isDone} /&amp;gt;&amp;lt;span style={{&quot;textDecoration&quot;: _style}}&amp;gt;{this.props.children.item}&amp;lt;/span&amp;gt;&amp;lt;/li&amp;gt;
+        );
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你現在應該有下面的截圖&lt;br&gt;&lt;img src=&quot;/images/Step2.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step3/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step2.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在這節，我們要改進Components，並刪除項目。讓使用者可以刪除項目和當項目項目已經完成，項目的復選框可以被標記。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/categories/React-js/"/>
+    
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/tags/React-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-js-todo-list-sortable(1)</title>
+    <link href="https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-1/"/>
+    <id>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-1/</id>
+    <published>2016-08-18T02:23:24.000Z</published>
+    <updated>2016-08-18T01:57:08.306Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js&quot;&gt;&lt;/a&gt; Building a Todo app with React.js&lt;/h1&gt;&lt;p&gt;這是我首次嘗試用React-JS建立一個待辦事項應用。React-JS是一個JavaScript庫，用於構建用戶界面，主要是因為它是由Facebook的建立。我們將學習如何使用。&lt;/p&gt;
+&lt;p&gt;讓我們開始.您可以按照從GitHub庫的步驟本教程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;##&lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step6/index&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/React-js-todolist/archive/master.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/React-js-todolist/archive/practice.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;在本文中，我們將使用建立一個非常的應用程序Facebook的 &lt;a href=&quot;https://facebook.github.io/react/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react.js&lt;/a&gt;. 如果你不熟悉這個庫，那麽我會強烈建議閱讀使用React構建了完整的&lt;a href=&quot;https://facebook.github.io/react/docs/tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Comment system&lt;/a&gt;教程.&lt;/p&gt;
+&lt;h1 id=&quot;Thinking-in-components&quot;&gt;&lt;a href=&quot;#Thinking-in-components&quot; class=&quot;headerlink&quot; title=&quot;Thinking in components&quot;&gt;&lt;/a&gt;&lt;strong&gt;Thinking in components&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;建設React.js應用的根本出路在於您的應用程序分解成一堆有用的組件，然後你的工作方式向後分別構建它們。一旦各個部件都是準備就緒，可以它們連接起來，以在組件之間交換數據。例如，我們的Todo應用程序可以分解為以下組件和層次結構，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- TODO APP
+    - TODO BANNER
+    - TODO FORM
+    - TODO LIST
+        - TODO LIST ITEM #1
+        - TODO LIST ITEM #2
+        ...
+        - TODO LIST ITEM #n
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Basic-Skeleton&quot;&gt;&lt;a href=&quot;#Basic-Skeleton&quot; class=&quot;headerlink&quot; title=&quot;Basic Skeleton&quot;&gt;&lt;/a&gt;&lt;strong&gt;Basic Skeleton&lt;/strong&gt;&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;/* [TODO APP] */ 
+var TodoApp = React.createClass({ ... }); 
+    /* [TODO BANNER] &amp;amp;&amp;amp; [TODO LIST] */ 
+    var TodoBanner = React.createClass({ ... });
+    /* [TODO FORM] */ 
+    var TodoForm = React.createClass({ ... });                     
+    var TodoList = React.createClass({ ... }); 
+        /* [TODO LIST ITEM] */ 
+        var TodoListItem = React.createClass({ ... }); 
+
+React.render(&amp;lt;TodoApp/&amp;gt;, document.body);
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-1-TodoApp&quot;&gt;&lt;a href=&quot;#Component-1-TodoApp&quot; class=&quot;headerlink&quot; title=&quot;Component 1 - TodoApp&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 1 - TodoApp&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;這個組件將持有將由它的子組件以各種形式來共享待辦事項列表。 &lt;em&gt;items&lt;/em&gt;的初始狀態將是一個空白列表。該列表將盡快作為一個新的項目通過&lt;em&gt;TodoForm&lt;/em&gt;組件添加更新。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* [TODO APP] */ 
+var TodoApp = React.createClass({ 
+    getInitialState: function(){ 
+        return {items: []}; 
+    }, 
+    updateItems: function(newItem){ 
+        var allItems = this.state.items.concat([newItem]); 
+        this.setState({items: allItems});
+    }, 
+    render: function(){ 
+        return ( 
+            &amp;lt;div&amp;gt; 
+                &amp;lt;TodoBanner/&amp;gt;
+                &amp;lt;TodoForm onFormSubmit={this.updateItems}/&amp;gt;                                 
+                &amp;lt;TodoList items={this.state.items}/&amp;gt;     
+            &amp;lt;/div&amp;gt; 
+        ); 
+    } 
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-2-TodoBanner&quot;&gt;&lt;a href=&quot;#Component-2-TodoBanner&quot; class=&quot;headerlink&quot; title=&quot;Component 2 - TodoBanner&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 2 - TodoBanner&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;它只是包含了一個標題標簽。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* [TODO BANNER] */ 
+var TodoBanner = React.createClass({ 
+    render: function(){ 
+        return ( 
+        &amp;lt;h3&amp;gt;TODO....react.js&amp;lt;/h3&amp;gt; 
+        ); 
+    } 
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-3-TodoList&quot;&gt;&lt;a href=&quot;#Component-3-TodoList&quot; class=&quot;headerlink&quot; title=&quot;Component 3 - TodoList&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 3 - TodoList&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;它接受的項目的列表和環繞一個TodoListItem組件的每個項目。最終的結果，然後以&amp;lt;ul&amp;gt;標簽包裹。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* [TODO LIST] */ 
+var TodoList = React.createClass({ 
+    render: function() { 
+    var createItem = function(itemText) { 
+        return ( 
+            &amp;lt;TodoListItem&amp;gt;{itemText}&amp;lt;/TodoListItem&amp;gt; 
+            );
+        }; 
+        return &amp;lt;ul&amp;gt;{this.props.items.map(createItem)}&amp;lt;/ul&amp;gt;;
+    } 
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-4-TodoListItem&quot;&gt;&lt;a href=&quot;#Component-4-TodoListItem&quot; class=&quot;headerlink&quot; title=&quot;Component 4 - TodoListItem&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 4 - TodoListItem&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;它以&amp;lt;li&amp;gt;標簽列出所有項目 ,以便它呈現為在最終的HTML的列表的塊。 this.props.children預見包含傳遞給TodoListItem標簽從其父組件的所有後代。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* [TODO LISTITEM] */
+var TodoListItem = React.createClass({
+    render: function(){
+        return (
+            &amp;lt;li data-id={this.props.value} key={this.props.value}&amp;gt;{this.props.children}&amp;lt;/li&amp;gt;
+        );
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Component-5-TodoForm&quot;&gt;&lt;a href=&quot;#Component-5-TodoForm&quot; class=&quot;headerlink&quot; title=&quot;Component 5 - TodoForm&quot;&gt;&lt;/a&gt;&lt;strong&gt;Component 5 - TodoForm&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;它包含一個文本字段後跟一個按鈕，觸發在待辦事項列表中的另外的項目。此組件將保持當前的項目在文本框輸入並且兩者都使用onChange事件保持同步。由於作為提交按鈕被按下很快，該項目被傳遞給其父組件，焦點返回到文本框。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* [TODO FORM] */
+var TodoForm = React.createClass({
+    getInitialState: function() {
+        return {item: &amp;apos;&amp;apos;};
+    },
+    handleSubmit: function(e){
+        e.preventDefault();
+        this.props.onFormSubmit(this.state.item);
+        this.setState({item: &amp;apos;&amp;apos;});
+        ReactDOM.findDOMNode(this.refs.item).focus();
+        return;
+    },
+    onChange: function(e){
+        this.setState({
+            item: e.target.value
+        });
+    },
+    render: function(){
+        return (
+            &amp;lt;div className=&amp;quot;row&amp;quot;&amp;gt;
+              &amp;lt;form  onSubmit={this.handleSubmit}&amp;gt;
+                &amp;lt;div className=&amp;quot;form-group col-sm-10&amp;quot;&amp;gt;
+                    &amp;lt;input type=&amp;apos;text&amp;apos; className=&amp;quot;todoField form-control&amp;quot;  ref=&amp;apos;item&amp;apos; onChange={this.onChange} value={this.state.item}/&amp;gt;
+                    &amp;lt;input type=&amp;apos;submit&amp;apos; className=&amp;quot;btn btn-default&amp;quot; style={{&quot;float&quot;:&quot;left&quot;,&quot;marginLeft&quot;:&quot;5px&quot;}} value=&amp;apos;Add&amp;apos;/&amp;gt;
+                &amp;lt;/div&amp;gt;
+              &amp;lt;/form&amp;gt;
+            &amp;lt;/div&amp;gt;
+        );
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Render-TodoApp&quot;&gt;&lt;a href=&quot;#Render-TodoApp&quot; class=&quot;headerlink&quot; title=&quot;Render - TodoApp&quot;&gt;&lt;/a&gt;&lt;strong&gt;Render - TodoApp&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;最後一步是繪制 TodoApp&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ReactDOM.render(
+        &amp;lt;TodoApp/&amp;gt;,
+        document.getElementById(&amp;apos;todo&amp;apos;)
+      );
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;當你完成，你可以看到 TodoApp.&lt;br&gt;&lt;img src=&quot;/images/Step1.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step1/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Building-a-Todo-app-with-React-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js&quot;&gt;&lt;/a&gt; Building a Todo app with React.js&lt;/h1&gt;&lt;p&gt;這是我首次嘗試用React-JS建立一個待辦事項應用。React-JS是一個JavaScript庫，用於構建用戶界面，主要是因為它是由Facebook的建立。我們將學習如何使用。&lt;/p&gt;
+&lt;p&gt;讓我們開始.您可以按照從GitHub庫的步驟本教程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;##&lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step6/index&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/React-js-todolist/archive/master.zip&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/React-js-todolist/archive/practice.zip&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/categories/React-js/"/>
+    
+    
+      <category term="React-js" scheme="https://kennethhutw.github.io/tags/React-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React-js-todo-list-sortable(5)</title>
     <link href="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/"/>
     <id>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/</id>
     <published>2016-07-21T02:24:07.000Z</published>
-    <updated>2016-07-21T04:43:15.174Z</updated>
+    <updated>2016-07-21T05:00:33.568Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-5-sort-item&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-5-sort-item&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (5) - sort item&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (5) - sort item&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step6.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;下一步是允许用户使用拖放来改变ToDoListItem的序列（ DND）&lt;/p&gt;
@@ -101,6 +773,11 @@ render: function(){
     );
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你现在应该有下面的截图&lt;br&gt;&lt;img src=&quot;/images/Step6.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step6/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -122,11 +799,11 @@ render: function(){
   </entry>
   
   <entry>
-    <title>React-js-todo-list-sortable-cn(4)</title>
+    <title>React-js-todo-list-sortable(4)</title>
     <link href="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/"/>
     <id>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/</id>
     <published>2016-07-21T02:23:59.000Z</published>
-    <updated>2016-07-21T04:39:52.218Z</updated>
+    <updated>2016-07-21T05:00:46.073Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (4) - Multiple Todos&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (4) - Multiple Todos&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step5.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;下一步将是添加多个待办事项的能力。例如，我们可能有仅用于grocey列出清单，其他的可能是计划的博客文章列表或的事情要做今天的名单。这就是为什么有在不同的列表中的待办事项进行排序能力是很重要的。&lt;/p&gt;
@@ -259,6 +936,11 @@ deleteItem : function(index){
     );
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你现在应该有下面的截图&lt;br&gt;&lt;img src=&quot;/images/Step5.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step5/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -279,11 +961,11 @@ deleteItem : function(index){
   </entry>
   
   <entry>
-    <title>React-js-todo-list-sortable-cn(3)</title>
+    <title>React-js-todo-list-sortable(3)</title>
     <link href="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/"/>
     <id>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/</id>
     <published>2016-07-21T02:23:51.000Z</published>
-    <updated>2016-07-21T04:29:14.944Z</updated>
+    <updated>2016-07-21T05:00:56.785Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step4.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;如果我们有很多待办事项，很难通过它们进行搜索，并找到一个特定的待办事项。它也变得更容易看到所有的完成，未完成任务的一次。&lt;/p&gt;
@@ -385,6 +1067,11 @@ render: function(){
     return &amp;lt;ul&amp;gt;{allitems.map(createItem,this)}&amp;lt;/ul&amp;gt;;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你现在应该有下面的截图&lt;br&gt;&lt;img src=&quot;/images/Step4.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step4/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -412,11 +1099,11 @@ render: function(){
   </entry>
   
   <entry>
-    <title>React-js-todo-list-sortable-cn(2)</title>
+    <title>React-js-todo-list-sortable (2)</title>
     <link href="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/"/>
     <id>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/</id>
     <published>2016-07-21T02:23:40.000Z</published>
-    <updated>2016-07-21T04:07:58.479Z</updated>
+    <updated>2016-07-21T05:01:09.226Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step2.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在这节，我们要改进Components，并删除项目。让使用者可以删除项目和当项目项目已经完成，项目的复选框可以被标记。&lt;/p&gt;
@@ -500,6 +1187,11 @@ render: function(){
         );
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你现在应该有下面的截图&lt;br&gt;&lt;img src=&quot;/images/Step2.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step3/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -517,11 +1209,11 @@ render: function(){
   </entry>
   
   <entry>
-    <title>React-js-todo-list-sortable-cn(1)</title>
+    <title>React-js-todo-list-sortable(1)</title>
     <link href="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/"/>
     <id>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/</id>
     <published>2016-07-21T02:23:24.000Z</published>
-    <updated>2016-07-21T04:46:16.756Z</updated>
+    <updated>2016-07-21T05:01:37.471Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js&quot;&gt;&lt;/a&gt; Building a Todo app with React.js&lt;/h1&gt;&lt;p&gt;这是我首次尝试用React-JS建立一个待办事项应用。React-JS是一个JavaScript库，用于构建用户界面，主要是因为它是由Facebook的建立。我们将学习如何使用。&lt;/p&gt;
 &lt;p&gt;让我们开始.您可以按照从GitHub库的步骤本教程&lt;/p&gt;
@@ -640,6 +1332,11 @@ var TodoForm = React.createClass({
         document.getElementById(&amp;apos;todo&amp;apos;)
       );
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当你完成，你可以看到 TodoApp.&lt;br&gt;&lt;img src=&quot;/images/Step1.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step1/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -667,7 +1364,7 @@ var TodoForm = React.createClass({
     <link href="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/"/>
     <id>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/</id>
     <published>2016-07-20T17:54:06.000Z</published>
-    <updated>2016-07-21T04:41:49.435Z</updated>
+    <updated>2016-07-21T04:59:28.984Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-5-sort-item&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-5-sort-item&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (5) - sort item&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (5) - sort item&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step6.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;The next step is to allows users to change the sequence of ToDoListItem using drag and drop (DnD)&lt;/p&gt;
@@ -748,6 +1445,11 @@ render: function(){
     );
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;When you finish , you can see the TodoApp.&lt;br&gt;&lt;img src=&quot;/images/Step6.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step6/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -773,7 +1475,7 @@ render: function(){
     <link href="https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/"/>
     <id>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/</id>
     <published>2016-07-20T17:53:54.000Z</published>
-    <updated>2016-07-21T02:04:19.787Z</updated>
+    <updated>2016-07-21T04:59:37.739Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-4-Multiple-Todos&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (4) - Multiple Todos&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (4) - Multiple Todos&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step5.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;The next step will be the ability to add multiple todos. For example we might have a list that is used only for grocey lists, the other might be a list of planned blog posts or a list of the things to do todays. That’s why it’s important to have ability to sort the todos in different lists. &lt;/p&gt;
@@ -907,6 +1609,11 @@ deleteItem : function(index){
     );
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should now have following screenshot&lt;br&gt;&lt;img src=&quot;/images/Step5.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step5/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -931,7 +1638,7 @@ deleteItem : function(index){
     <link href="https://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/"/>
     <id>https://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/</id>
     <published>2016-07-20T10:16:46.000Z</published>
-    <updated>2016-07-21T02:03:55.505Z</updated>
+    <updated>2016-07-21T04:59:44.967Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-3-Adding-Filters-for-Search-and-showing-complete-incompleted-tasks&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step4.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;If we have a lot of todos, it becomes difficult to search through them and to find a particular todo. It also becomes easier to see all the completed and incompleted tasks at once. &lt;/p&gt;
@@ -1033,6 +1740,11 @@ render: function(){
     return &amp;lt;ul&amp;gt;{allitems.map(createItem,this)}&amp;lt;/ul&amp;gt;;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should now have following screenshot&lt;br&gt;&lt;img src=&quot;/images/Step4.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step4/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1064,7 +1776,7 @@ render: function(){
     <link href="https://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/"/>
     <id>https://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/</id>
     <published>2016-07-20T10:10:39.000Z</published>
-    <updated>2016-07-21T04:08:21.238Z</updated>
+    <updated>2016-07-21T04:59:51.835Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js-2-Improve-Component-amp-Remove-Component&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&quot;&gt;&lt;/a&gt; Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/Step2.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;In this session, we are going to improve Component and remove item. When item is completed, the checkbox of item is marked. &lt;/p&gt;
@@ -1149,6 +1861,11 @@ render: function(){
                     );
             }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should now have following screenshot&lt;br&gt;&lt;img src=&quot;/images/Step2.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step3/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1170,7 +1887,7 @@ render: function(){
     <link href="https://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/"/>
     <id>https://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/</id>
     <published>2016-07-19T04:38:43.000Z</published>
-    <updated>2016-07-21T02:20:16.174Z</updated>
+    <updated>2016-07-21T05:00:02.038Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-React-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-React-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with React.js&quot;&gt;&lt;/a&gt; Building a Todo app with React.js&lt;/h1&gt;&lt;p&gt;Lets start.You can follow the steps from the github repo for this tutorial.&lt;/p&gt;
 &lt;ol&gt;
@@ -1288,6 +2005,11 @@ var TodoForm = React.createClass({
         document.getElementById(&amp;apos;todo&amp;apos;)
       );
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;When you finish , you can see the TodoApp.&lt;br&gt;&lt;img src=&quot;/images/Step1.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/ReactJs/Step1/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/&quot;&gt;Building a Todo app with React.js (1) - A simple todos list &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with React.js (2) - Improve Component &amp;amp; Remove Component&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/&quot;&gt;Building a Todo app with React.js (3) - Adding Filters for Search and showing complete/incompleted tasks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/&quot;&gt;Building a Todo app with React.js (4) - Multiple Todos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/&quot;&gt;Building a Todo app with React.js (5) - Sort item&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1525,125 +2247,6 @@ var TodoForm = React.createClass({
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>name</title>
-    <link href="https://kennethhutw.github.io/2016/04/06/ggg/"/>
-    <id>https://kennethhutw.github.io/2016/04/06/ggg/</id>
-    <published>2016-04-06T02:34:21.000Z</published>
-    <updated>2016-06-14T07:24:08.000Z</updated>
-    
-    <content type="html">&lt;p&gt;Hello world，Test！！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Hello world，Test！！&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="Daily" scheme="https://kennethhutw.github.io/categories/Daily/"/>
-    
-    
-      <category term="Begin" scheme="https://kennethhutw.github.io/tags/Begin/"/>
-    
-      <category term="Daily" scheme="https://kennethhutw.github.io/tags/Daily/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leaflet_baidu</title>
-    <link href="https://kennethhutw.github.io/2016/03/30/leaflet-baidu/"/>
-    <id>https://kennethhutw.github.io/2016/03/30/leaflet-baidu/</id>
-    <published>2016-03-30T01:32:06.000Z</published>
-    <updated>2016-05-30T04:06:20.000Z</updated>
-    
-    <content type="html">&lt;p&gt;This is a plugin to use baidu map tiles with leaflet.  &lt;/p&gt;
-&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;p&gt;&lt;code&gt;var map = L.map(&amp;#39;container&amp;#39;);
-    map.setView([39.916527,116.397128], 11);
-    var qqLayer = new L.BMap();
-    map.addLayer(qqLayer);&lt;/code&gt; .&lt;/p&gt;
-&lt;h2 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;headerlink&quot; title=&quot;Example&quot;&gt;&lt;/a&gt;Example&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/leaflet_baidu/leaflet-baidu.html&quot;&gt;http://kennethhutw.github.io/leaflet_baidu/leaflet-baidu.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is a plugin to use baidu map tiles with leaflet.  &lt;/p&gt;
-&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h
-    
-    </summary>
-    
-      <category term="leaflet" scheme="https://kennethhutw.github.io/categories/leaflet/"/>
-    
-    
-      <category term="leaflet" scheme="https://kennethhutw.github.io/tags/leaflet/"/>
-    
-      <category term="qq map" scheme="https://kennethhutw.github.io/tags/qq-map/"/>
-    
-      <category term="map" scheme="https://kennethhutw.github.io/tags/map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leaflet_qq</title>
-    <link href="https://kennethhutw.github.io/2016/02/20/leaflet-qq/"/>
-    <id>https://kennethhutw.github.io/2016/02/20/leaflet-qq/</id>
-    <published>2016-02-20T01:32:06.000Z</published>
-    <updated>2016-05-30T04:06:46.000Z</updated>
-    
-    <content type="html">&lt;p&gt;This is a plugin to use qq map tiles with leaflet.  &lt;/p&gt;
-&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;p&gt;&lt;code&gt;var map = L.map(&amp;#39;container&amp;#39;);
-    map.setView([39.916527,116.397128], 11);
-    var qqLayer = new L.qq();
-      map.addLayer(qqLayer);&lt;/code&gt; .&lt;/p&gt;
-&lt;h2 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;headerlink&quot; title=&quot;Example&quot;&gt;&lt;/a&gt;Example&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/leaflet_qq/leaflet-qq.html&quot;&gt;http://kennethhutw.github.io/leaflet_qq/leaflet-qq.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This is a plugin to use qq map tiles with leaflet.  &lt;/p&gt;
-&lt;h2 id=&quot;Usage&quot;&gt;&lt;a href=&quot;#Usage&quot; class=&quot;headerlink&quot; title=&quot;Usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;
-    
-    </summary>
-    
-      <category term="leaflet" scheme="https://kennethhutw.github.io/categories/leaflet/"/>
-    
-    
-      <category term="leaflet" scheme="https://kennethhutw.github.io/tags/leaflet/"/>
-    
-      <category term="qq map" scheme="https://kennethhutw.github.io/tags/qq-map/"/>
-    
-      <category term="map" scheme="https://kennethhutw.github.io/tags/map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WebFrontEndStack</title>
-    <link href="https://kennethhutw.github.io/2016/01/30/WebFrontEndStack/"/>
-    <id>https://kennethhutw.github.io/2016/01/30/WebFrontEndStack/</id>
-    <published>2016-01-30T01:32:06.000Z</published>
-    <updated>2016-05-30T04:12:02.000Z</updated>
-    
-    <content type="html">&lt;p&gt;Web front-end stack: browsers, platforms, libraries, frameworks, tools etc.&lt;/p&gt;
-&lt;p&gt;It shows the web front end technology stack and It has English and Chinese version. &lt;/p&gt;
-&lt;p&gt;You can use mouse to move/zoom in/zoom out. some of them has link to see the detail. &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://kennethhutw.github.io/WebFrontEndStack/WebFrontEndStack.html&quot;&gt;http://kennethhutw.github.io/WebFrontEndStack/WebFrontEndStack.html&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Web front-end stack: browsers, platforms, libraries, frameworks, tools etc.&lt;/p&gt;
-&lt;p&gt;It shows the web front end technology stack and It has
-    
-    </summary>
-    
-      <category term="d3" scheme="https://kennethhutw.github.io/categories/d3/"/>
-    
-    
-      <category term="d3" scheme="https://kennethhutw.github.io/tags/d3/"/>
     
   </entry>
   

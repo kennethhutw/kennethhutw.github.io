@@ -2,72 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-3/</loc>
+    
+    <lastmod>2016-08-18T01:57:24.715Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-4/</loc>
+    
+    <lastmod>2016-08-18T01:57:18.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-5/</loc>
+    
+    <lastmod>2016-08-18T01:57:13.213Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-1/</loc>
+    
+    <lastmod>2016-08-18T01:57:08.306Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/08/18/React-js-todo-list-sortable-tw-2/</loc>
+    
+    <lastmod>2016-08-18T01:57:02.818Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-1/</loc>
     
-    <lastmod>2016-07-21T04:46:16.756Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/</loc>
-    
-    <lastmod>2016-07-21T04:43:15.174Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/</loc>
-    
-    <lastmod>2016-07-21T04:41:49.435Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/</loc>
-    
-    <lastmod>2016-07-21T04:39:52.218Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/</loc>
-    
-    <lastmod>2016-07-21T04:29:14.944Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/</loc>
-    
-    <lastmod>2016-07-21T04:08:21.238Z</lastmod>
+    <lastmod>2016-07-21T05:01:37.471Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-2/</loc>
     
-    <lastmod>2016-07-21T04:07:58.479Z</lastmod>
+    <lastmod>2016-07-21T05:01:09.226Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-3/</loc>
+    
+    <lastmod>2016-07-21T05:00:56.785Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-4/</loc>
+    
+    <lastmod>2016-07-21T05:00:46.073Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-cn-5/</loc>
+    
+    <lastmod>2016-07-21T05:00:33.568Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kennethhutw.github.io/2016/07/19/React-js-todo-list-sortable/</loc>
     
-    <lastmod>2016-07-21T02:20:16.174Z</lastmod>
+    <lastmod>2016-07-21T05:00:02.038Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/</loc>
+    <loc>https://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-2/</loc>
     
-    <lastmod>2016-07-21T02:04:19.787Z</lastmod>
+    <lastmod>2016-07-21T04:59:51.835Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kennethhutw.github.io/2016/07/20/React-js-todo-list-sortable-3/</loc>
     
-    <lastmod>2016-07-21T02:03:55.505Z</lastmod>
+    <lastmod>2016-07-21T04:59:44.967Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-4/</loc>
+    
+    <lastmod>2016-07-21T04:59:37.739Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kennethhutw.github.io/2016/07/21/React-js-todo-list-sortable-5/</loc>
+    
+    <lastmod>2016-07-21T04:59:28.984Z</lastmod>
     
   </url>
   

@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Knockout-js," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kenneth" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在此課程，將要做搜尋、篩選還有排序的功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Knockout-js-todo-list-sortable-tw-2">
+<meta property="og:url" content="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/index.html">
+<meta property="og:site_name" content="Kenneth">
+<meta property="og:description" content="在此課程，將要做搜尋、篩選還有排序的功能">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
+<meta property="og:updated_time" content="2016-10-05T12:34:29.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Knockout-js-todo-list-sortable-tw-2">
+<meta name="twitter:description" content="在此課程，將要做搜尋、篩選還有排序的功能">
+<meta name="twitter:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Knockout-js-todo-list-sortable-tw-2 | Kenneth </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-65211878-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kenneth</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            guestbook
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-contact">
+          <a href="/contact" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            menu.contact
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Knockout-js-todo-list-sortable-tw-2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-05T19:24:49+08:00" content="2016-10-05">
+              2016-10-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Knockout-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Knockout-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/05/Knockout-js-todo-list-sortable-tw-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/05/Knockout-js-todo-list-sortable-tw-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在此課程，將要做搜尋、篩選還有排序的功能</p>
+<p><img src="/images/Knockout_ToDoList.png" alt="TodoListApp"></p>
+<a id="more"></a>
+<h1 id="Step1-–-Sort-function"><a href="#Step1-–-Sort-function" class="headerlink" title="Step1 – Sort function "></a><strong>Step1 – Sort function </strong></h1><p>這步驟將要用戶可以重新排序待辦事項，這裡我使用一個套件<a href="https://github.com/rniemeyer/knockout-sortable" target="_blank" rel="external">knockout-sortable.js</a>，可以很輕易地完成這個功能。</p>
+<p><strong><em> index.html: </em></strong></p>
+<p>在待辦事項控件裡，綁定sortable: {data: todos()} 就完成了，當然別忘了要引用套件</p>
+<pre><code>&lt;div class=&quot;form-group&quot;  &gt;
+    &lt;ul id=&quot;todo-list&quot; data-bind=&quot;sortable: {data: todos()}&quot;&gt;
+        &lt;li data-bind=&quot;css: { completed: completed, editing: editing }&quot;&gt;
+            &lt;div class=&quot;view&quot;&gt;
+                &lt;input class=&quot;todoCheckbox&quot; data-bind=&quot;checked: completed&quot; type=&quot;checkbox&quot; &gt;
+                &lt;label data-bind=&quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&quot; &gt;&lt;/label&gt;
+                &lt;button class=&quot;close pull-right&quot; data-bind=&quot;click: $root.remove&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;input class=&quot;edit&quot; data-bind=&quot;value: title, valueUpdate: &apos;afterkeydown&apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&quot;&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><h1 id="Step2-–-Search-and-Filter-function"><a href="#Step2-–-Search-and-Filter-function" class="headerlink" title="Step2 – Search and Filter function "></a><strong>Step2 – Search and Filter function </strong></h1><p><strong><em> 介面 </em></strong></p>
+<pre><code>![TodoListApp](/images/knockoutjs_2_1.png)
+</code></pre><p>這步驟將要建立一個搜尋功能並有一個快速篩選出完成項目與未完成項目功能，在此功能也引用另一個套件router。<br><strong><em> index.html: </em></strong></p>
+<p><strong><strong> 引用套件: </strong></strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/libs/director.js&quot;&gt;&lt;/script&gt;
+</code></pre><p><strong><strong> 搜尋與篩選控件: </strong></strong></p>
+<pre><code>    &lt;div class=&quot;row&quot; data-bind=&quot;visible: completedCount() || remainingCount()&quot; style=&quot;   margin-top: 8px;&quot;&gt;
+        &lt;div class=&quot;col-xs-5&quot; style=&quot;padding-left: 0px;&quot;&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;span class=&quot;input-group-btn&quot;&gt;
+                &lt;button class=&quot;btn btn-default&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-search&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+                &lt;/span&gt;
+                &lt;input type=&quot;search&quot; class=&quot;form-control&quot; placeholder=&quot;Search&quot;  data-bind=&quot;textInput: query&quot; autocomplete=&quot;off&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;col-xs-3 &quot;&gt;
+        &lt;ul class=&quot;nav nav-pills&quot; id=&quot;filters&quot;&gt;
+            &lt;li data-bind=&quot;css: { active: isActive(&apos;all&apos;) }&quot;&gt;
+                &lt;a data-bind=&quot;css: { selected: showMode() == &apos;all&apos; }&quot; href=&quot;#/all&quot;&gt;All&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li  data-bind=&quot;css: { active: isActive(&apos;active&apos;) }&quot;&gt;
+                &lt;a data-bind=&quot;css: { selected: showMode() == &apos;active&apos; }&quot; href=&quot;#/active&quot;&gt;Active&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li  data-bind=&quot;css: { active: isActive(&apos;completed&apos;) }&quot;&gt;
+                &lt;a data-bind=&quot;css: { selected: showMode() == &apos;completed&apos; }&quot; href=&quot;#/completed&quot;&gt;Completed&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-xs-2&quot; style=&quot;   margin-top: 8px;&quot;&gt;
+        &lt;span id=&quot;todo-count&quot;&gt;
+            &lt;strong data-bind=&quot;text: remainingCount&quot;&gt;0&lt;/strong&gt;
+            &lt;span data-bind=&quot;text: getLabel(remainingCount)&quot;&gt;&lt;/span&gt; left
+        &lt;/span&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre><p><strong><strong> 待辦事件控件: </strong></strong></p>
+<p>在待辦事項控件裡，我利用css的屬性來完成搜尋與篩選功能，用$root.filteredTodos($data)來確認是否符合條件。</p>
+<pre><code>&lt;div class=&quot;form-group&quot;  &gt;
+    &lt;ul id=&quot;todo-list&quot; data-bind=&quot;sortable: {data: todos()}&quot;&gt;
+        &lt;li data-bind=&quot;css: { completed: completed, editing: editing },visible: $root.filteredTodos($data)&quot;&gt;
+            &lt;div class=&quot;view&quot;&gt;
+                &lt;input class=&quot;todoCheckbox&quot; data-bind=&quot;checked: completed&quot; type=&quot;checkbox&quot; &gt;
+                &lt;label data-bind=&quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&quot; &gt;&lt;/label&gt;
+                &lt;button class=&quot;close pull-right&quot; data-bind=&quot;click: $root.remove&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;input class=&quot;edit&quot; data-bind=&quot;value: title, valueUpdate: &apos;afterkeydown&apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&quot;&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p><strong><em> App.js: </em></strong></p>
+<p>在filteredTodos funciton中，有兩階段，第一階段執行篩選而第二階段執行搜尋功能。</p>
+<pre><code>this.filteredTodos = function(todo) {
+    var result = true;
+        switch(this.showMode()){
+      case &apos;active&apos;:
+        if(todo.completed() != false)
+            result = false;
+        break;
+        case &apos;completed&apos;:
+         if(todo.completed() != true)
+             result = false
+       break;
+        }
+    if(result){
+        var filter = this.query().toLowerCase();
+        if(!filter){
+            return true;
+        }
+        else{
+          return todo.title().toLowerCase().indexOf(filter) !== -1;
+        }
+    }else
+    {
+        return false;
+    }
+};
+</code></pre><p>在搜尋與篩選功能裡，我不用功能方式來執行，我採用路徑(URL)方式來執行，在app.js裡加了以下的代碼，來取得篩選的條件，也是前面提到的Router套件。</p>
+<pre><code>Router({&apos;/:filter&apos;: viewModel.showMode}).init();
+</code></pre><p>當你完成，你可以看到 TodoApp.  PS: 我在完整案例裡有加一些功能，讓您們可研究一下。<br><img src="/images/Knockout_ToDoList.png" alt="TodoListApp"><br>The complete working <a href="http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index">demo</a> can be found here .</p>
+<p>##<a href="http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-1/">Building a Todo app with Knockout.js (1) - A simple todo list</a></p>
+<p>##<a href="http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-2/">Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Knockout-js/" rel="tag">#Knockout-js</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/05/Knockout-js-todo-list-sortable-2/" rel="next" title="Knockout-js-todo-list-sortable-2">
+                <i class="fa fa-chevron-left"></i> Knockout-js-todo-list-sortable-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/05/Knockout-js-todo-list-sortable-cn-2/" rel="prev" title="Knockout-js-todo-list-sortable-cn-2">
+                Knockout-js-todo-list-sortable-cn-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Kenneth_hu" />
+          <p class="site-author-name" itemprop="name">Kenneth_hu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kennethhutw" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Step1-–-Sort-function"><span class="nav-number">1.</span> <span class="nav-text">Step1 – Sort function </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step2-–-Search-and-Filter-function"><span class="nav-number">2.</span> <span class="nav-text">Step2 – Search and Filter function </span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kenneth_hu</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'kennethhutw';
+      var disqus_identifier = '2016/10/05/Knockout-js-todo-list-sortable-tw-2/';
+      var disqus_title = 'Knockout-js-todo-list-sortable-tw-2';
+      var disqus_url = 'https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

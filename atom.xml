@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kennethhutw.github.io/"/>
-  <updated>2016-10-06T09:12:47.178Z</updated>
+  <updated>2016-10-06T10:46:44.993Z</updated>
   <id>https://kennethhutw.github.io/</id>
   
   <author>
@@ -20,11 +20,12 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable/</id>
     <published>2016-10-05T12:19:57.000Z</published>
-    <updated>2016-10-06T09:12:47.178Z</updated>
+    <updated>2016-10-06T10:46:44.993Z</updated>
     
     <content type="html">&lt;p&gt;#Knockout-js-todolist#&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;The Github Repo of Multiple Sortable Todos using Knockout-js.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;#Tutorial#&lt;/p&gt;
 &lt;p&gt;##简体中文版本##&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;##繁體中文版本##&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
@@ -43,8 +44,8 @@
     <summary type="html">
     
       &lt;p&gt;#Knockout-js-todolist#&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The Github Repo of Multiple Sortable Todos usi
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The Github Repo of Multiple Sortable Todos using Knockout-js.&lt;/p&gt;
     
     </summary>
     
@@ -445,7 +446,7 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/</id>
     <published>2016-10-05T10:36:55.000Z</published>
-    <updated>2016-10-06T09:02:20.623Z</updated>
+    <updated>2016-10-06T10:42:23.601Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-Knockout-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-Knockout-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with Knockout.js&quot;&gt;&lt;/a&gt; Building a Todo app with Knockout.js&lt;/h1&gt;&lt;p&gt;This is my first attempt with Knockout-js to build a Todo App.&lt;br&gt;Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application’s client-side behavior. The two main concepts one must learn when working with Knockout’s MVVM implementation are Observables and Bindings.&lt;/p&gt;
 &lt;p&gt;Lets start.You can follow the steps from the github repo for this tutorial.&lt;/p&gt;
@@ -454,7 +455,7 @@
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;If you are unfamiliar with this library, then I would strongly recommend reading the complete tutorial on &lt;a href=&quot;http://learn.knockoutjs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tutorial&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&quot;Thinking-in-components&quot;&gt;&lt;a href=&quot;#Thinking-in-components&quot; class=&quot;headerlink&quot; title=&quot;Thinking in components&quot;&gt;&lt;/a&gt;&lt;strong&gt;Thinking in components&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;Todo List ToDo application is to record the agency matters, saved it in local storage. User can add, modify, view, update, and delete todo items in application. &lt;/p&gt;
@@ -573,7 +574,7 @@ ko.computed(function(){
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -589,7 +590,7 @@ ko.computed(function(){
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/</id>
     <published>2016-10-05T10:36:35.000Z</published>
-    <updated>2016-10-06T09:04:05.726Z</updated>
+    <updated>2016-10-06T10:42:53.185Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-Knockout-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-Knockout-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with Knockout.js&quot;&gt;&lt;/a&gt; Building a Todo app with Knockout.js&lt;/h1&gt;&lt;p&gt;這是我首次嘗試用Knockout-JS建立一個待辦事項應用。Knockout-JS是一個JavaScript庫，它簡化了複雜的基於數據的用戶界面的創建。它可以單獨使用或與其他庫，如jQuery的使用。它的主要目的是UI元素綁定到定義為JavaScript對象的底層數據模型，例如，當更改了UI製作，模型更新，反之亦然。&lt;br&gt;Knockout有助於在Web應用程序的客戶端行為使用模型 - 視圖 - 視圖模型（MVVM -Model-View-ViewModel）模式。與Knockout的MVVM執行工作時，一個人必須學會的兩個主要概念是觀測(Observables)和綁定(Bindings)。。&lt;/p&gt;
 &lt;p&gt;讓我們開始.您可以按照從我的GitHub庫的步驟本教程&lt;/p&gt;
@@ -598,7 +599,7 @@ ko.computed(function(){
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;如果你不熟悉KnockoutJS，那麽我會強烈建議閱讀Knockout完整的&lt;a href=&quot;http://learn.knockoutjs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tutorial&lt;/a&gt;教程.&lt;/p&gt;
 &lt;h1 id=&quot;Thinking-in-components&quot;&gt;&lt;a href=&quot;#Thinking-in-components&quot; class=&quot;headerlink&quot; title=&quot;Thinking in components&quot;&gt;&lt;/a&gt;&lt;strong&gt;Thinking in components&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;Todo List待辦事項應用的功能是記錄代辦事項，簡單到不需要本地存儲，所有的代辦事項都只是存儲在內存中，就是只有程序打開的時候可以增加、修改、查看、更新和刪除代辦事項&lt;/p&gt;
@@ -722,7 +723,7 @@ ko.computed(function(){
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -738,7 +739,7 @@ ko.computed(function(){
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/</id>
     <published>2016-10-05T10:36:22.000Z</published>
-    <updated>2016-10-06T09:03:28.111Z</updated>
+    <updated>2016-10-06T10:42:49.270Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-Knockout-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-Knockout-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with Knockout.js&quot;&gt;&lt;/a&gt; Building a Todo app with Knockout.js&lt;/h1&gt;&lt;p&gt;这是我首次尝试用Knockout-JS建立一个待办事项应用。Knockout-JS是一个JavaScript库，它简化了複杂的基于数据的用户界面的创建。它可以单独使用或与其他库，如jQuery的使用。它的主要目的是UI元素绑定到定义为JavaScript对象的底层数据模型，例如，当更改了UI製作，模型更新，反之亦然。&lt;br&gt;Knockout有助于在Web应用程序的客户端行为使用模型 - 视图 - 视图模型（MVVM -Model-View-ViewModel）模式。与Knockout的MVVM执行工作时，一个人必须学会的两个主要概念是观测(Observables)和绑定(Bindings)。。&lt;/p&gt;
 &lt;p&gt;让我们开始.您可以按照从我的GitHub库的步骤本教程&lt;/p&gt;
@@ -747,7 +748,7 @@ ko.computed(function(){
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;如果你不熟悉KnockoutJS，那麽我会强烈建议阅读Knockout完整的&lt;a href=&quot;http://learn.knockoutjs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tutorial&lt;/a&gt;教程.&lt;/p&gt;
 &lt;h1 id=&quot;Thinking-in-components&quot;&gt;&lt;a href=&quot;#Thinking-in-components&quot; class=&quot;headerlink&quot; title=&quot;Thinking in components&quot;&gt;&lt;/a&gt;&lt;strong&gt;Thinking in components&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;Todo List待办事项应用的功能是记录代办事项，简单到不需要本地存储，所有的代办事项都只是存储在内存中，就是只有程序打开的时候可以增加、修改、查看、更新和删除代办事项&lt;/p&gt;
@@ -869,7 +870,7 @@ ko.computed(function(){
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
     
     </summary>
     

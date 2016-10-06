@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Knockout-js," />
 
 
 
@@ -86,16 +86,19 @@
 
 
 
-<meta name="description">
+<meta name="description" content="We are going to do the search filter and sorting function.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Knockout-js-todo-list-sortable-2">
 <meta property="og:url" content="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/index.html">
 <meta property="og:site_name" content="Kenneth">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-10-05T11:24:39.657Z">
+<meta property="og:description" content="We are going to do the search filter and sorting function.">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
+<meta property="og:updated_time" content="2016-10-06T08:59:59.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Knockout-js-todo-list-sortable-2">
-<meta name="twitter:description">
+<meta name="twitter:description" content="We are going to do the search filter and sorting function.">
+<meta name="twitter:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
 
 
 
@@ -230,7 +233,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            menu.contact
+            contact
           </a>
         </li>
       
@@ -290,6 +293,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Knockout-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Knockout-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -319,7 +341,117 @@
       
 
       
-        
+        <p>We are going to do the search filter and sorting function.</p>
+<p><img src="/images/Knockout_ToDoList.png" alt="TodoListApp"></p>
+<a id="more"></a>
+<h1 id="Step1-–-Sort-function"><a href="#Step1-–-Sort-function" class="headerlink" title="Step1 – Sort function "></a><strong>Step1 – Sort function </strong></h1><p>We want to allow users can sort todo items. We are going to use <a href="https://github.com/rniemeyer/knockout-sortable" target="_blank" rel="external">knockout-sortable.js</a> plug-in. It help us to accomplish this function.</p>
+<p><strong><em> index.html: </em></strong></p>
+<p>It is to bind “sortable: {data: todos()}” in ul element in to-do control. </p>
+<p>PS : don’t forget to include knockout-sortable plug-in in index.html. </p>
+<pre><code>&lt;div class=&quot;form-group&quot;  &gt;
+    &lt;ul id=&quot;todo-list&quot; data-bind=&quot;sortable: {data: todos()}&quot;&gt;
+        &lt;li data-bind=&quot;css: { completed: completed, editing: editing }&quot;&gt;
+            &lt;div class=&quot;view&quot;&gt;
+                &lt;input class=&quot;todoCheckbox&quot; data-bind=&quot;checked: completed&quot; type=&quot;checkbox&quot; &gt;
+                &lt;label data-bind=&quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&quot; &gt;&lt;/label&gt;
+                &lt;button class=&quot;close pull-right&quot; data-bind=&quot;click: $root.remove&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;input class=&quot;edit&quot; data-bind=&quot;value: title, valueUpdate: &apos;afterkeydown&apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&quot;&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p><strong><strong> plugin in index.html : </strong></strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/libs/knockout-sortable.js&quot;&gt;&lt;/script&gt;
+</code></pre><h1 id="Step2-–-Search-and-Filter-function"><a href="#Step2-–-Search-and-Filter-function" class="headerlink" title="Step2 – Search and Filter function "></a><strong>Step2 – Search and Filter function </strong></h1><p><strong><em> Interface </em></strong></p>
+<pre><code>![TodoListApp](/images/knockoutjs_2_1.png)
+</code></pre><p>Search function: user can find to-do item by using key words<br>Filter function: It filtter to-do item by todo status(active and completed). We will use another plug-in - router.js so as to filter to-do items.</p>
+<p><strong><em> index.html: </em></strong></p>
+<p><strong><strong> plugin in index.html : </strong></strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/libs/director.js&quot;&gt;&lt;/script&gt;
+</code></pre><p><strong><strong> Search &amp; Sorting control: </strong></strong></p>
+<pre><code>    &lt;div class=&quot;row&quot; data-bind=&quot;visible: completedCount() || remainingCount()&quot; style=&quot;   margin-top: 8px;&quot;&gt;
+        &lt;div class=&quot;col-xs-5&quot; style=&quot;padding-left: 0px;&quot;&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;span class=&quot;input-group-btn&quot;&gt;
+                &lt;button class=&quot;btn btn-default&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-search&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+            &lt;/span&gt;
+            &lt;input type=&quot;search&quot; class=&quot;form-control&quot; placeholder=&quot;Search&quot;  data-bind=&quot;textInput: query&quot; autocomplete=&quot;off&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;col-xs-3 &quot;&gt;
+        &lt;ul class=&quot;nav nav-pills&quot; id=&quot;filters&quot;&gt;
+            &lt;li data-bind=&quot;css: { active: isActive(&apos;all&apos;) }&quot;&gt;
+                &lt;a data-bind=&quot;css: { selected: showMode() == &apos;all&apos; }&quot; href=&quot;#/all&quot;&gt;All&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li  data-bind=&quot;css: { active: isActive(&apos;active&apos;) }&quot;&gt;
+                &lt;a data-bind=&quot;css: { selected: showMode() == &apos;active&apos; }&quot; href=&quot;#/active&quot;&gt;Active&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li  data-bind=&quot;css: { active: isActive(&apos;completed&apos;) }&quot;&gt;
+                &lt;a data-bind=&quot;css: { selected: showMode() == &apos;completed&apos; }&quot; href=&quot;#/completed&quot;&gt;Completed&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-xs-2&quot; style=&quot;   margin-top: 8px;&quot;&gt;
+        &lt;span id=&quot;todo-count&quot;&gt;
+            &lt;strong data-bind=&quot;text: remainingCount&quot;&gt;0&lt;/strong&gt;
+            &lt;span data-bind=&quot;text: getLabel(remainingCount)&quot;&gt;&lt;/span&gt; left
+        &lt;/span&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre><p><strong><strong> To-do control: </strong></strong></p>
+<p>I achieve search and filter function by css attribute. If to-do item does not meet condition, it will be hided. </p>
+<p>It is to bind $root.filteredTodos($data) in li element so as to check whether todo meet condition in filteredTodos function.</p>
+<pre><code>&lt;div class=&quot;form-group&quot;  &gt;
+    &lt;ul id=&quot;todo-list&quot; data-bind=&quot;sortable: {data: todos()}&quot;&gt;
+        &lt;li data-bind=&quot;css: { completed: completed, editing: editing },visible: $root.filteredTodos($data)&quot;&gt;
+            &lt;div class=&quot;view&quot;&gt;
+                &lt;input class=&quot;todoCheckbox&quot; data-bind=&quot;checked: completed&quot; type=&quot;checkbox&quot; &gt;
+                &lt;label data-bind=&quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&quot; &gt;&lt;/label&gt;
+                &lt;button class=&quot;close pull-right&quot; data-bind=&quot;click: $root.remove&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;input class=&quot;edit&quot; data-bind=&quot;value: title, valueUpdate: &apos;afterkeydown&apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&quot;&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p><strong><em> App.js: </em></strong></p>
+<p>There are two steps in filteredTodos function.</p>
+<p>The first step is achieve the filter function. </p>
+<p>The Second step is achieve the search function. </p>
+<pre><code>this.filteredTodos = function(todo) {
+    var result = true;
+        switch(this.showMode()){
+      case &apos;active&apos;:
+        if(todo.completed() != false)
+            result = false;
+        break;
+        case &apos;completed&apos;:
+         if(todo.completed() != true)
+             result = false
+       break;
+        }
+    if(result){
+        var filter = this.query().toLowerCase();
+        if(!filter){
+            return true;
+        }
+        else{
+          return todo.title().toLowerCase().indexOf(filter) !== -1;
+        }
+    }else
+    {
+        return false;
+    }
+};
+</code></pre><p>In this step, It is to get filter argument by URL(Router). </p>
+<pre><code>Router({&apos;/:filter&apos;: viewModel.showMode}).init();
+</code></pre><p>When you finish , you can see the TodoApp as below .  </p>
+<p>PS: I have added some functions in demo. I hope you can study these but I will not explain how to made.  </p>
+<p><img src="/images/Knockout_ToDoList.png" alt="TodoListApp"><br>The complete working <a href="http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index">demo</a> can be found here .</p>
+<p>##<a href="http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/">Building a Todo app with Knockout.js (1) - A simple todo list</a></p>
+<p>##<a href="http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/">Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function</a></p>
+
       
     </div>
 
@@ -337,6 +469,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Knockout-js/" rel="tag">#Knockout-js</a>
+          
+        </div>
       
 
       
@@ -492,7 +630,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Step1-–-Sort-function"><span class="nav-number">1.</span> <span class="nav-text">Step1 – Sort function </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step2-–-Search-and-Filter-function"><span class="nav-number">2.</span> <span class="nav-text">Step2 – Search and Filter function </span></a></li></ol></div>
             
           </div>
         </section>

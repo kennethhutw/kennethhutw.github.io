@@ -94,7 +94,7 @@
 <meta property="og:description" content="在此課程，將要做搜尋、篩選還有排序的功能">
 <meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
 <meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
-<meta property="og:updated_time" content="2016-10-05T12:34:29.647Z">
+<meta property="og:updated_time" content="2016-10-06T09:03:46.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Knockout-js-todo-list-sortable-tw-2">
 <meta name="twitter:description" content="在此課程，將要做搜尋、篩選還有排序的功能">
@@ -233,7 +233,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            menu.contact
+            contact
           </a>
         </li>
       
@@ -359,6 +359,8 @@
         &lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
+</code></pre><p><strong><strong> plugin in index.html : </strong></strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/libs/knockout-sortable.js&quot;&gt;&lt;/script&gt;
 </code></pre><h1 id="Step2-–-Search-and-Filter-function"><a href="#Step2-–-Search-and-Filter-function" class="headerlink" title="Step2 – Search and Filter function "></a><strong>Step2 – Search and Filter function </strong></h1><p><strong><em> 介面 </em></strong></p>
 <pre><code>![TodoListApp](/images/knockoutjs_2_1.png)
 </code></pre><p>這步驟將要建立一個搜尋功能並有一個快速篩選出完成項目與未完成項目功能，在此功能也引用另一個套件router。<br><strong><em> index.html: </em></strong></p>
@@ -440,8 +442,8 @@
 </code></pre><p>在搜尋與篩選功能裡，我不用功能方式來執行，我採用路徑(URL)方式來執行，在app.js裡加了以下的代碼，來取得篩選的條件，也是前面提到的Router套件。</p>
 <pre><code>Router({&apos;/:filter&apos;: viewModel.showMode}).init();
 </code></pre><p>當你完成，你可以看到 TodoApp.  PS: 我在完整案例裡有加一些功能，讓您們可研究一下。<br><img src="/images/Knockout_ToDoList.png" alt="TodoListApp"><br>The complete working <a href="http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index">demo</a> can be found here .</p>
-<p>##<a href="http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-1/">Building a Todo app with Knockout.js (1) - A simple todo list</a></p>
-<p>##<a href="http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-2/">Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function</a></p>
+<p>##<a href="http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/">Building a Todo app with Knockout.js (1) - A simple todo list</a></p>
+<p>##<a href="http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/">Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function</a></p>
 
       
     </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kennethhutw.github.io/"/>
-  <updated>2016-10-05T12:19:57.138Z</updated>
+  <updated>2016-10-06T09:12:47.178Z</updated>
   <id>https://kennethhutw.github.io/</id>
   
   <author>
@@ -20,14 +20,38 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable/</id>
     <published>2016-10-05T12:19:57.000Z</published>
-    <updated>2016-10-05T12:19:57.138Z</updated>
+    <updated>2016-10-06T09:12:47.178Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;#Knockout-js-todolist#&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The Github Repo of Multiple Sortable Todos using Knockout-js.&lt;/p&gt;
+&lt;p&gt;#Tutorial#&lt;/p&gt;
+&lt;p&gt;##简体中文版本##&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##繁體中文版本##&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##English version##&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;#Contact#&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.kennethhu.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;My Website&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;mailto:Kenneth.hu@hotmail.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;My Email&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;#LICENSE&lt;/p&gt;
+&lt;p&gt;MIT&lt;/p&gt;
+</content>
     
     <summary type="html">
     
+      &lt;p&gt;#Knockout-js-todolist#&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image/Knockout_todo.gif&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The Github Repo of Multiple Sortable Todos usi
+    
     </summary>
     
+      <category term="Knockout-js" scheme="https://kennethhutw.github.io/categories/Knockout-js/"/>
+    
+    
+      <category term="Knockout-js" scheme="https://kennethhutw.github.io/tags/Knockout-js/"/>
     
   </entry>
   
@@ -36,7 +60,7 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-2/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-2/</id>
     <published>2016-10-05T11:25:01.726Z</published>
-    <updated>2016-10-05T12:33:57.708Z</updated>
+    <updated>2016-10-06T09:02:54.825Z</updated>
     
     <content type="html">&lt;p&gt;在此课程，将要做搜寻、筛选还有排序的功能&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
@@ -56,6 +80,8 @@
         &amp;lt;/li&amp;gt;
     &amp;lt;/ul&amp;gt;
 &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;strong&gt; plugin in index.html : &lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/libs/knockout-sortable.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Step2-–-Search-and-Filter-function&quot;&gt;&lt;a href=&quot;#Step2-–-Search-and-Filter-function&quot; class=&quot;headerlink&quot; title=&quot;Step2 – Search and Filter function &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step2 – Search and Filter function &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; 介面 &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;![TodoListApp](/images/knockoutjs_2_1.png)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这步骤将要建立一个搜寻功能并有一个快速筛选出完成项目与未完成项目功能，在此功能也引用另一个套件router。&lt;br&gt;&lt;strong&gt;&lt;em&gt; index.html: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -137,8 +163,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在搜寻与筛选功能裡，我不用功能方式来执行，我採用路径(URL)方式来执行，在app.js裡加了以下的代码，来取得筛选的条件，也是前面提到的Router套件。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Router({&amp;apos;/:filter&amp;apos;: viewModel.showMode}).init();
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当你完成，你可以看到 TodoApp.  PS: 我在完整桉例裡有加一些功能，让您们可研究一下。&lt;br&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -160,7 +186,7 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/</id>
     <published>2016-10-05T11:24:49.000Z</published>
-    <updated>2016-10-05T12:34:29.647Z</updated>
+    <updated>2016-10-06T09:03:46.506Z</updated>
     
     <content type="html">&lt;p&gt;在此課程，將要做搜尋、篩選還有排序的功能&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
@@ -180,6 +206,8 @@
         &amp;lt;/li&amp;gt;
     &amp;lt;/ul&amp;gt;
 &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;strong&gt; plugin in index.html : &lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/libs/knockout-sortable.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Step2-–-Search-and-Filter-function&quot;&gt;&lt;a href=&quot;#Step2-–-Search-and-Filter-function&quot; class=&quot;headerlink&quot; title=&quot;Step2 – Search and Filter function &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step2 – Search and Filter function &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; 介面 &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;![TodoListApp](/images/knockoutjs_2_1.png)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;這步驟將要建立一個搜尋功能並有一個快速篩選出完成項目與未完成項目功能，在此功能也引用另一個套件router。&lt;br&gt;&lt;strong&gt;&lt;em&gt; index.html: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -261,8 +289,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在搜尋與篩選功能裡，我不用功能方式來執行，我採用路徑(URL)方式來執行，在app.js裡加了以下的代碼，來取得篩選的條件，也是前面提到的Router套件。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Router({&amp;apos;/:filter&amp;apos;: viewModel.showMode}).init();
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;當你完成，你可以看到 TodoApp.  PS: 我在完整案例裡有加一些功能，讓您們可研究一下。&lt;br&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -284,14 +312,131 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/</id>
     <published>2016-10-05T11:24:39.000Z</published>
-    <updated>2016-10-05T11:24:39.657Z</updated>
+    <updated>2016-10-06T08:59:59.093Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;We are going to do the search filter and sorting function.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Step1-–-Sort-function&quot;&gt;&lt;a href=&quot;#Step1-–-Sort-function&quot; class=&quot;headerlink&quot; title=&quot;Step1 – Sort function &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step1 – Sort function &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;We want to allow users can sort todo items. We are going to use &lt;a href=&quot;https://github.com/rniemeyer/knockout-sortable&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;knockout-sortable.js&lt;/a&gt; plug-in. It help us to accomplish this function.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; index.html: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It is to bind “sortable: {data: todos()}” in ul element in to-do control. &lt;/p&gt;
+&lt;p&gt;PS : don’t forget to include knockout-sortable plug-in in index.html. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;form-group&amp;quot;  &amp;gt;
+    &amp;lt;ul id=&amp;quot;todo-list&amp;quot; data-bind=&amp;quot;sortable: {data: todos()}&amp;quot;&amp;gt;
+        &amp;lt;li data-bind=&amp;quot;css: { completed: completed, editing: editing }&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;view&amp;quot;&amp;gt;
+                &amp;lt;input class=&amp;quot;todoCheckbox&amp;quot; data-bind=&amp;quot;checked: completed&amp;quot; type=&amp;quot;checkbox&amp;quot; &amp;gt;
+                &amp;lt;label data-bind=&amp;quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&amp;quot; &amp;gt;&amp;lt;/label&amp;gt;
+                &amp;lt;button class=&amp;quot;close pull-right&amp;quot; data-bind=&amp;quot;click: $root.remove&amp;quot;&amp;gt;&amp;amp;times;&amp;lt;/button&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;input class=&amp;quot;edit&amp;quot; data-bind=&amp;quot;value: title, valueUpdate: &amp;apos;afterkeydown&amp;apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&amp;quot;&amp;gt;
+        &amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;strong&gt; plugin in index.html : &lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/libs/knockout-sortable.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Step2-–-Search-and-Filter-function&quot;&gt;&lt;a href=&quot;#Step2-–-Search-and-Filter-function&quot; class=&quot;headerlink&quot; title=&quot;Step2 – Search and Filter function &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step2 – Search and Filter function &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; Interface &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![TodoListApp](/images/knockoutjs_2_1.png)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Search function: user can find to-do item by using key words&lt;br&gt;Filter function: It filtter to-do item by todo status(active and completed). We will use another plug-in - router.js so as to filter to-do items.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; index.html: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt; plugin in index.html : &lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;js/libs/director.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;strong&gt; Search &amp;amp; Sorting control: &lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;div class=&amp;quot;row&amp;quot; data-bind=&amp;quot;visible: completedCount() || remainingCount()&amp;quot; style=&amp;quot;   margin-top: 8px;&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;col-xs-5&amp;quot; style=&amp;quot;padding-left: 0px;&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;input-group&amp;quot;&amp;gt;
+                &amp;lt;span class=&amp;quot;input-group-btn&amp;quot;&amp;gt;
+                &amp;lt;button class=&amp;quot;btn btn-default&amp;quot; type=&amp;quot;button&amp;quot;&amp;gt;&amp;lt;span class=&amp;quot;glyphicon glyphicon-search&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/button&amp;gt;
+            &amp;lt;/span&amp;gt;
+            &amp;lt;input type=&amp;quot;search&amp;quot; class=&amp;quot;form-control&amp;quot; placeholder=&amp;quot;Search&amp;quot;  data-bind=&amp;quot;textInput: query&amp;quot; autocomplete=&amp;quot;off&amp;quot;&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+
+    &amp;lt;div class=&amp;quot;col-xs-3 &amp;quot;&amp;gt;
+        &amp;lt;ul class=&amp;quot;nav nav-pills&amp;quot; id=&amp;quot;filters&amp;quot;&amp;gt;
+            &amp;lt;li data-bind=&amp;quot;css: { active: isActive(&amp;apos;all&amp;apos;) }&amp;quot;&amp;gt;
+                &amp;lt;a data-bind=&amp;quot;css: { selected: showMode() == &amp;apos;all&amp;apos; }&amp;quot; href=&amp;quot;#/all&amp;quot;&amp;gt;All&amp;lt;/a&amp;gt;
+            &amp;lt;/li&amp;gt;
+            &amp;lt;li  data-bind=&amp;quot;css: { active: isActive(&amp;apos;active&amp;apos;) }&amp;quot;&amp;gt;
+                &amp;lt;a data-bind=&amp;quot;css: { selected: showMode() == &amp;apos;active&amp;apos; }&amp;quot; href=&amp;quot;#/active&amp;quot;&amp;gt;Active&amp;lt;/a&amp;gt;
+            &amp;lt;/li&amp;gt;
+            &amp;lt;li  data-bind=&amp;quot;css: { active: isActive(&amp;apos;completed&amp;apos;) }&amp;quot;&amp;gt;
+                &amp;lt;a data-bind=&amp;quot;css: { selected: showMode() == &amp;apos;completed&amp;apos; }&amp;quot; href=&amp;quot;#/completed&amp;quot;&amp;gt;Completed&amp;lt;/a&amp;gt;
+            &amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;col-xs-2&amp;quot; style=&amp;quot;   margin-top: 8px;&amp;quot;&amp;gt;
+        &amp;lt;span id=&amp;quot;todo-count&amp;quot;&amp;gt;
+            &amp;lt;strong data-bind=&amp;quot;text: remainingCount&amp;quot;&amp;gt;0&amp;lt;/strong&amp;gt;
+            &amp;lt;span data-bind=&amp;quot;text: getLabel(remainingCount)&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; left
+        &amp;lt;/span&amp;gt;
+    &amp;lt;/div&amp;gt;
+
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;strong&gt; To-do control: &lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I achieve search and filter function by css attribute. If to-do item does not meet condition, it will be hided. &lt;/p&gt;
+&lt;p&gt;It is to bind $root.filteredTodos($data) in li element so as to check whether todo meet condition in filteredTodos function.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;form-group&amp;quot;  &amp;gt;
+    &amp;lt;ul id=&amp;quot;todo-list&amp;quot; data-bind=&amp;quot;sortable: {data: todos()}&amp;quot;&amp;gt;
+        &amp;lt;li data-bind=&amp;quot;css: { completed: completed, editing: editing },visible: $root.filteredTodos($data)&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;view&amp;quot;&amp;gt;
+                &amp;lt;input class=&amp;quot;todoCheckbox&amp;quot; data-bind=&amp;quot;checked: completed&amp;quot; type=&amp;quot;checkbox&amp;quot; &amp;gt;
+                &amp;lt;label data-bind=&amp;quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&amp;quot; &amp;gt;&amp;lt;/label&amp;gt;
+                &amp;lt;button class=&amp;quot;close pull-right&amp;quot; data-bind=&amp;quot;click: $root.remove&amp;quot;&amp;gt;&amp;amp;times;&amp;lt;/button&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;input class=&amp;quot;edit&amp;quot; data-bind=&amp;quot;value: title, valueUpdate: &amp;apos;afterkeydown&amp;apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&amp;quot;&amp;gt;
+        &amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; App.js: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There are two steps in filteredTodos function.&lt;/p&gt;
+&lt;p&gt;The first step is achieve the filter function. &lt;/p&gt;
+&lt;p&gt;The Second step is achieve the search function. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.filteredTodos = function(todo) {
+    var result = true;
+        switch(this.showMode()){
+      case &amp;apos;active&amp;apos;:
+        if(todo.completed() != false)
+            result = false;
+        break;
+        case &amp;apos;completed&amp;apos;:
+         if(todo.completed() != true)
+             result = false
+       break;
+        }
+    if(result){
+        var filter = this.query().toLowerCase();
+        if(!filter){
+            return true;
+        }
+        else{
+          return todo.title().toLowerCase().indexOf(filter) !== -1;
+        }
+    }else
+    {
+        return false;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In this step, It is to get filter argument by URL(Router). &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Router({&amp;apos;/:filter&amp;apos;: viewModel.showMode}).init();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;When you finish , you can see the TodoApp as below .  &lt;/p&gt;
+&lt;p&gt;PS: I have added some functions in demo. I hope you can study these but I will not explain how to made.  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
     
+      &lt;p&gt;We are going to do the search filter and sorting function.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+    
     </summary>
     
+      <category term="Knockout-js" scheme="https://kennethhutw.github.io/categories/Knockout-js/"/>
+    
+    
+      <category term="Knockout-js" scheme="https://kennethhutw.github.io/tags/Knockout-js/"/>
     
   </entry>
   
@@ -300,14 +445,142 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/</id>
     <published>2016-10-05T10:36:55.000Z</published>
-    <updated>2016-10-05T10:36:55.702Z</updated>
+    <updated>2016-10-06T09:02:20.623Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-Knockout-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-Knockout-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with Knockout.js&quot;&gt;&lt;/a&gt; Building a Todo app with Knockout.js&lt;/h1&gt;&lt;p&gt;This is my first attempt with Knockout-js to build a Todo App.&lt;br&gt;Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application’s client-side behavior. The two main concepts one must learn when working with Knockout’s MVVM implementation are Observables and Bindings.&lt;/p&gt;
+&lt;p&gt;Lets start.You can follow the steps from the github repo for this tutorial.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;##&lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;If you are unfamiliar with this library, then I would strongly recommend reading the complete tutorial on &lt;a href=&quot;http://learn.knockoutjs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tutorial&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;Thinking-in-components&quot;&gt;&lt;a href=&quot;#Thinking-in-components&quot; class=&quot;headerlink&quot; title=&quot;Thinking in components&quot;&gt;&lt;/a&gt;&lt;strong&gt;Thinking in components&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;Todo List ToDo application is to record the agency matters, saved it in local storage. User can add, modify, view, update, and delete todo items in application. &lt;/p&gt;
+&lt;p&gt;According to the above described To-do applications have to know this basic CRUD (Create-Read-Update-Delete) function, but also can store to-do function.&lt;/p&gt;
+&lt;p&gt;According to these requirement, I create to-do application with Knockout.js&lt;/p&gt;
+&lt;h1 id=&quot;Step1-–-build-ViewModel&quot;&gt;&lt;a href=&quot;#Step1-–-build-ViewModel&quot; class=&quot;headerlink&quot; title=&quot;Step1 – build ViewModel &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step1 – build ViewModel &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;The first step is create to-do object and then building ViewModel based on to-do object&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Todo object &lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var Todo = function(title, completed){
+    this.title = ko.observable(title);               //To-do Title
+    this.completed = ko.observable(completed);       //To-do status True: completed False: uncomplete
+    this.editing = ko.observable(false);             //Edit staut True: can edit False: cannot edit 
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It is to save to-do item in array&lt;br&gt;&lt;strong&gt;&lt;em&gt; ViewModel: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var ViewModel = function(todos){
+    this.todos = ko.observableArray(todos.map(function(todo){
+    return new Todo(todo.title, todo.completed);
+    }));
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Step1-–-Add-function&quot;&gt;&lt;a href=&quot;#Step1-–-Add-function&quot; class=&quot;headerlink&quot; title=&quot;Step1 – Add function &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step1 – Add function &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; 介面 &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![TodoListApp](/images/knockoutjs_1_1.png)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; index.html: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The “current” variable is bind to input elements :  The value binding links the associated DOM element’s value with a property on your view model. When the user edit form controls time, view model corresponding attribute value is automatically updated. Similarly, when you update the view model properties when the corresponding element values ​​are automatically updated on the page.&lt;br&gt;value binding has a main parameter (Value) and other parameters (valueUpdate)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;input class=&amp;quot;todoField&amp;quot; id=&amp;quot;new-todo&amp;quot; data-bind=&amp;quot;value: current, valueUpdate: &amp;apos;afterkeydown&amp;apos;, enterKey: add&amp;quot; placeholder=&amp;quot;What needs to be done?&amp;quot; autofocus&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;strong&gt; valueUpdate &lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If your binding also includes a parameter called valueUpdate, this defines additional browser events KO should use to detect changes besides the change event. The following string values are the most commonly useful choices:&lt;/p&gt;
+&lt;p&gt;“input” - updates your view model when the value of an &lt;input&gt; or &lt;textarea&gt; element changes. Note that this event is only raised by reasonably modern browsers (e.g., IE 9+).&lt;br&gt;“keyup” - updates your view model when the user releases a key&lt;br&gt;“keypress” - updates your view model when the user has typed a key. Unlike keyup, this updates repeatedly while the user holds a key down&lt;br&gt;“afterkeydown” - updates your view model as soon as the user begins typing a character. This works by catching the browser’s keydown event and handling the event asynchronously. This does not work in some mobile browsers.&lt;/textarea&gt;&lt;/p&gt;
+&lt;p&gt;ou can also trigger updates based on other events by using the valueUpdate parameter described above.。 reference : &lt;a href=&quot;http://knockoutjs.com/documentation/value-binding.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://knockoutjs.com/documentation/value-binding.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;When the user presses Enter, it will invoke add function. This will create a new Todo and placed in the list in add function.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; App.js: &lt;/em&gt;&lt;/strong&gt;&lt;br&gt;                this.current = ko.observable();&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.add = function(){
+    var current = this.current().trim();
+    if(current){
+        this.todos.push(new Todo(current,false));
+        this.current(&amp;apos;&amp;apos;);
+    }
+}.bind(this);
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Step2-–-Display-Todo-list&quot;&gt;&lt;a href=&quot;#Step2-–-Display-Todo-list&quot; class=&quot;headerlink&quot; title=&quot;Step2 – Display Todo list &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step2 – Display Todo list &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;在显示待办事项时，用三个控件(checkbox、lable、button)组成一个待办事项控件，而在每一个控件也绑定一个:&lt;br&gt;    checkbox : 让用户决定是否已完成&lt;br&gt;    lable    : 显示待办事项标题&lt;br&gt;    button   : 让用户可以删除待办事项&lt;/p&gt;
+&lt;p&gt;在knockoutjs可以使用迴圈方式来建立控件，也就是样板的概念，所以绑定ul时我用foreach方式来建立待办事项控件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; 介面 &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![TodoListApp](/images/knockoutjs_1_2.png)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; index.html: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul id=&amp;quot;todo-list&amp;quot; data-bind=&amp;quot;foreach: todos()&amp;quot;&amp;gt;
+    &amp;lt;li data-bind=&amp;quot;css: { completed: completed, editing: editing }&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;view&amp;quot;&amp;gt;
+            &amp;lt;input class=&amp;quot;todoCheckbox&amp;quot; data-bind=&amp;quot;checked: completed&amp;quot; type=&amp;quot;checkbox&amp;quot; &amp;gt;
+            &amp;lt;label data-bind=&amp;quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&amp;quot; &amp;gt;&amp;lt;/label&amp;gt;
+            &amp;lt;button class=&amp;quot;close pull-right&amp;quot; data-bind=&amp;quot;click: $root.remove&amp;quot;&amp;gt;&amp;amp;times;&amp;lt;/button&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;input class=&amp;quot;edit&amp;quot; data-bind=&amp;quot;value: title, valueUpdate: &amp;apos;afterkeydown&amp;apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&amp;quot;&amp;gt;
+    &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Step2-–-Edit-、-Update-and-Delete-Todo-item&quot;&gt;&lt;a href=&quot;#Step2-–-Edit-、-Update-and-Delete-Todo-item&quot; class=&quot;headerlink&quot; title=&quot;Step2 – Edit 、 Update and Delete Todo item &quot;&gt;&lt;/a&gt;&lt;strong&gt;Step2 – Edit 、 Update and Delete Todo item &lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;To-Do control is to bind complete, edit, update, and delete functions.&lt;/p&gt;
+&lt;p&gt;Binding editing function (editItem), I use a double click event: dblclick: $ root.editItem in label elemen, when the user double-clicks the control, label label will disappear and input label appear, and this is also bound to input label on renewal and cancellation empty function.&lt;br&gt;Binding completed ToDo (completed),It is bound to checked event: checked: completed in input element, at the same time update the view model, I have given in the label’s CSS also bind css: {textDecoration: completed () == true}, so when the line is completed to-do will be deleted.&lt;br&gt;Binding delete function (remove), It is bound to click event: click: $ root.remove in button element&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; index.html: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul id=&amp;quot;todo-list&amp;quot; data-bind=&amp;quot;foreach: todos()&amp;quot;&amp;gt;
+    &amp;lt;li data-bind=&amp;quot;css: { completed: completed, editing: editing }&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;view&amp;quot;&amp;gt;
+            &amp;lt;input class=&amp;quot;todoCheckbox&amp;quot; data-bind=&amp;quot;checked: completed&amp;quot; type=&amp;quot;checkbox&amp;quot; &amp;gt;
+            &amp;lt;label data-bind=&amp;quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&amp;quot; &amp;gt;&amp;lt;/label&amp;gt;
+            &amp;lt;button class=&amp;quot;close pull-right&amp;quot; data-bind=&amp;quot;click: $root.remove&amp;quot;&amp;gt;&amp;amp;times;&amp;lt;/button&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;input class=&amp;quot;edit&amp;quot; data-bind=&amp;quot;value: title, valueUpdate: &amp;apos;afterkeydown&amp;apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&amp;quot;&amp;gt;
+    &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt; App.js: &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// delete function
+this.remove = function(todo){
+    this.todos.remove(todo);
+}.bind(this);
+
+// edit function    
+this.editItem = function(item){
+    item.editing(true);
+    item.previousTitle = item.title();
+}.bind(this);
+
+// save function    
+this.saveEditing = function(item){
+    item.editing(false);
+
+    var title = item.title();
+    var trimmedTitle = title.trim();
+
+    if(title !== trimmedTitle){
+        item.title(trimmedTitle);
+    }
+
+    if(!trimmedTitle){
+        this.remove(item);
+    }
+}.bind(this);
+
+// cancel function
+this.cancelEditing = function(item){
+    item.editing(false);
+    item.title(item.previousTitle);
+}.bind(this);
+
+// save function    
+ko.computed(function(){
+    localStorage.setItem(&amp;apos;todos-knockoutjs&amp;apos;, ko.toJSON(this.todos));
+}.bind(this)).extend({
+    rateLimit: {timeout: 500, method: &amp;apos;notifyWhenChangesStop&amp;apos;}
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;When you finish , you can see the TodoApp as below .&lt;br&gt;&lt;img src=&quot;/images/Knockout_Step1.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step1/index.html&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
     
+      &lt;h1 id=&quot;Building-a-Todo-app-with-Knockout-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-Knockout-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with Knockout.js&quot;&gt;&lt;/a&gt; Building a Todo app with Knockout.js&lt;/h1&gt;&lt;p&gt;This is my first attempt with Knockout-js to build a Todo App.&lt;br&gt;Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application’s client-side behavior. The two main concepts one must learn when working with Knockout’s MVVM implementation are Observables and Bindings.&lt;/p&gt;
+&lt;p&gt;Lets start.You can follow the steps from the github repo for this tutorial.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;##&lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index&quot;&gt;Demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;##&lt;a href=&quot;https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip&quot;&gt;Practice&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Knockout_ToDoList.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;/p&gt;
+    
     </summary>
     
+      <category term="Knockout-js" scheme="https://kennethhutw.github.io/categories/Knockout-js/"/>
+    
+    
+      <category term="Knockout-js" scheme="https://kennethhutw.github.io/tags/Knockout-js/"/>
     
   </entry>
   
@@ -316,7 +589,7 @@
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/</id>
     <published>2016-10-05T10:36:35.000Z</published>
-    <updated>2016-10-05T11:28:11.102Z</updated>
+    <updated>2016-10-06T09:04:05.726Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-Knockout-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-Knockout-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with Knockout.js&quot;&gt;&lt;/a&gt; Building a Todo app with Knockout.js&lt;/h1&gt;&lt;p&gt;這是我首次嘗試用Knockout-JS建立一個待辦事項應用。Knockout-JS是一個JavaScript庫，它簡化了複雜的基於數據的用戶界面的創建。它可以單獨使用或與其他庫，如jQuery的使用。它的主要目的是UI元素綁定到定義為JavaScript對象的底層數據模型，例如，當更改了UI製作，模型更新，反之亦然。&lt;br&gt;Knockout有助於在Web應用程序的客戶端行為使用模型 - 視圖 - 視圖模型（MVVM -Model-View-ViewModel）模式。與Knockout的MVVM執行工作時，一個人必須學會的兩個主要概念是觀測(Observables)和綁定(Bindings)。。&lt;/p&gt;
 &lt;p&gt;讓我們開始.您可以按照從我的GitHub庫的步驟本教程&lt;/p&gt;
@@ -436,8 +709,8 @@ ko.computed(function(){
     rateLimit: {timeout: 500, method: &amp;apos;notifyWhenChangesStop&amp;apos;}
 });
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;當你完成，你可以看到 TodoApp.&lt;br&gt;&lt;img src=&quot;/images/Knockout_Step1.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step1/index.html&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-tw-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -465,7 +738,7 @@ ko.computed(function(){
     <link href="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/"/>
     <id>https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/</id>
     <published>2016-10-05T10:36:22.000Z</published>
-    <updated>2016-10-05T11:30:34.583Z</updated>
+    <updated>2016-10-06T09:03:28.111Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Building-a-Todo-app-with-Knockout-js&quot;&gt;&lt;a href=&quot;#Building-a-Todo-app-with-Knockout-js&quot; class=&quot;headerlink&quot; title=&quot; Building a Todo app with Knockout.js&quot;&gt;&lt;/a&gt; Building a Todo app with Knockout.js&lt;/h1&gt;&lt;p&gt;这是我首次尝试用Knockout-JS建立一个待办事项应用。Knockout-JS是一个JavaScript库，它简化了複杂的基于数据的用户界面的创建。它可以单独使用或与其他库，如jQuery的使用。它的主要目的是UI元素绑定到定义为JavaScript对象的底层数据模型，例如，当更改了UI製作，模型更新，反之亦然。&lt;br&gt;Knockout有助于在Web应用程序的客户端行为使用模型 - 视图 - 视图模型（MVVM -Model-View-ViewModel）模式。与Knockout的MVVM执行工作时，一个人必须学会的两个主要概念是观测(Observables)和绑定(Bindings)。。&lt;/p&gt;
 &lt;p&gt;让我们开始.您可以按照从我的GitHub库的步骤本教程&lt;/p&gt;
@@ -583,8 +856,8 @@ ko.computed(function(){
     rateLimit: {timeout: 500, method: &amp;apos;notifyWhenChangesStop&amp;apos;}
 });
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当你完成，你可以看到 TodoApp.&lt;br&gt;&lt;img src=&quot;/images/Knockout_Step1.png&quot; alt=&quot;TodoListApp&quot;&gt;&lt;br&gt;The complete working &lt;a href=&quot;http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step1/index.html&quot;&gt;demo&lt;/a&gt; can be found here .&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/07/21/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-1/&quot;&gt;Building a Todo app with Knockout.js (1) - A simple todo list&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##&lt;a href=&quot;http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-cn-2/&quot;&gt;Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">

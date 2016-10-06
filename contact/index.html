@@ -66,7 +66,7 @@
 <link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
   <meta name="keywords" content="Hexo, NexT" />
 
@@ -92,7 +92,7 @@
 <meta property="og:url" content="https://kennethhutw.github.io/contact/index.html">
 <meta property="og:site_name" content="Kenneth">
 <meta property="og:description">
-<meta property="og:updated_time" content="2016-07-19T02:57:24.000Z">
+<meta property="og:updated_time" content="2016-07-19T02:57:22.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="contact">
 <meta name="twitter:description">
@@ -149,7 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class=" one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,7 +236,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            menu.contact
+            contact
           </a>
         </li>
       
@@ -259,7 +259,32 @@
 
   <div id="posts" class="posts-expand">
     
-    
+    <form class="form" id="contactform" action="//formspree.io/Kenneth_hu@livemail.tw" method="POST">
+				<fieldset class="field">
+					<div class="form-group">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+					</div>
+				
+				</fieldset>
+				<fieldset class="field">
+					<div class="form-group">
+						<input type="text" class="form-control" id="email" name="_replyto" placeholder="Email" required>
+					</div>
+					
+				</fieldset>
+				<fieldset class="field">
+				 <div class="form-group">
+                    <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+                                           
+                    </div>
+					
+				</fieldset>
+				<input class="hidden" type="text" name="_gotcha" style="display:none">
+				<input class="hidden" type="hidden" name="_subject" value="Message via http://domain.com">
+				<fieldset class="field">
+					<input class="button submit" type="submit" value="Send">
+				</fieldset>
+			</form>
       
     
 	
@@ -317,7 +342,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -325,7 +350,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -334,7 +359,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

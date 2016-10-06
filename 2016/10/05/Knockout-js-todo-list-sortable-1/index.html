@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Knockout-js," />
 
 
 
@@ -86,16 +86,19 @@
 
 
 
-<meta name="description">
+<meta name="description" content="Building a Todo app with Knockout.jsThis is my first attempt with Knockout-js to build a Todo App.Knockout is a popular JavaScript library that simplifies the creation of complex data-based user inte">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Knockout-js-todo-list-sortable-1">
 <meta property="og:url" content="https://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/index.html">
 <meta property="og:site_name" content="Kenneth">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-10-05T10:36:55.702Z">
+<meta property="og:description" content="Building a Todo app with Knockout.jsThis is my first attempt with Knockout-js to build a Todo App.Knockout is a popular JavaScript library that simplifies the creation of complex data-based user inte">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
+<meta property="og:image" content="https://kennethhutw.github.io/images/Knockout_Step1.png">
+<meta property="og:updated_time" content="2016-10-06T09:02:20.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Knockout-js-todo-list-sortable-1">
-<meta name="twitter:description">
+<meta name="twitter:description" content="Building a Todo app with Knockout.jsThis is my first attempt with Knockout-js to build a Todo App.Knockout is a popular JavaScript library that simplifies the creation of complex data-based user inte">
+<meta name="twitter:image" content="https://kennethhutw.github.io/images/Knockout_ToDoList.png">
 
 
 
@@ -230,7 +233,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            menu.contact
+            contact
           </a>
         </li>
       
@@ -290,6 +293,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Knockout-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Knockout-js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -319,7 +341,122 @@
       
 
       
-        
+        <h1 id="Building-a-Todo-app-with-Knockout-js"><a href="#Building-a-Todo-app-with-Knockout-js" class="headerlink" title=" Building a Todo app with Knockout.js"></a> Building a Todo app with Knockout.js</h1><p>This is my first attempt with Knockout-js to build a Todo App.<br>Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application’s client-side behavior. The two main concepts one must learn when working with Knockout’s MVVM implementation are Observables and Bindings.</p>
+<p>Lets start.You can follow the steps from the github repo for this tutorial.</p>
+<ol>
+<li>##<a href="http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step2/index">Demo</a></li>
+<li>##<a href="https://github.com/kennethhutw/Knockout-js-todolist/archive/master.zip" target="_blank" rel="external">Download</a></li>
+<li>##<a href="https://github.com/kennethhutw/Knockout-js-todolist/archive/practice.zip" target="_blank" rel="external">Practice</a></li>
+</ol>
+<p><img src="/images/Knockout_ToDoList.png" alt="TodoListApp"></p>
+<a id="more"></a>
+<p>If you are unfamiliar with this library, then I would strongly recommend reading the complete tutorial on <a href="http://learn.knockoutjs.com/" target="_blank" rel="external">Tutorial</a>.</p>
+<h1 id="Thinking-in-components"><a href="#Thinking-in-components" class="headerlink" title="Thinking in components"></a><strong>Thinking in components</strong></h1><p>Todo List ToDo application is to record the agency matters, saved it in local storage. User can add, modify, view, update, and delete todo items in application. </p>
+<p>According to the above described To-do applications have to know this basic CRUD (Create-Read-Update-Delete) function, but also can store to-do function.</p>
+<p>According to these requirement, I create to-do application with Knockout.js</p>
+<h1 id="Step1-–-build-ViewModel"><a href="#Step1-–-build-ViewModel" class="headerlink" title="Step1 – build ViewModel "></a><strong>Step1 – build ViewModel </strong></h1><p>The first step is create to-do object and then building ViewModel based on to-do object</p>
+<p><strong><em> Todo object </em></strong> </p>
+<pre><code>var Todo = function(title, completed){
+    this.title = ko.observable(title);               //To-do Title
+    this.completed = ko.observable(completed);       //To-do status True: completed False: uncomplete
+    this.editing = ko.observable(false);             //Edit staut True: can edit False: cannot edit 
+};
+</code></pre><p>It is to save to-do item in array<br><strong><em> ViewModel: </em></strong></p>
+<pre><code>var ViewModel = function(todos){
+    this.todos = ko.observableArray(todos.map(function(todo){
+    return new Todo(todo.title, todo.completed);
+    }));
+};
+</code></pre><h1 id="Step1-–-Add-function"><a href="#Step1-–-Add-function" class="headerlink" title="Step1 – Add function "></a><strong>Step1 – Add function </strong></h1><p><strong><em> 介面 </em></strong></p>
+<pre><code>![TodoListApp](/images/knockoutjs_1_1.png)
+</code></pre><p><strong><em> index.html: </em></strong></p>
+<p>The “current” variable is bind to input elements :  The value binding links the associated DOM element’s value with a property on your view model. When the user edit form controls time, view model corresponding attribute value is automatically updated. Similarly, when you update the view model properties when the corresponding element values ​​are automatically updated on the page.<br>value binding has a main parameter (Value) and other parameters (valueUpdate)</p>
+<pre><code>&lt;input class=&quot;todoField&quot; id=&quot;new-todo&quot; data-bind=&quot;value: current, valueUpdate: &apos;afterkeydown&apos;, enterKey: add&quot; placeholder=&quot;What needs to be done?&quot; autofocus&gt;
+</code></pre><p><strong><strong> valueUpdate </strong></strong></p>
+<p>If your binding also includes a parameter called valueUpdate, this defines additional browser events KO should use to detect changes besides the change event. The following string values are the most commonly useful choices:</p>
+<p>“input” - updates your view model when the value of an <input> or <textarea> element changes. Note that this event is only raised by reasonably modern browsers (e.g., IE 9+).<br>“keyup” - updates your view model when the user releases a key<br>“keypress” - updates your view model when the user has typed a key. Unlike keyup, this updates repeatedly while the user holds a key down<br>“afterkeydown” - updates your view model as soon as the user begins typing a character. This works by catching the browser’s keydown event and handling the event asynchronously. This does not work in some mobile browsers.</textarea></p>
+<p>ou can also trigger updates based on other events by using the valueUpdate parameter described above.。 reference : <a href="http://knockoutjs.com/documentation/value-binding.html" target="_blank" rel="external">http://knockoutjs.com/documentation/value-binding.html</a></p>
+<p>When the user presses Enter, it will invoke add function. This will create a new Todo and placed in the list in add function.</p>
+<p><strong><em> App.js: </em></strong><br>                this.current = ko.observable();</p>
+<pre><code>this.add = function(){
+    var current = this.current().trim();
+    if(current){
+        this.todos.push(new Todo(current,false));
+        this.current(&apos;&apos;);
+    }
+}.bind(this);
+</code></pre><h1 id="Step2-–-Display-Todo-list"><a href="#Step2-–-Display-Todo-list" class="headerlink" title="Step2 – Display Todo list "></a><strong>Step2 – Display Todo list </strong></h1><p>在显示待办事项时，用三个控件(checkbox、lable、button)组成一个待办事项控件，而在每一个控件也绑定一个:<br>    checkbox : 让用户决定是否已完成<br>    lable    : 显示待办事项标题<br>    button   : 让用户可以删除待办事项</p>
+<p>在knockoutjs可以使用迴圈方式来建立控件，也就是样板的概念，所以绑定ul时我用foreach方式来建立待办事项控件。</p>
+<p><strong><em> 介面 </em></strong></p>
+<pre><code>![TodoListApp](/images/knockoutjs_1_2.png)
+</code></pre><p><strong><em> index.html: </em></strong></p>
+<pre><code>&lt;ul id=&quot;todo-list&quot; data-bind=&quot;foreach: todos()&quot;&gt;
+    &lt;li data-bind=&quot;css: { completed: completed, editing: editing }&quot;&gt;
+        &lt;div class=&quot;view&quot;&gt;
+            &lt;input class=&quot;todoCheckbox&quot; data-bind=&quot;checked: completed&quot; type=&quot;checkbox&quot; &gt;
+            &lt;label data-bind=&quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&quot; &gt;&lt;/label&gt;
+            &lt;button class=&quot;close pull-right&quot; data-bind=&quot;click: $root.remove&quot;&gt;&amp;times;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;input class=&quot;edit&quot; data-bind=&quot;value: title, valueUpdate: &apos;afterkeydown&apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&quot;&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><h1 id="Step2-–-Edit-、-Update-and-Delete-Todo-item"><a href="#Step2-–-Edit-、-Update-and-Delete-Todo-item" class="headerlink" title="Step2 – Edit 、 Update and Delete Todo item "></a><strong>Step2 – Edit 、 Update and Delete Todo item </strong></h1><p>To-Do control is to bind complete, edit, update, and delete functions.</p>
+<p>Binding editing function (editItem), I use a double click event: dblclick: $ root.editItem in label elemen, when the user double-clicks the control, label label will disappear and input label appear, and this is also bound to input label on renewal and cancellation empty function.<br>Binding completed ToDo (completed),It is bound to checked event: checked: completed in input element, at the same time update the view model, I have given in the label’s CSS also bind css: {textDecoration: completed () == true}, so when the line is completed to-do will be deleted.<br>Binding delete function (remove), It is bound to click event: click: $ root.remove in button element</p>
+<p><strong><em> index.html: </em></strong></p>
+<pre><code>&lt;ul id=&quot;todo-list&quot; data-bind=&quot;foreach: todos()&quot;&gt;
+    &lt;li data-bind=&quot;css: { completed: completed, editing: editing }&quot;&gt;
+        &lt;div class=&quot;view&quot;&gt;
+            &lt;input class=&quot;todoCheckbox&quot; data-bind=&quot;checked: completed&quot; type=&quot;checkbox&quot; &gt;
+            &lt;label data-bind=&quot;text: title, event: { dblclick: $root.editItem }, css: {textDecoration:completed()==true}&quot; &gt;&lt;/label&gt;
+            &lt;button class=&quot;close pull-right&quot; data-bind=&quot;click: $root.remove&quot;&gt;&amp;times;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;input class=&quot;edit&quot; data-bind=&quot;value: title, valueUpdate: &apos;afterkeydown&apos;, enterKey: $root.saveEditing, escapeKey: $root.cancelEditing, selectAndFocus: editing, event: { blur: $root.saveEditing }&quot;&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p><strong><em> App.js: </em></strong></p>
+<pre><code>// delete function
+this.remove = function(todo){
+    this.todos.remove(todo);
+}.bind(this);
+
+// edit function    
+this.editItem = function(item){
+    item.editing(true);
+    item.previousTitle = item.title();
+}.bind(this);
+
+// save function    
+this.saveEditing = function(item){
+    item.editing(false);
+
+    var title = item.title();
+    var trimmedTitle = title.trim();
+
+    if(title !== trimmedTitle){
+        item.title(trimmedTitle);
+    }
+
+    if(!trimmedTitle){
+        this.remove(item);
+    }
+}.bind(this);
+
+// cancel function
+this.cancelEditing = function(item){
+    item.editing(false);
+    item.title(item.previousTitle);
+}.bind(this);
+
+// save function    
+ko.computed(function(){
+    localStorage.setItem(&apos;todos-knockoutjs&apos;, ko.toJSON(this.todos));
+}.bind(this)).extend({
+    rateLimit: {timeout: 500, method: &apos;notifyWhenChangesStop&apos;}
+});
+</code></pre><p>When you finish , you can see the TodoApp as below .<br><img src="/images/Knockout_Step1.png" alt="TodoListApp"><br>The complete working <a href="http://kennethhutw.github.io/demo/KnockoutJs_todolist/Step1/index.html">demo</a> can be found here .</p>
+<p>##<a href="http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-1/">Building a Todo app with Knockout.js (1) - A simple todo list</a></p>
+<p>##<a href="http://kennethhutw.github.io/2016/10/05/Knockout-js-todo-list-sortable-2/">Building a Todo app with Knockout.js (2) - Filter、Search and Sortable function</a></p>
+
       
     </div>
 
@@ -337,6 +474,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Knockout-js/" rel="tag">#Knockout-js</a>
+          
+        </div>
       
 
       
@@ -492,7 +635,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-a-Todo-app-with-Knockout-js"><span class="nav-number">1.</span> <span class="nav-text"> Building a Todo app with Knockout.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thinking-in-components"><span class="nav-number">2.</span> <span class="nav-text">Thinking in components</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step1-–-build-ViewModel"><span class="nav-number">3.</span> <span class="nav-text">Step1 – build ViewModel </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step1-–-Add-function"><span class="nav-number">4.</span> <span class="nav-text">Step1 – Add function </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step2-–-Display-Todo-list"><span class="nav-number">5.</span> <span class="nav-text">Step2 – Display Todo list </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step2-–-Edit-、-Update-and-Delete-Todo-item"><span class="nav-number">6.</span> <span class="nav-text">Step2 – Edit 、 Update and Delete Todo item </span></a></li></ol></div>
             
           </div>
         </section>

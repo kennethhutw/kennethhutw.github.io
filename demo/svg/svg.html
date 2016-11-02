@@ -1,0 +1,58 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+</head>
+<body>
+<h2>Controlling SVG with Javascript</h2>
+    <div class="page-content">
+      <div><object id="circle-svg" width="400" height="300" type="image/svg+xml" data="moving_circle.svg"></object></div>
+      <div>X: <input id="sliderX" type="range" min="1" max="80" value="20" onchange="moveSlider(this, 'x')"/></div>
+      <div>Y: <input id="sliderY" type="range" min="1" max="60" value="20" onchange="moveSlider(this, 'y')"/></div>
+    </div>
+<pre id="log"></pre>
+<pre id="error"></pre>
+<script>
+(function () {
+    var old = console.log;
+    var logger = document.getElementById('log');
+    console.log = function () {
+      for (var i = 0; i < arguments.length; i++) {
+        if (typeof arguments[i] == 'object') {
+            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+        } else {
+            logger.innerHTML += arguments[i] + '<br />';
+        }
+      }
+    }
+	
+})();
+window.onerror = console.log;
+</script>
+<script>
+var moveSlider = function(slider, direction) {
+	var value = slider.value;
+	var svg = document.getElementById("circle-svg"); 
+	var svgDoc = svg.contentDocument;
+	var circle = svgDoc.getElementById("my-circle");
+	circle.setAttributeNS(null, "c" + direction, value * 5);
+}
+</script>
+
+</body>
+
+</html>

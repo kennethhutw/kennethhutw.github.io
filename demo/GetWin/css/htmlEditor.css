@@ -1,0 +1,28 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.htmlEditor h1{
+	font-size: 1.3em;
+	color: #069;
+	background-image: url(../images/icon/iconArrow03.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	margin: 10px 0 10px 0;
+	font-weight: normal;
+}
+.htmlEditor p{
+	padding-left: 20px;
+	font-size: 1.2em;
+	line-height: 1.7em;
+	margin-bottom: 10px;
+}
+.htmlEditor img{
+	margin: 10px 10px 10px 0;
+}
+.htmlEditor thead{
+	color: #069;
+	background-image: url(../images/icon/iconArrow01.gif);
+	background-repeat: no-repeat;
+	background-position: 3px 2px;
+	text-indent: 18px;
+}

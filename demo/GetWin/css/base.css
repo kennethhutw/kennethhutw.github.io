@@ -1,0 +1,16 @@
+/*======================================================================== 
+	Copyright: 潔韻實業有限公司
+	Author: 劉政皇
+	yisenliu@gmail.com
+  ========================================================================*/
+
+@charset "utf-8";
+@import url("reset.css");/*Reset default browser styles*/
+@import url("typography.css");/*重新定義HTML標籤結構*/
+/*@import url("960_24_col.css");Handles the layout grid.*/
+@import url("widgets.css");/*Add-on widgets, ex.tabs, slider...*/
+@import url("screen.css");/*螢幕顯示設定*/
+@import url("htmlEditor.css");/*自由編輯設定*/
+@import url("menu.css");/*下拉選單設定*/
+@import url("print.css");/*列印設定*/
+/*@import url("handheld.css");手持裝置設定*/

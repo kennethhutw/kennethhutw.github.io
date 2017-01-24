@@ -1,0 +1,198 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-tw" lang="zh-tw">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="潔韻實業有限公司" />
+<meta name="copyright" content="潔韻實業有限公司" />
+<meta name="keywords" content="瓦斯表.流量計.脫氧劑.界面活性劑.物流.自動化設備.垂直機.機械手臂.北區 堆高機.台北 堆高機.桃園 堆高機.新竹! 堆高機.中古堆高機.堆高機零件.堆高機維修.三菱 堆高機.力至優堆高機.日本堆高機總代理.Mitsubishi堆高機.Nichiyu堆高機.NCY堆高機.搬運設備" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<title>潔韻實業有限公司  GET WIN Co. Ltd</title>
+<link rel="shortcut icon" href="favicon_2013.ico" />
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="plugin/highslide/highslide.css" />
+
+
+<script src="js/default.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/swfobject.js"><!--Flash Function--></script>
+<script src="plugin/ddlevelsmenu/ddlevelsmenu.js" type="text/javascript"></script>
+<script src="plugin/jquery/jquery-1.3.2.min.js" type="text/javascript"><!--jQuery core--></script>
+<script src="plugin/jquery/cycle/jquery.cycle.all.js" type="text/javascript"></script>
+<script type="text/javascript" src="plugin/highslide/highslide.js"></script>
+
+
+<!--[if lte IE 6]> 
+<script src="http://letskillie6.googlecode.com/svn/trunk/letskillie6.zh_TW.pack.js" type="text/javascript"></script>
+<![endif]--> 
+
+<!--[if lte IE 6]> 
+<link href="stylesheets/lte_ie6.css" rel="stylesheet" type="text/css" media="screen, projection" />
+<script language="JavaScript" src="js/iepngfix_tilebg.js" type="text/javascript"></script>
+<![endif]--> 
+
+
+<script>//側邊副選單展開程式
+    $(function(){
+	$(".sideMenu ul").hide();
+	//$(".sideMenu ul:eq(0)").show(); //預設展開的sideMenu選項
+    $(".sideMenu h1").click(function () {
+	$(".sideMenu ul").hide("slow");
+    $(this).next("ul").show("slow");
+    });    
+    });
+</script>
+<script>
+
+
+function checkForm(frm)
+{
+	// 於此三行填入要檢查的欄位,名稱及類型
+	var CheckF = new Array('cus_no','cus_name','product_name','lot_no','chk_no','nums','ship_date','warranty_date');
+	var CheckFN = new Array('客戶編號','客戶名稱','產品名稱','Lot No.','檢查碼','數量','交貨日期','保固日期');
+	var CheckFType = new Array('text','text','text','text','text','text','text','text');
+	
+	var cf;
+	var i, sel, chk;
+	
+	for(i=0; i<CheckF.length; i++) {
+		element = frm.elements[CheckF[i]];
+		
+		if(CheckFType[i] == "text" || CheckFType[i] == "textarea") {
+			if(element.value == "") {
+				alert("請填入 " + CheckFN[i] + " !");
+				element.focus();
+				return false;
+			}
+		}
+		else if(CheckFType[i] == "radio") {
+			if(isNaN(element.length)){
+				if(!element.checked){
+					alert("請點選 " + CheckFN[i] + " !");
+					element.focus();
+					return false;
+				}
+			}
+			else{
+				sel = false;
+				for(j=0; j<element.length; j++) {
+					sel |= element[j].checked;
+				}
+				if(! sel) {
+					alert("請點選 " + CheckFN[i] + " !");
+					element[0].focus();
+					return false;
+				}
+			}
+		}
+		else if(CheckFType[i] == "checkbox") {
+			chk = false;
+			FirstElement = 0;
+			for(j=0; j<frm.elements.length; j++) {
+				if(frm.elements[j].name == CheckF[i]) {
+					if(FirstElement==0) FirstElement=j;
+					chk |= frm.elements[j].checked;
+				}
+			}
+			if(! chk) {
+				alert("請勾選 " + CheckFN[i] + " !");
+				frm.elements[FirstElement].focus();
+				return false;
+			}
+		}
+		else if (CheckFType[i] == "select") {
+			if (element.selectedIndex<0 || element.options[element.selectedIndex].value=="") {
+				alert("請選擇 " + CheckFN[i] + " !");
+				element.focus();
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+</script>
+</head>
+
+<body class="customerService">
+<div id="wrapper">
+<div id="header">
+	<ul class="logoArea">
+    	<li class="language">繁體版  / English</li>
+        <li class="logo"><a href="index.html"></a>回到首頁</li>
+    </ul>
+</div>
+<div id="menuTop">
+	<div id="menuMain">
+      <ul class="css2TopBar">
+      <li class="menu01"><a href="index.html">回到首頁</a></li>
+      <li class="menu02">公司簡介
+          <ul>
+              <li><span><a href="companyProfile_profile.html">公司簡介</a></span></li>
+              <li><span><a href="companyProfile_history.html">企業沿革</a></span></li>
+              <li><span><a href="companyProfile_affiliates.html">關係企業</a></span></li>
+              <li><span><a href="companyProfile_agentBrands.html">代理品牌</a></span></li>
+              <li><span><a href="companyProfile_careers.html">人才招募</a></span></li>
+          </ul>
+      </li>
+      <li class="menu03"><a href="productsIntroduction.html">產品介紹</a></li>
+      <li class="menu04"><a href="salesOffice.html">營業據點</a></li>
+      <li class="menu05">客戶服務
+          <ul>
+              
+              <li><span><a href="customerService_catalogDownload.html">型錄下載</a></span></li>
+              <li><span><a href="contactUs.html">聯絡我們</a></span></li>
+          </ul>
+      </li>
+      <li class="menu06"><a href="relatedWebsites.html">相關網站</a></li>
+      </ul>
+	</div>
+</div><div id="indeContactUs"><a href="contactUs.html"></a></div>
+	<div class="mainContent warrantyRegistration">
+    	<div class="mainPic">各區主圖</div>
+		<!--產品介紹 productsIntroduction 側邊副選單-->
+
+<div class="sideMenu">
+    <h1 class="sideMenu06" onclick="MM_goToURL('parent','customerService_warrantyRegistration.html');return document.MM_returnValue">保固登記</h1>
+    <h1 class="sideMenu07" onclick="MM_goToURL('parent','customerService_catalogDownload.html');return document.MM_returnValue">型錄下載</h1>
+</div>
+        <div class="InsideRightArea">
+        	<div class="content"> 
+             <form id="form1" name="form1" method="post" action="customerService_warrantyRegistration_exec.html" onSubmit="return checkForm(this);">
+            	<div class="mainTitle">//客戶服務 - 保固登記</div>
+                <ul class="formData">
+                  <li class="note">Okamura辦工傢俱保固登記專區，堆高機保固於交車同時由本公司服務人員直接登錄，請勿於網站上登錄；其他保固項目請直接與銷售人員連繫。</li>
+                  <li><span class="putleft">客戶編號</span><input type="text" size="20" name="cus_no" maxlength="20" /></li>
+                  <li><span class="putleft">客戶名稱</span><input type="text" size="20" name="cus_name" maxlength="20" /></li>
+                  <li><span class="putleft">產品名稱</span><input type="text" size="20" name="product_name" maxlength="20" /></li>
+                  <li><span class="putleft">Lot No.</span><input type="text" size="20" name="lot_no" maxlength="20" /></li>
+                  <li><span class="putleft">檢查碼</span><input type="text" size="20"  name="chk_no" maxlength="20" /></li>
+                  <li><span class="putleft">數　　量</span><input type="text" size="20" name="nums" value="1" maxlength="3" /></li>
+                  <li><span class="putleft">交貨日期</span><input type="text" size="20" name="ship_date" maxlength="15" /></li>
+                  <li><span class="putleft">保固期限</span><input type="text" size="20" name="warranty_date" maxlength="15" /></li>
+                  <li><span class="putleft">備　　註</span><textarea cols="70" rows="5" name="note"></textarea></li>
+                    <li class="putright"><input type="reset" value="清除重填" class="btn"/> <input type="submit" value="確定送出" class="btn"/> <input name="opt" type="hidden" id="opt" value="add" /></li>
+                </ul>
+                </form>
+          </div> 
+        </div>
+	</div>
+    
+<div id="footer">
+  <div id="header">
+    <ul>
+      <li class="copyright"><span class="company">GET WIN Co. Ltd</span>COPYRIGHT @2011,版權所有</li>
+      <li>110 台北市基隆路1段141號11樓之9　TEL：+886 2742-3386　FAX：+886 2742-2113</li>
+    </ul>
+  </div>
+  <div class="mainContent">
+    <div class="InsideAreaFull">
+      <div class="content"> <br>
+      </div>
+    </div>
+</div>
+  <div id="footer2"></div>
+</div>
+</div>
+</body>
+</html>

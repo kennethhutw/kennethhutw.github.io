@@ -1,0 +1,1091 @@
+﻿/*======================================================================== 
+	Copyright: �航�瘙質�蝬脰楝鈭平
+	Author: Shanny
+  ========================================================================*/
+@charset "utf-8";
+@media screen, projection{
+/*======================================================================== 
+	Global
+  ========================================================================*/
+*html{	width:100%;	height:100%; /*IE7 and below*/}
+body {
+	background-color: #e8e8e8;
+	color: #666666;
+	text-decoration: none;
+	font-family: Verdana, "�啁敦��", sans-serif;
+	font-size:62.5%;
+	line-height: 180%;
+	margin: 0px;
+	width:100%;/*���詨捆��IE�⊥��文margin:0 auto�蔭銝剛�瘜�*/
+	background-image: url(../images/bg.jpg);
+	background-position: center top;
+}
+#wrapper{
+	width:1037px;
+	height:auto;
+	margin:0 auto;
+	text-align: left;/*��body text-align閮剖�嚗�銝摰寡��E�⊥��文margin:0 auto�蔭銝剛�瘜�*/
+	background-image: url(../images/shadow.png);
+	_behavior: url(js/iepngfix_v2.htc);
+	background-repeat: no-repeat;
+	background-position: center top;
+	position: relative;
+}
+.mainContent{
+	width:979px;
+	background-color: #f2f2f2;
+	background-image: url(../images/bgContent.gif);
+	background-repeat: repeat-x;
+	background-position: center top;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 7px;
+	padding-right: 7px;
+	padding-left: 7px;
+	overflow: hidden;
+}
+.mainContent .mainPic{
+	background-repeat: no-repeat;
+	background-position: center top;
+	display: block;
+	height: 158px;
+	margin-bottom: 7px;
+	text-indent: -2000px;
+}
+/*============ ��mainPic閮剖� ===========*/
+/* �砍蝪∩� - �砍蝪∩� */.companyProfile .profile .mainPic{ background-image: url(../images/titlePic/companyProfile1.jpg);}
+/* �砍蝪∩� - 隡平瘝輸 */.companyProfile .history .mainPic{ background-image: url(../images/titlePic/companyProfile2.jpg);}
+/* �砍蝪∩� - ��隡平 */.companyProfile .affiliates .mainPic{ background-image: url(../images/titlePic/companyProfile3.jpg);}
+/* �砍蝪∩� - 隞���� */.companyProfile .agentBrands .mainPic{ background-image: url(../images/titlePic/companyProfile4.jpg);}
+/* �砍蝪∩� - 鈭箸��� */.companyProfile .careers .mainPic{ background-image: url(../images/titlePic/companyProfile5.jpg);}
+/* �Ｗ�隞晶 - �Ｗ��” */.productsIntroduction .mainContent .mainPic{ background-image: url(../images/titlePic/productsIntroduction.jpg);}
+/* �Ｗ�隞晶 - 颲血摰嗅 */.productsIntroduction .officeFurniture .mainPic{ background-image: url(../images/titlePic/pi_officeFurniture.jpg);}
+.salesOffice .mainContent .mainPic{ background-image: url(../images/titlePic/salesOffice.jpg);}
+.customerService .mainContent .mainPic{ background-image: url(../images/titlePic/customerService.jpg);}
+.relatedWebsites .mainContent .mainPic{ background-image: url(../images/titlePic/relatedWebsites.jpg);}
+.contactUs .mainContent .mainPic{ background-image: url(../images/titlePic/contactUs.jpg);}
+.activeNews .mainContent .mainPic{ background-image: url(../images/titlePic/theNews.jpg);}
+
+h1{
+	font-size: 1.3em;
+	color: #666;
+	padding: 0 5px 0 30px;
+	background-image: url(../images/icon/iconArrow03.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 1px;
+}
+input.btn{
+	font-size: 1.2em;
+	color: #FFF;
+	background-color: #6ab3d9;
+	padding-top: 4px;
+	border: 2px solid #CCE4F2;
+}
+.space30px{	padding: 30px;}
+
+/*======================================================================== 
+	銝���
+  ========================================================================*/
+.goTo{
+	border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: #CCC;
+	padding: 5px 10px;
+	margin: 10px 0;
+	font-size:1.2em;
+	overflow: hidden;
+}
+.goTo li{ float: right; padding-top: 5px;}
+.goTo li a:link{ color: #690;}
+.goTo li a:hover{ color: #F33;}
+.goTo li a:visited{ color: #690;}
+.goTo .goPage{
+	background-repeat: no-repeat;
+	background-position: left 3px;
+	margin: 0 10px;
+}
+.goTo .goTop{
+	background-image: url(../images/icon/iconTop.gif);
+	background-repeat: no-repeat;
+	background-position: left 8px;
+	padding-left: 17px;
+	margin: 0 5px;
+	font-weight: bolder;
+}
+.goTo .goPre{ 
+	background-image: url(../images/icon/iconPre02.gif);
+	background-repeat: no-repeat;
+	background-position: left 8px;
+	padding-left: 17px;
+	margin: 0 5px;
+	font-weight: bolder;
+}
+.goTo .goNext{ 
+	background-image: url(../images/icon/iconNext02.gif); 
+	background-repeat: no-repeat;
+	background-position: right 8px;
+	padding-right: 17px;
+	margin: 0 5px;
+	font-weight: bolder;
+}
+
+/*======================================================================== 
+	Header
+  ========================================================================*/
+#header{
+	width:993px;
+	height:52px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../images/shadowTop.png);
+	_behavior: url(js/iepngfix_v2.htc);
+	background-repeat: no-repeat;
+	background-position: center top;
+	padding-top: 6px;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #e7141a;
+}
+#header ul{	margin: 0px; padding: 0px; overflow: hidden;}
+#header ul li{	list-style-type: none;}
+#header .logoArea{	background-color: #FFF;}
+#header .logoArea .logo{
+	background-image: url(../images/logo.gif);
+	background-repeat: no-repeat;
+	margin: 5px 10px;
+	text-indent: -2000px;
+}
+#header .logoArea .logo a{
+	text-indent: -2000px;
+	display: block;
+	height: 60px;
+	width: 416px;
+}
+#header .logoArea .language{
+	background-image: url(../images/icon/iconLanguage.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	text-indent: 30px;
+	float: right;
+	height: 24px;
+	width: 185px;
+	padding-top: 10px;
+	margin-top: 25px;
+	font-size: 1.1em;
+}
+
+/*======================================================================== 
+	menuTop
+  ========================================================================*/
+#menuTop{
+	width:993px;
+	margin-top: 6px;
+	margin-right: auto;
+	margin-left: auto;
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: #e7141a;
+}
+
+
+/*======================================================================== 
+	rightArea
+  ========================================================================*/
+#rightArea{	float: right;	width: 217px;}
+#rightArea .activeNews{
+	background-image: url(../images/titleActionNews.gif);
+	text-indent: -2000px;
+	display: block;
+	height: 26px;
+}
+#rightArea .newProducts{
+	background-image: url(../images/titleNewProducts.gif);
+	text-indent: -2000px;
+	display: block;
+	height: 26px;
+}
+#rightArea .content{
+	background-color: #fff;
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	border-top-width: 3px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #d6d5d4;
+	border-right-color: #d6d5d4;
+	border-left-color: #d6d5d4;
+	padding: 4px 4px 0 4px;
+}
+#rightArea .footer{
+	background-image: url(../images/footerW217.gif);
+	display: block;
+	height: 4px;
+	zoom:1;
+	margin-bottom: 8px;
+}
+#rightArea ul{
+	margin: 0px;
+	padding: 0px;
+}
+#rightArea ul li{	list-style-type: none;}
+#rightArea ul.newsList li{
+	background-image: url(../images/icon/iconPoint_org.gif);
+	background-repeat: no-repeat;
+	background-position: 5px;
+	padding: 4px 5px 4px 15px;
+	font-size: 1.1em;
+}
+#rightArea ul.productsList li{
+	background-image: url(../images/bgObliqueLine.gif);
+	background-repeat: no-repeat;
+	padding: 6px;
+	height: 50px;
+	width: 195px;
+	font-size: 1.1em;
+}
+#rightArea ul.productsList li img{
+	border: 3px solid #FFF;
+	background-position: center center;
+	display: block;
+	height: 43px;
+	width: 56px;
+	float: left;
+}
+#rightArea ul.productsList li span{
+	float: right;
+	width: 125px;
+	margin-left: 5px;
+}
+#rightArea ul.productsList li.moreNew{
+	background-image: url(../images/icon/iconNew.gif);
+	background-repeat: no-repeat;
+	text-indent: -2000px;
+	background-position: 5px bottom;
+	height: 15px;
+	padding: 0px;
+}
+#rightArea ul.productsList li.moreNew a{
+	display: block;
+	width: 40px;
+	height: 17px;
+}
+
+/*======================================================================== 
+	leftArea
+  ========================================================================*/
+#leftArea{	width: 755px; overflow: hidden;}
+
+/*======================================================================== 
+	adArea
+  ========================================================================*/
+.adArea{
+	border: 1px solid #E4E4E4;
+	width: 752px;
+	height: 317px;
+}
+.adArea img{ border: 1px solid #FFF;}
+
+/*======================================================================== 
+	InsideArea
+  ========================================================================*/
+.InsideAreaFull{ width: 980px;}
+.InsideAreaFull .content{
+	width: 974px;
+	background-color: #FFF;
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	border: 1px solid #e6e6e5;
+	padding: 1px;
+	margin-bottom: 8px;
+}
+.InsideRightArea{ width: 735px;	float: right;}
+.InsideRightArea .content{
+	width: 729px;
+	background-color: #FFF;
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	border: 1px solid #e6e6e5;
+	padding: 1px;
+	margin-bottom: 8px;
+	overflow: hidden;
+}
+.mainTitle{
+	font-size: 1.3em;
+	color: #666;
+	width: auto;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCC;
+	padding-top: 25px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	font-weight: bold;
+	text-align: right;
+}
+
+/*======================================================================== 
+	擐��Ｗ�隞晶�脣�閮剖�
+  ========================================================================*/
+.productArea{	width: 756px;	margin-bottom: 8px;}
+.productArea .title{
+	background-image: url(../images/titleProductIntro.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	clear: both;
+	height: 32px;
+	margin-top: 8px;
+}
+.productArea .content{
+	width: 751px;
+	background-color: #FFF;
+	padding-right: 1px;
+	padding-left: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #dedddd;
+	border-left-color: #dedddd;
+	padding-top: 10px;
+	text-align: center;
+}
+.productsContent {
+	height: 150px;
+	position: relative;
+	overflow: hidden;
+}
+.productsContent ul{
+	padding:0;
+	margin: 0;
+	zoom:1;
+}
+.productsContent ul li {
+	float: left;
+	zoom:1;
+	margin-right: 7px;
+	margin-left: 7px;
+	text-align: center;
+	font-size: 1.1em;
+	line-height: 1.5em;
+}
+.productsContent ul li img{
+	background-color: #FFF;
+	padding: 1px;
+	border: 3px solid #d8eaff;
+	margin-bottom: 3px;
+	width: 101px;
+	height: 101px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.productArea .ctrl {
+	list-style-type:none;
+	float: right;
+}
+.productArea .ctrl li {
+	float: left;
+	height: 32px;
+	width: 32px;
+	background-repeat:no-repeat;
+}
+.productArea .ctrl li#productsPrev{	background-image: url(../images/icon/iconPre.gif);}
+.productArea .ctrl li#productsNext{	background-image: url(../images/icon/iconNext.gif);}
+.productArea .ctrl li a{
+	width:100%;
+	height:100%;
+	display: block;
+	text-indent: -3000px;
+	overflow: hidden;
+}
+.productArea .footer{
+	background-image: url(../images/footerW755.gif);
+	display: block;
+	height: 4px;
+	background-repeat: no-repeat;
+}
+
+/*======================================================================== 
+	Siderbar
+  ========================================================================*/
+.sideMenu{
+	width:235px;
+	overflow:hidden;
+	height:auto;
+	float:left;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #e6e6e5;
+	border-bottom-color: #e6e6e5;
+	border-left-color: #e6e6e5;
+	background-color: #FFF;
+}
+.sideMenu h1{
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	height:25px;
+	width: 235px;
+	text-indent: 10px;
+	font-size: 1.2em;
+	font-weight: normal;
+	color: #333;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #d9d9d9;
+	padding-top: 12px;
+	cursor: hand;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+}
+.sideMenu h1:hover{	color: #F33;}		
+.sideMenu ul{
+	border-top-width: 1px;
+	border-top-style: dashed;
+	border-top-color: #d9d9d9;
+	margin: 0px;
+	padding: 0px;
+}
+.sideMenu ul li{
+	background-image: url(../images/icon/iconArrow04.gif);
+	background-repeat: no-repeat;
+	background-position: 10px top;
+	padding-left: 30px;
+	margin: 6px;
+	font-size: 1.1em;
+}
+.sideMenu ul li a:link{	color: #64a0b2;	}
+.sideMenu ul li a:active{ color: #64a0b2; }
+.sideMenu ul li a:hover{	color: #F33; }
+.sideMenu ul li a:visited{ color: #64a0b2; }
+/* �砍蝪∩��詨�詨��瘜� */
+.profile .sideMenu .sideMenu01 a,.history .sideMenu .sideMenu02 a,.affiliates .sideMenu .sideMenu03 a,.agentBrands .sideMenu .sideMenu04 a,.careers .sideMenu .sideMenu05 a{	font-weight: bold;	color: #3086A3;}
+/* �Ｗ���憿�桅��瘜� */
+.stacker .sideMenu .sideMenu01 a,.stackerUsed .sideMenu .sideMenu02 a,.stackerParts .sideMenu .sideMenu03 a,.gas .sideMenu .sideMenu04 a,.logistics .sideMenu .sideMenu05 a,.robot .sideMenu .sideMenu06 a,.surfactant .sideMenu .sideMenu07 a,.concreteAdditives .sideMenu .sideMenu08 a,.deoxidizer .sideMenu .sideMenu09 a,.lubricatingOil .sideMenu .sideMenu10 a,.officeFurniture .sideMenu .sideMenu11 a,.industrialGearbox-Okamura .sideMenu .sideMenu12 a,.marine .sideMenu .sideMenu13 a,.industrialGearbox .sideMenu .sideMenu14 a,.foam .sideMenu .sideMenu15 a,.enzyme .sideMenu .sideMenu16 a{	font-weight: bold;	color: #3086A3;}
+
+/*======================================================================== 
+	�砍蝪∩� companyProfile
+  ========================================================================*/
+.companyProfile .profile ul{
+	margin: 20px 30px 20px 30px;
+	padding: 0px;
+	zoom:1;
+	overflow: hidden;
+}
+.companyProfile .profile ul li{
+	font-size: 1.3em;
+	list-style-type: none;
+	padding-bottom: 6px;
+}
+.companyProfile .profile ul li strong{
+	width: 100px;
+	font-weight: bold;
+	color: #1273a8;
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	text-indent: 20px;
+	display: block;
+	float: left;
+}
+.companyProfile .profile ul li.pic{
+	float: right;
+}
+.companyProfile .profile ul li.putleft{
+	float: left;
+	width: 100px;
+}
+.companyProfile .profile ul li.putright{
+	float: right;
+	width: 550px;
+}
+.companyProfile .affiliates ul{
+	margin: 20px 30px 20px 30px;
+	padding: 0px;
+	zoom:1;
+	overflow: hidden;
+}
+.companyProfile .affiliates ul li{
+	font-size: 1.3em;
+	list-style-type: none;
+	width: 295px;
+	float: left;
+	padding-left: 23px;
+	padding-bottom: 5px;
+	margin-top: 20px;
+	margin-right: 8px;
+	margin-left: 8px;
+	background-image: url(../images/icon/iconPoint_org.gif);
+	background-repeat: no-repeat;
+	background-position: 10px 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #999;
+}
+.companyProfile .history ul{ margin: 20px; padding: 0px; overflow: hidden;}
+.companyProfile .history ul li{
+	list-style-type: none;
+	zoom:1;
+}
+.companyProfile .history ul li span.theYear{
+	color: #069;
+	font-size: 1.4em;
+	float: left;
+	margin-top: 10px;
+}
+.companyProfile .history ul li ul.historyList{
+	float: right;
+	width: 615px;
+	margin: 0px;
+	padding: 10px 0px 5px 20px;
+	background-image: url(../images/historyBg.gif);
+	background-position: left 0px;
+	background-repeat: no-repeat;
+	font-size: 1.2em;
+}
+.companyProfile .history ul li ul.historyList strong{
+	color: #690;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+.companyProfile .history ul li ul.historyList li{
+	margin-bottom: 5px;
+}
+.companyProfile .agentBrands img{ margin: 0 5px 0 0;}
+.companyProfile .agentBrands dl{ padding: 10px; font-size: 1.3em;}
+.companyProfile .agentBrands dt{ font-weight: bolder; margin: 5px 0;}
+.companyProfile .agentBrands dd{ margin: 25px 0 40px 30px; clear: both;}
+.companyProfile .agentBrands dd span{
+	width: 150px;
+	height: 50px;
+	background-color:#E3E3E3;
+	margin: -15px 10px 0 0;
+	display: block;
+	float: left;
+	border: 1px solid #E1E1E1;
+	overflow: hidden;
+}
+.companyProfile .agentBrands dd span a{ height: 50px; display: block;}
+.companyProfile .careers p{	margin: 20px 30px; font-size: 1.3em;}
+.companyProfile .careers ul{ margin: 20px; font-size: 1.3em;}
+.companyProfile .careers li{
+	background-image: url(../images/icon/iconPoint_org.gif);
+	background-repeat: no-repeat;
+	background-position: 25px 5px;
+	list-style-type: none;
+	padding-left: 37px;
+}
+.companyProfile .careers li a{ text-decoration: underline;}
+
+/*======================================================================== 
+	�Ｗ�隞晶 productsIntroduction
+  ========================================================================*/
+  .productsIntroduction .product ul{
+	margin: 20px 30px 20px 30px;
+	padding: 0px;
+	zoom:1;
+	overflow: hidden;
+}
+.productsIntroduction .product ul li{
+	font-size: 1.3em;
+	list-style-type: none;
+	padding-bottom: 6px;
+}
+.productsIntroduction .product ul li strong{
+	width: 100px;
+	font-weight: bold;
+	color: #1273a8;
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	text-indent: 20px;
+	display: block;
+	float: left;
+}
+.productsIntroduction.product ul li.pic{
+	float: right;
+}
+.productsIntroduction .product ul li.putleft{
+	float: left;
+	width: 100px;
+}
+.productsIntroduction .product ul li.putright{
+	float: right;
+	width: 550px;
+}
+.productsIntroduction dl.productCategories{
+	background-color: #FFF;
+	padding: 1px;
+	padding-bottom: 3px;
+	border: 1px solid #e6e6e5;
+	width: 318px;
+	margin-right: 4px;
+	*margin-right: 6px !important;
+	margin-bottom: 7px;
+	float: left;
+}
+.productsIntroduction dl.productCategories dt{
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	float: right;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #CCC;
+	height: 45px;
+	width: 225px;
+	display: block;
+	font-size: 1.1em;
+	padding-top: 27px;
+}
+.productsIntroduction dl.productCategories dd.list3{ height: 72px; display: block;}
+.productsIntroduction dl.productCategories dd ol.list{
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+.productsIntroduction dl.productCategories dd ol.list li{
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: 5px top;
+	text-indent: 25px;
+	width: 150px;
+	margin-left: 5px;
+	margin-bottom: 3px;
+	float: left;
+	font-size: 1.1em;
+}
+.productsIntroduction dl.productCategories dd ol.list li a:link{ color: #64a0b2;}
+.productsIntroduction dl.productCategories dd ol.list li a:active{ color: #64a0b2;}
+.productsIntroduction dl.productCategories dd ol.list li a:hover{ color: #F33;}
+.productsIntroduction dl.productCategories dd.categoriesImg{
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin: 5px;
+	border: 1px solid #CCC;
+	width: 75px;
+	overflow: hidden;
+}
+.productsIntroduction dl.productCategories dd.categoriesImg span{
+	height: 63px;
+	width: 71px;
+	display: block;
+	margin: 2px;
+}
+
+.productsIntroduction .productsList{ zoom:1; overflow: hidden;}
+.productsIntroduction .productsList .bookMark{
+	padding: 10px;
+	margin: 10px 5px 0 5px;
+	border: 5px solid #e6e6e5;
+	font-size: 1.3em;
+	zoom:1;
+	overflow: hidden;
+}
+.productsIntroduction .productsList .bookMark li{ text-overflow: ellipsis; overflow:hidden; white-space:nowrap; width: 166px; margin: 3px; float: left;}
+.productsIntroduction .productsList dl.listTitle{ width: 710px; border: none; clear: both; zoom:1; display: block;}
+.productsIntroduction .productsList .listTitle dt{
+	font-size: 1.3em;
+	font-weight: bolder;
+	color: #69C;
+	margin-bottom: 5px;
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 15px;
+}
+.productsIntroduction .productsList .listTitle dd.listInfo a{	text-decoration: underline;}
+.productsIntroduction .productsList dl{
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	border: 1px solid #e6e6e5;
+	font-size: 1.2em;
+	width: 160px;
+	margin: 5px;
+	padding: 5px;
+	float: left;
+}
+.productsIntroduction .productsList dd.listImg{
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.productsIntroduction .productsList dd.listImg a{ height: 150px; display: block;}
+.productsIntroduction .productsList dd.listName{ margin: 5px; height: 37px; overflow: hidden;}
+.productsIntroduction .productsList .goTop{
+	clear: both;
+	width: 706px;
+	margin-bottom: 5px;
+	background-image: none;
+	border: none;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCC;
+}
+.productsIntroduction .productsList .goTop dd a{
+	background-image: url(../images/icon/iconTop.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 20px;
+	font-weight: bolder;
+	float: right;
+}
+
+.productsIntroduction .InsideRightArea .content img.pic{
+	background-color: #fff;
+	padding: 1px;
+	height: auto;
+	width: 400px;
+	border: 5px solid #e6e6e6;
+	overflow: hidden;
+	float: left;
+}
+.productsIntroduction .InsideRightArea .content dl.productDescription{
+	width: 317px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.productsIntroduction .InsideRightArea .content dl.productDescription dt.productName{
+	font-size: 1.5em;
+	color: #3ea2d8;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCC;
+	padding-top: 25px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+}
+.productsIntroduction .InsideRightArea .content dl.productDescription dd{
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-left: 13px;
+	font-size: 1.1em;
+}
+.productsIntroduction .InsideRightArea .content dl.productDescription dd.description{
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+/*======================================================================== 
+	�平�� foothold
+  ========================================================================*/
+.salesOffice .InsideAreaFull ul{
+	padding: 5px;
+	margin: 10px 20px 0px 20px;
+	zoom:1;
+	overflow: hidden;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #999;
+}
+.salesOffice .InsideAreaFull ul li{
+	font-size: 1.3em;
+	list-style-type: none;
+	padding-bottom: 6px;
+}
+.salesOffice .InsideAreaFull ul li.putleft{
+	float: left;
+	width: 110px;
+	font-weight: bold;
+	color: #1273a8;
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	text-indent: 20px;
+	display: block;
+}
+.salesOffice .InsideAreaFull ul li.putright{
+	float: right;
+	width: 800px;
+}
+.salesOffice .InsideAreaFull ul li.putright h2{
+	color: #690;
+	font-size: 1em;
+}
+.salesOffice .InsideAreaFull ul li.relationship{
+	float: left;
+	width: 33%;
+	font-weight: bold;
+	color: #1273a8;
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	text-indent: 20px;
+	margin-bottom: 5px;
+	display: block;
+}
+
+/*======================================================================== 
+	customerService 摰Ｘ��
+  ========================================================================*/
+.catalogDownload .catalogList{ zoom:1; overflow: hidden;}
+.catalogDownload .catalogList dl{
+	background-image: url(../images/bgGradient.gif);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	border: 1px solid #e6e6e5;
+	font-size: 1.2em;
+	width: 160px;
+	margin: 5px;
+	padding: 5px;
+	float: left;
+}
+.catalogDownload .catalogList dd.listImg{
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.catalogDownload .catalogList dd.listImg a{ height: 150px; display: block;}
+.catalogDownload .catalogList dd.listName{ margin: 5px; height: 30px; overflow: hidden; color: #333;}
+.catalogDownload .catalogList dd.listInfo{ margin: 0 5px 5px 5px; height: 52px; overflow: hidden;}
+.catalogDownload .catalogList dd.download{ font-size: 10px; text-align: right; margin-bottom: 5px; height: 27px; overflow: hidden;}
+.catalogDownload .catalogList dd.download span{
+	margin-right: 5px;
+	padding: 3px;
+	background-color: #F66;
+	border: 2px solid #FCC;
+	zoom:1;
+}
+.catalogDownload .catalogList dd.download span a{ color:#FFF; font-weight: bolder;}
+.warrantyRegistration .formData{ padding: 10px; margin: 10px; zoom:1;}
+.warrantyRegistration .formData li{ margin-top: 5px;}
+.warrantyRegistration .formData .putleft{
+	float: left;
+	width: 90px;
+	font-weight: bold;
+	color: #1273a8;
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 4px;
+	text-indent: 20px;
+	display: block;
+	padding-top: 4px;
+	font-size: 1.3em;
+}
+.warrantyRegistration .formData .putright{	text-align: right; margin-top: 10px;}
+.warrantyRegistration .formData .note{
+	background-image: url(../images/icon/icon05.gif);
+	padding-left: 20px;
+	font-size: 1.2em;
+	color: #FF8E8E;
+	background-repeat: no-repeat;
+	background-position: left top;
+	margin-bottom: 15px;
+}
+
+/*======================================================================== 
+	�賊�蝬脩� relatedWebsites
+  ========================================================================*/
+.relatedWebsites .InsideAreaFull ul{
+	padding: 5px;
+	margin: 10px 20px 0px 20px;
+	zoom:1;
+	overflow: hidden;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #999;
+}
+.relatedWebsites .InsideAreaFull ul li{
+	font-size: 1.3em;
+	list-style-type: none;
+	padding-bottom: 6px;
+}
+.relatedWebsites .InsideAreaFull ul li.putleft{
+	float: left;
+	width: 200px;
+	font-weight: bold;
+	color: #1273a8;
+	background-image: url(../images/icon/iconArrow02.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	text-indent: 20px;
+	display: block;
+}
+.relatedWebsites .InsideAreaFull ul li.putright{
+	float: right;
+	width: 700px;
+}
+
+
+/*======================================================================== 
+	contactUs �舐窗��
+  ========================================================================*/
+.contactUs .title{
+	font-size: 1.3em;
+	text-align: center;
+	padding-top: 7px;
+	background-image: url(../images/bgObliqueLine.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.contactUs .line{
+	padding: 10px 0;
+	border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: #999;
+	text-align: center;
+}
+
+/*======================================================================== 
+	Tab�惜
+  ========================================================================*/
+#TabContent ul.Menu{
+	width:100%;
+	list-style:none;
+	display: block;
+	padding: 8px 0 0 0;
+	margin: 0px;
+	overflow: hidden;
+}
+#TabContent ul.Menu li{
+	width:147px;
+	float:left;
+	display:block;
+	margin: 0 0 0 5px;
+}
+#TabContent .tab1{
+	width:147px;
+	height:38px;
+	line-height:42px;
+	font-size:1.3em;
+	text-align:center;
+	color:White;
+	background-image: url(../images/tabOver.gif);
+	color:black;
+}
+#TabContent .tab1:hover{
+	color:#F00;
+	cursor:pointer;
+}
+#TabContent .tab1Press{
+	width:147px;
+	height:38px;
+	line-height:42px;
+	text-align:center;
+	background-image: url(../images/tabBg.gif);
+	color:White;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+#TabContent .tab2{
+	width:147px;
+	height:38px;
+	line-height:42px;
+	font-size:1.3em;
+	text-align:center;
+	color:White;
+	background-image: url(../images/tabOver.gif);
+	color:black;
+}
+#TabContent .tab2:hover{
+	color:#F00;
+	cursor:pointer;
+}
+#TabContent .tab2Press{
+	width:147px;
+	height:38px;
+	line-height:42px;
+	text-align:center;
+	background-image: url(../images/tabBg.gif);
+	color:White;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+#TabContent #TabData{
+	width:auto;
+	display:block;
+	padding: 20px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #CCC;
+}
+
+/*======================================================================== 
+	index-contactUs
+  ========================================================================*/
+#indeContactUs{
+	
+	_behavior: url(js/iepngfix_v2.htc);
+	background-repeat: no-repeat;
+	
+	position: absolute;
+	height: 133px;
+	width: 230px;
+	right: 0px;
+	bottom: -27px;
+}
+#indeContactUs a{
+	display: block;
+	height: 100px;
+	width: 230px;
+	text-indent: -2000px;
+}
+
+
+/*======================================================================== 
+	Footer
+  ========================================================================*/
+#footer{
+	width:993px;
+	font-size: 1em;
+	background-image: url(../images/footerBg.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 67px;
+	margin-top: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+#footer ul{ margin-left: 25px;}
+#footer ul li{
+	list-style-type: none;
+}
+#footer ul li span.company { color: #333;}
+#footer ul .copyright {
+	color: #787878;
+	margin-top: 15px;
+}
+#footer ul .mailto{
+	background-image: url(../images/pageMail.gif);
+	background-repeat: no-repeat;
+	display: block;
+	float: right;
+	text-indent: -2000px;
+}
+#footer ul .mailto a{
+	height: 67px;
+	width: 245px;
+	display: block;
+}
+
+
+
+}

@@ -1,0 +1,100 @@
+﻿/*-----------------------------------------------------------------------
+   BlueTrip CSS Framework
+   Mike Crittenden
+   mike@capsizedesigns.com
+   License - MIT or GPL (whichever suits you better)
+----------------------------------------------------------------------- */
+@charset "utf-8";
+
+/* BASIC TYPOGRAPHY */
+
+p {}
+strong {font-weight: bold;}
+cite, em, dfn { font-style: italic; }
+code, kbd, samp, pre, tt, var { font-size: 92%; font-family: monaco, "Lucida Console", courier, monospace; }
+del { text-decoration: line-through; color: #666; }
+ins, dfn { border-bottom: 1px solid #ccc; }
+small, sup, sub { font-size: 85%; }
+abbr, acronym { text-transform: uppercase; font-size: 85%; letter-spacing: .1em; }
+a abbr, a acronym { border: none; }
+abbr[title], acronym[title], dfn[title] { cursor: help; border-bottom: 1px dotted #ccc; }
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+
+/* COLORS */
+
+a:link		{	text-decoration: none;color: #333;}
+a:visited	{	text-decoration: none;color: #333;}
+a:hover		{	text-decoration: none;color: red;}
+a:active	{	text-decoration: none;color: #333;}
+code, pre 	{ color: #c33; } /* very optional, but still useful. W3C uses about the same colors for codes */
+
+/* QUOTES */
+
+blockquote { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; color: #666; }
+blockquote *:first-child:before { content: "\201C"; }
+blockquote *:first-child:after { content: "\201D"; }
+
+/* FORMS */
+
+fieldset { padding:1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
+legend { font-weight: bold; font-size:1.2em; }
+label { font-weight: bold; }
+textarea, input[type='text'], input[type='password'], select { border: 1px solid #ccc; background: #fff; }
+textarea:hover, input[type='text']:hover, input[type='password']:hover, select:hover { border-color: #aaa; }
+textarea:focus, input[type='text']:focus, input[type='password']:focus, select:focus { border-color: #888; outline: 2px solid #ffffaa; }
+input, select { cursor: pointer; }
+input[type='text'],input[type='password'] { cursor: text; }
+
+/* HEADING */
+
+h1,h2,h3,h4,h5,h6 {font-family: "Lucida Grande",Verdana, "�啁敦��", sans-serif;font-weight:bold;}
+h1 {font-size:2.4em; }
+h2 {font-size:2.0em; }
+h3 {font-size:1.8em; }
+h4 {font-size:1.6em; }
+h5 {font-size:1.3em; }
+h6 {font-size:1.2em; }
+
+/* LISTS */
+
+ul { }
+ul ul { }
+ul ul ul {list-style-type: circle; }
+ol {list-style-type:decimal;margin-left:25px;}
+li {}
+dl {zoom:1;}
+dt {}
+dd {}
+
+/* TABLES */
+
+/*table { border-top: 1px solid #ccc;  border-left: 1px solid #ccc; }*/
+thead { display:table-header-group;/*��������憿舐內銵券*/}
+tfoot { display:table-footer-group;/*��������憿舐內銵典偏*/}
+th { font-weight:bold;}
+/*th,td { border-right: 1px solid #ccc;border-bottom: 1px solid #ccc;}*/
+caption { text-align:left;}
+
+/* Make sure the icons are not cut 
+a[href^="http:"], a[href^="mailto:"], a[href^="http:"]:visited,
+a[href$=".pdf"], a[href$=".doc"], a[href$=".xls"], a[href$=".rss"],
+a[href$=".rdf"], a[href^="aim:"] { padding:0px 22px 5px 0; margin: 0 4px 0 0; background-repeat: no-repeat; background-position: right top; }
+*/
+
+/* External links 
+a[href^="http:"]          { background-image: url(elementsImages/externalLink.gif); padding-right: 12px!important;  }
+a[href^="mailto:"]        { background-image: url(elementsImages/email_link.png); }
+a[href^="http:"]:visited  { background-image: url(elementsImages/visited.png); }*/
+
+/* Files 
+a[href$=".pdf"]   { background-image: url(elementsImages/pdf.png); }
+a[href$=".doc"]   { background-image: url(elementsImages/word.png); }
+a[href$=".xls"]   { background-image: url(elementsImages/xls.png); }
+*/
+
+/* Misc */
+a[href$=".rss"],
+a[href$=".rdf"]   { background-image: url(elementsImages/feed.png); }
+a[href^="aim:"]   { background-image: url(elementsImages/group.png); }
+a[href^="http://yourwebsite.com"] { background-image:none!important; padding:0; margin:0; } /* 憒��祈澈蝬脩�銝�箇���icon嚗�撠雯�閮剖��箏��雯� */

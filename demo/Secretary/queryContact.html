@@ -1,0 +1,112 @@
+<!--
+  copyright (c) 2009 Google inc.
+ 
+  You are free to copy and use this sample.
+  License can be found here: http://code.google.com/apis/ajaxsearch/faq/#license
+-->
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      Google Visualization API Sample
+    </title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	   
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['table']});
+	  var notFound = "找不到!!";
+    </script>
+    <script type="text/javascript" src="app.js"></script>
+
+  </head>
+<body style="font-family: Arial; border: 0 none;">
+<div style="margin-bottom: 10px; padding: 5px; border: 1px solid gray; background-color: buttonface;background-image: url('1.jpg');opacity: 0.8;">
+<div class="ss-form-heading  text-center"><h1 class="ss-form-title white-font" dir="ltr">行政職能發展群組通訊錄確認</h1>
+
+<div class ="row  text-center white-font">
+<h3 style="font-weight: bold;" >感謝Celina老師將我們聚在這裡，總區長:  <a href="mailto:sinyqueen@gmail.com?Subject=Hello%20again" style="color: #eca6a6;" target="_top">SinyQueen</a></h3>
+</div>
+<div class="row form-group">
+  <label class="col-md-4 control-label text-right" for="lineID"></label>  
+  <div class="col-md-5">
+ <div class="ss-form-desc ss-no-ignore-whitespace white-font" dir="ltr"><div class="text-left"><p>
+ 此頁面只用來確認您是否有在通訊錄，並不會洩漏出其他資訊。
+ </P>北中南區區長:歡迎有意願者報名 <p>北區：台北基隆宜蘭桃園新竹苗栗花蓮  <br>     中區：台中南投彰化    <br>                  南區：雲林嘉義台南高雄屏東台東  </p> </div></div>
+  </div>
+</div>
+
+<fieldset>
+<!-- Text input-->
+<div class="row form-group">
+  <label class="col-md-4 control-label text-right" for="lineID"></label>  
+  <div class="col-md-4">
+  <input id="lineID" name="lineID" type="text" placeholder="line ID" class="form-control input-md">
+  </div>
+</div>
+<!-- Text input-->
+<div class="row form-group">
+  <label class="col-md-4 control-label" for="Name"></label>  
+  <div class="col-md-4">
+  <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="row form-group">
+  <label class="col-md-4 control-label" for="Phone"></label>  
+  <div class="col-md-4">
+  <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control input-md">
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="row form-group">
+  <label class="col-md-4 control-label" for="Email"></label>  
+  <div class="col-md-4">
+  <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
+  </div>
+</div>
+
+
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Search</button>
+  </div>
+</div>
+
+</fieldset>
+
+
+</div>
+</div>
+<div class="container">
+<h1>查詢結果:</h1>
+<p>1. 如果查詢結果多筆表示您註冊很多次。 2. 找不到，表示您尚未註冊，請跟總區長:  <a href="mailto:sinyqueen@gmail.com?Subject=Hello%20again" target="_top">Sinyqueen</a>聯繫 </p>
+ <div id="table"></div>
+</div>
+<section id="footer">
+        <div class="footer-section">
+        <p>© 2015 Kenneth Hu. All Rights Reserved. Questions? Feel free to <a href="mailto:Kenneth.hu@hotmail.com">drop me an email</a>.</p>
+        </div>
+    </section>
+</body>
+</html>

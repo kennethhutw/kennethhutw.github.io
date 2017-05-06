@@ -10,7 +10,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>
-     行政職能發展群組通訊錄確認
+      Google Visualization API Sample
     </title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
@@ -39,36 +39,35 @@
 
 <div class ="row  text-center white-font">
 <h3 style="font-weight: bold;" >感謝Celina老師將我們聚在這裡，總區長:  <a href="mailto:sinyqueen@gmail.com?Subject=Hello%20again" style="color: #eca6a6;" target="_top">SinyQueen</a></h3>
+<p> 此頁面只用來確認您是否有在通訊錄，並不會洩漏出其他資訊，<span style="font-weight: bold;font-size:25px;">請選其中一項來搜尋</span>。</p>
 </div>
-<div class="row form-group">
-  <label class="col-md-4 control-label text-right" for="lineID"></label>  
-  <div class="col-md-5">
+<div class="row ">
+ <div class="col-md-3"></div>
+  <div class="col-md-3">
  <div class="ss-form-desc ss-no-ignore-whitespace white-font" dir="ltr"><div class="text-left"><p>
- 此頁面只用來確認您是否有在通訊錄，並不會洩漏出其他資訊。
+
  </P>北中南區區長:歡迎有意願者報名 <p>北區：台北基隆宜蘭桃園新竹苗栗花蓮  <br>     中區：台中南投彰化    <br>                  南區：雲林嘉義台南高雄屏東台東  </p> </div></div>
   </div>
-</div>
 
+  <div class="col-md-6">
 <fieldset>
 <!-- Text input-->
 <div class="row form-group">
-  <label class="col-md-4 control-label text-right" for="lineID"></label>  
-  <div class="col-md-4">
+
+  <div class="col-md-6">
   <input id="lineID" name="lineID" type="text" placeholder="line ID" class="form-control input-md">
   </div>
 </div>
 <!-- Text input-->
 <div class="row form-group">
-  <label class="col-md-4 control-label" for="Name"></label>  
-  <div class="col-md-4">
+ <div class="col-md-6">
   <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md">
   </div>
 </div>
 
 <!-- Text input-->
 <div class="row form-group">
-  <label class="col-md-4 control-label" for="Phone"></label>  
-  <div class="col-md-4">
+  <div class="col-md-6">
   <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control input-md">
   </div>
 </div>
@@ -76,8 +75,7 @@
 
 <!-- Text input-->
 <div class="row form-group">
-  <label class="col-md-4 control-label" for="Email"></label>  
-  <div class="col-md-4">
+ <div class="col-md-6">
   <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
   </div>
 </div>
@@ -87,21 +85,20 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <button id="submit" name="submit" class="btn btn-primary">Search</button>
   </div>
 </div>
 
 </fieldset>
-
-
+</div>
+</div>
 </div>
 </div>
 <div class="container">
 <h1>查詢結果:</h1>
 <p>1. 如果查詢結果多筆表示您註冊很多次。 2. 找不到，表示您尚未註冊，請跟總區長:  <a href="mailto:sinyqueen@gmail.com?Subject=Hello%20again" target="_top">Sinyqueen</a>聯繫 </p>
- <div id="table"></div>
+ <div id="table" style=" overflow-y: auto;"></div>
 </div>
 <section id="footer">
         <div class="footer-section">

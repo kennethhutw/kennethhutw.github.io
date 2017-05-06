@@ -1,3 +1,22 @@
+_::-webkit-full-page-media, _:future, :root .safari_only {
+
+  color:#0000FF; 
+  background-color:#CCCCCC; 
+
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* Safari and Chrome */
+    #table{
+        margin-top: 4%;
+    } 
+
+    /* Safari only override */
+    ::i-block-chrome,#table {
+        margin-top: 5%;
+    } 
+}
+
 .text-center {
   text-align: center;
 }

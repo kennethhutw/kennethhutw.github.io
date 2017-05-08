@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+    <meta name="generator" content="shapefile" />
+    <title>Export shapefile</title>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.1/ol.js"></script> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.1/ol.css" type="text/css" /> -->
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.20.1/ol.js"></script> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.20.1/ol.css" type="text/css" /> -->
+    <!-- <script defer src="//maps.googleapis.com/maps/api/js"></script> -->
+	<link rel="stylesheet" href="https://developers.google.com/_static/c4075bed68/css/devsite-google-blue.css" type="text/css" />
+	<script type="text/javascript"  src="lib/jquery-2.2.4.js"></script>
+	<script type="text/javascript" src="lib/analytics.js"></script> 
+
+
+	<script type="text/javascript" src="ol/ol.js"></script>
+	<link rel="stylesheet" href="ol/ol.css" type="text/css" />
+
+	<script type="text/javascript" src ="js/FileSaveTools.js">
+	/* File saving helper, also includes BlobBuilder, and loads FileSaver, JSZip, downloadify, jDataView_Write */
+	</script>
+	<script type="text/javascript" src="js/JS2Shapefile.js">
+	/* Main shapefile creation class */
+	</script>
+	
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		.ol-mouse-position{
+
+			color:red;
+		}
+	</style>
+  </head>
+  <body >
+  <h1>Open Street map maps -> draw features by openlayers -> export to shapefile</h1>
+	
+	<div id="myposition"></div>
+	<div id="zoomlevel"></div>
+ 
+ 
+	<table>
+		<tr style="vertical-align:top">
+			<td style="width:30em">
+
+				<table>
+					<tr>
+						<td>
+							<form class="form-inline">
+							  <label>Geometry type &nbsp;</label>
+							  <select id="type">
+								<option value="Point">Point</option>
+								<option value="LineString">LineString</option>
+								<option value="Polygon">Polygon</option>
+								<!-- <option value="Circle">Circle</option> -->
+								<option value="None">None</option>
+							  </select>
+							</form>
+						</td>
+					   
+					</tr>
+				</table>
+
+				<input type="hidden" id="featuredetails" rows=2>
+				<p>1.select the type from Geometry to add a feature. select 'None' to stop line edition or shape edition.
+				</p>
+				<p>2.click 'Gnerate Shapefile' button. When it completed, download button for ecah type will show up. 
+				</p>
+				<p>3.click 'Save result' button to download shapefile.
+				</p>
+				<p>1.從Geometry選擇你要畫的類別。 要停止畫請選擇'None'。
+				</p>
+				<p>2.點擊 'Gnerate Shapefile' 。 當shapefile產生完成，下面會出現下載的按鍵.</p>
+				<p>3.點擊 'Save result' 下載 shapefile.
+				</p>
+				<button onclick="exportShapefiles()">Gnerate shapefiles!</button>
+				</input>
+
+				<table id="featuretable">
+					<tbody id="featuretbody"></tbody>
+				</table>
+			</td>
+			<td>
+				<!-- The frame used to measure the screen size -->
+				<!-- <div id="frame"></div>  -->
+
+				<div id="map" style="width: 900px; height: 600px"></div>
+			</td>
+		</tr>
+	</table>
+	<div id="saveButtons"></div>
+
+	<pre class="prettyprint notranslate lang-javascript">
+	
+	var drawsource = new ol.source.Vector({wrapX: false});
+
+    var drawvector = new ol.layer.Vector({source: drawsource});
+	
+	var typeSelect = document.getElementById('type');
+
+    var draw; // global so we can remove it later
+	 
+	function initMap(){
+      
+        var source = new ol.source.OSM();
+        var map = new ol.Map({
+                    target: 'map',
+                    layers: [
+                        new ol.layer.Tile({
+                              source: new ol.source.OSM()
+                          }), drawvector
+                        ],
+                    view: new ol.View({
+                            center: ol.proj.fromLonLat([121.3662924,25.0174719]),
+                            zoom: 12
+                        }),
+                    controls: ol.control.defaults({
+                            attributionOptions: {
+                                collapsible: false
+                            }
+                        })
+                });
+        return map;
+    }
+	
+	var map =initMap();
+	 
+    function addInteraction() {
+       var value = typeSelect.value;
+       if (value !== 'None') {
+         draw = new ol.interaction.Draw({
+           source: drawsource,
+           type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
+         });
+         map.addInteraction(draw);
+       }
+     }
+
+
+     /**
+      * Handle change event.
+      */
+     typeSelect.onchange = function() {
+       map.removeInteraction(draw);
+       addInteraction();
+     };
+	 
+	 function exportShapefiles() {
+       	var shapewriter = new Shapefile();
+        var _source = drawvector.getSource();
+        var features =  _source.getFeatures();
+        shapewriter.addOLGraphics(features);
+		/*
+		*  When u call getShapefile file, you already get binary shape file. 
+		*/
+		var pointfile = shapewriter.getShapefile("POINT");
+		var linefile = shapewriter.getShapefile("POLYLINE");
+        var polygonfile = shapewriter.getShapefile("POLYGON");
+		
+		/*
+		*     If it is successful, download button will show up. 		
+		*     
+		*/
+        if (polygonfile.successful){
+            console.log("YES");
+            var saver = new BinaryHelper();
+            for (var actualfile in polygonfile['shapefile']){
+        			if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+        				saver.addData({
+        					filename: "polygons_from_openlayers",
+        					extension: actualfile,
+        					datablob: polygonfile['shapefile'][actualfile]
+        				});
+        			}
+        		}
+        		var div = document.createElement("div");
+        		div.id = "polygonButtonDiv";
+        		div.innerHTML = "Polygons:";
+        		document.getElementById("saveButtons").appendChild(div);
+        		saver.createSaveControl("polygonButtonDiv",true);
+          }else{
+
+            console.log("NO");
+        }
+		if (linefile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in linefile['shapefile']){
+				if (linefile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "lines_from_openlayers",
+						extension: actualfile,
+						datablob: linefile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "lineButtonDiv";
+			div.innerHTML = "Lines:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("lineButtonDiv",true);
+		}
+		if (polygonfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in polygonfile['shapefile']){
+				if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "polygons_from_openlayers",
+						extension: actualfile,
+						datablob: polygonfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "polygonButtonDiv";
+			div.innerHTML = "Polygons:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("polygonButtonDiv",true);
+		}
+
+		if (pointfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in pointfile['shapefile']){
+				if (pointfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "points_from_gmaps",
+						extension: actualfile,
+						datablob: pointfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "pointButtonDiv";
+			div.innerHTML = "Points:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("pointButtonDiv",true);
+		}
+
+    }
+
+     addInteraction();
+	</pre>
+	<script>
+
+	
+	var drawsource = new ol.source.Vector({wrapX: false});
+
+    var drawvector = new ol.layer.Vector({source: drawsource});
+	
+	var typeSelect = document.getElementById('type');
+
+    var draw; // global so we can remove it later
+	 
+	function initMap(){
+      
+        var source = new ol.source.OSM();
+        var map = new ol.Map({
+                    target: 'map',
+                    layers: [
+                        new ol.layer.Tile({
+                              source: new ol.source.OSM()
+                          }), drawvector
+                        ],
+                    view: new ol.View({
+                            center: ol.proj.fromLonLat([121.3662924,25.0174719]),
+                            zoom: 12
+                        }),
+                    controls: ol.control.defaults({
+                            attributionOptions: {
+                                collapsible: false
+                            }
+                        })
+                });
+        return map;
+    }
+	
+	var map =initMap();
+	 
+    function addInteraction() {
+       var value = typeSelect.value;
+       if (value !== 'None') {
+         draw = new ol.interaction.Draw({
+           source: drawsource,
+           type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
+         });
+         map.addInteraction(draw);
+       }
+     }
+
+
+     /**
+      * Handle change event.
+      */
+     typeSelect.onchange = function() {
+       map.removeInteraction(draw);
+       addInteraction();
+     };
+	 
+	 function exportShapefiles() {
+       	var shapewriter = new Shapefile();
+        var _source = drawvector.getSource();
+        var features =  _source.getFeatures();
+        shapewriter.addOLGraphics(features);
+		/*
+		*  When u call getShapefile file, you already get binary shape file. 
+		*/
+		var pointfile = shapewriter.getShapefile("POINT");
+		var linefile = shapewriter.getShapefile("POLYLINE");
+        var polygonfile = shapewriter.getShapefile("POLYGON");
+		
+		/*
+		*     If it is successful, download button will show up. 		
+		*     
+		*/
+        if (polygonfile.successful){
+            console.log("YES");
+            var saver = new BinaryHelper();
+            for (var actualfile in polygonfile['shapefile']){
+        			if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+        				saver.addData({
+        					filename: "polygons_from_openlayers",
+        					extension: actualfile,
+        					datablob: polygonfile['shapefile'][actualfile]
+        				});
+        			}
+        		}
+        		var div = document.createElement("div");
+        		div.id = "polygonButtonDiv";
+        		div.innerHTML = "Polygons:";
+        		document.getElementById("saveButtons").appendChild(div);
+        		saver.createSaveControl("polygonButtonDiv",true);
+          }else{
+
+            console.log("NO");
+        }
+		if (linefile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in linefile['shapefile']){
+				if (linefile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "lines_from_openlayers",
+						extension: actualfile,
+						datablob: linefile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "lineButtonDiv";
+			div.innerHTML = "Lines:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("lineButtonDiv",true);
+		}
+		if (polygonfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in polygonfile['shapefile']){
+				if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "polygons_from_openlayers",
+						extension: actualfile,
+						datablob: polygonfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "polygonButtonDiv";
+			div.innerHTML = "Polygons:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("polygonButtonDiv",true);
+		}
+
+		if (pointfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in pointfile['shapefile']){
+				if (pointfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "points_from_gmaps",
+						extension: actualfile,
+						datablob: pointfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "pointButtonDiv";
+			div.innerHTML = "Points:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("pointButtonDiv",true);
+		}
+
+    }
+
+     addInteraction();
+	</script>
+	<section id="footer">
+        <div class="footer-section">
+        <p>© 2015 Kenneth Hu. All Rights Reserved. Questions? Feel free to <a href="mailto:Kenneth.hu@hotmail.com">drop me an email</a>.</p>
+        </div>
+    </section>
+  </body>
+</html>

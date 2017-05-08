@@ -1,0 +1,29 @@
+
+/**
+ * Footer Styles
+ */
+
+.footer-section {
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+   .white-font{
+      color:white;
+	  font-weight: bold;
+   }
+   
+   .big-font{
+	   font-size: 18px;
+   }
+
+.text-center {
+  text-align: center;
+}
+     	.text-left {
+  text-align: left;
+}

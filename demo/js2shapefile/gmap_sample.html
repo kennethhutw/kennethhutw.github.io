@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+    <meta name="generator" content="shapefile" />
+    <title>Export shapefile</title>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.1/ol.js"></script> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.1/ol.css" type="text/css" /> -->
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.20.1/ol.js"></script> -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.20.1/ol.css" type="text/css" /> -->
+    <!-- <script defer src="//maps.googleapis.com/maps/api/js"></script> -->
+	<link rel="stylesheet" href="https://developers.google.com/_static/c4075bed68/css/devsite-google-blue.css" type="text/css" />
+	  <script src="https://maps.googleapis.com/maps/api/js?v=3.15&&sensor=false&libraries=places,visualization,drawing" type="text/javascript"></script> 
+	<script type="text/javascript"  src="lib/jquery-2.2.4.js"></script>
+	<script type="text/javascript" src="lib/analytics.js"></script> 
+	<link rel="stylesheet" href="css/style.css">
+
+	<script type="text/javascript" src ="js/FileSaveTools.js">
+	/* File saving helper, also includes BlobBuilder, and loads FileSaver, JSZip, downloadify, jDataView_Write */
+	</script>
+	<script type="text/javascript" src="js/JS2Shapefile.js">
+	/* Main shapefile creation class */
+	</script>
+	
+  </head>
+  <body >
+  <h1>Google maps -> draw features -> export to shapefile</h1>
+	
+	<div id="myposition"></div>
+	<div id="zoomlevel"></div>
+ 
+ 
+	<table>
+		<tr style="vertical-align:top">
+			<td style="width:30em">
+
+				
+
+				<input type="hidden" id="featuredetails" rows=2>
+				<p>1.click on an icon to add a feature. click on the 'hand' icon to stop line edition or shape edition click on the name of the feature on the drawbar to edit it again.
+				</p>
+				<p>2.click 'Gnerate Shapefile' button. When it completed, download button for ecah type will show up. 
+				</p>
+				<p>3.click 'Save result' button to download shapefile.
+				</p>
+				<p>1.單擊圖標以添加功能。點擊“手”圖標停止或點擊其他圖標再次進行編輯。。
+				</p>
+				<p>2.點擊 'Gnerate Shapefile' 。 當shapefile產生完成，下面會出現下載的按鍵.</p>
+				<p>3.點擊 'Save result' 下載 shapefile.
+				<button onclick="exportShapefiles()">Export shapefiles!</button>
+				</input>
+
+				<table id="featuretable">
+					<tbody id="featuretbody"></tbody>
+				</table>
+			</td>
+			<td>
+				<!-- The frame used to measure the screen size -->
+				<!-- <div id="frame"></div>  -->
+
+				<div id="map" style="width: 900px; height: 600px"></div>
+			</td>
+		</tr>
+	</table>
+	<div id="saveButtons"></div>
+
+	<h3>Source code</h3>
+	<pre class="prettyprint notranslate lang-javascript">
+	function initMap(){
+      
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 25.0174719, lng: 121.3662924},
+          zoom: 8
+        });
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
+          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: ['marker', 'polygon', 'polyline', 'rectangle']
+          },
+       
+          circleOptions: {
+            fillColor: '#ffff00',
+            fillOpacity: 1,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          }
+        });
+        drawingManager.setMap(map);
+		
+		google.maps.event.addListener(drawingManager, 'overlaycomplete', function(event) {
+			switch (event.type) {
+			  case google.maps.drawing.OverlayType.MARKER:
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.Point(event.overlay.getPosition())
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.RECTANGLE:
+				var b = event.overlay.getBounds(),
+				  p = [b.getSouthWest(), {
+					  lat: b.getSouthWest().lat(),
+					  lng: b.getNorthEast().lng()
+					},
+					b.getNorthEast(), {
+					  lng: b.getSouthWest().lng(),
+					  lat: b.getNorthEast().lat()
+					}
+				  ]
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.Polygon([p])
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.POLYGON:
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.Polygon([event.overlay.getPath().getArray()])
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.POLYLINE:
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.LineString(event.overlay.getPath().getArray())
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.CIRCLE:
+				map.data.add(new google.maps.Data.Feature({
+				  properties: {
+					radius: event.overlay.getRadius()
+				  },
+				  geometry: new google.maps.Data.Point(event.overlay.getCenter())
+				}));
+				break;
+			}
+
+		});
+		
+		return map;
+    }
+	
+	var map =initMap();
+	 
+   
+	 
+	 function exportShapefiles() {
+       	var shapewriter = new Shapefile();
+		var googleFeatures = [];
+		
+		/*
+		*  Get all features from google.map
+		*/
+        map.data.toGeoJson(function(obj){
+			if(obj.features)
+			{
+				googleFeatures = obj.features;
+			}
+			else{
+				googleFeatures = null;
+			}
+		});
+		
+		if(!googleFeatures)
+			return;
+			
+		shapewriter.addGoogleGraphics(googleFeatures);
+
+		/*
+		*  When u call getShapefile file, you already get binary shape file. 
+		*/
+		var pointfile = shapewriter.getShapefile("POINT");
+		var linefile = shapewriter.getShapefile("POLYLINE");
+        var polygonfile = shapewriter.getShapefile("POLYGON");
+		
+		/*
+		*     If it is successful, download button will show up. 		
+		*     
+		*/
+        if (polygonfile.successful){
+            console.log("YES");
+            var saver = new BinaryHelper();
+            for (var actualfile in polygonfile['shapefile']){
+        			if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+        				saver.addData({
+        					filename: "polygons_from_openlayers",
+        					extension: actualfile,
+        					datablob: polygonfile['shapefile'][actualfile]
+        				});
+        			}
+        		}
+        		var div = document.createElement("div");
+        		div.id = "polygonButtonDiv";
+        		div.innerHTML = "Polygons:";
+        		document.getElementById("saveButtons").appendChild(div);
+        		saver.createSaveControl("polygonButtonDiv",true);
+          }else{
+
+            console.log("NO");
+        }
+		if (linefile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in linefile['shapefile']){
+				if (linefile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "lines_from_gmaps",
+						extension: actualfile,
+						datablob: linefile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "lineButtonDiv";
+			div.innerHTML = "Lines:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("lineButtonDiv",true);
+		}
+		if (polygonfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in polygonfile['shapefile']){
+				if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "polygons_from_gmaps",
+						extension: actualfile,
+						datablob: polygonfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "polygonButtonDiv";
+			div.innerHTML = "Polygons:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("polygonButtonDiv",true);
+		}
+
+		if (pointfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in pointfile['shapefile']){
+				if (pointfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "points_from_gmaps",
+						extension: actualfile,
+						datablob: pointfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "pointButtonDiv";
+			div.innerHTML = "Points:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("pointButtonDiv",true);
+		}
+
+    }
+	</pre>
+	<script>
+
+	function initMap(){
+      
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 25.0174719, lng: 121.3662924},
+          zoom: 12
+        });
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
+          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: ['marker', 'polygon', 'polyline', 'rectangle']
+          },
+       
+          circleOptions: {
+            fillColor: '#ffff00',
+            fillOpacity: 1,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          }
+        });
+        drawingManager.setMap(map);
+		
+		google.maps.event.addListener(drawingManager, 'overlaycomplete', function(event) {
+			switch (event.type) {
+			  case google.maps.drawing.OverlayType.MARKER:
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.Point(event.overlay.getPosition())
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.RECTANGLE:
+				var b = event.overlay.getBounds(),
+				  p = [b.getSouthWest(), {
+					  lat: b.getSouthWest().lat(),
+					  lng: b.getNorthEast().lng()
+					},
+					b.getNorthEast(), {
+					  lng: b.getSouthWest().lng(),
+					  lat: b.getNorthEast().lat()
+					}
+				  ]
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.Polygon([p])
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.POLYGON:
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.Polygon([event.overlay.getPath().getArray()])
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.POLYLINE:
+				map.data.add(new google.maps.Data.Feature({
+				  geometry: new google.maps.Data.LineString(event.overlay.getPath().getArray())
+				}));
+				break;
+			  case google.maps.drawing.OverlayType.CIRCLE:
+				map.data.add(new google.maps.Data.Feature({
+				  properties: {
+					radius: event.overlay.getRadius()
+				  },
+				  geometry: new google.maps.Data.Point(event.overlay.getCenter())
+				}));
+				break;
+			}
+
+		});
+		
+		return map;
+    }
+	
+	var map =initMap();
+	 
+   
+	 
+	 function exportShapefiles() {
+       	var shapewriter = new Shapefile();
+		var googleFeatures = [];
+		
+		/*
+		*  Get all features from google.map
+		*/
+        map.data.toGeoJson(function(obj){
+			if(obj.features)
+			{
+				googleFeatures = obj.features;
+			}
+			else{
+				googleFeatures = null;
+			}
+		});
+		
+		if(!googleFeatures)
+			return;
+			
+		shapewriter.addGoogleGraphics(googleFeatures);
+
+		/*
+		*  When u call getShapefile file, you already get binary shape file. 
+		*/
+		var pointfile = shapewriter.getShapefile("POINT");
+		var linefile = shapewriter.getShapefile("POLYLINE");
+        var polygonfile = shapewriter.getShapefile("POLYGON");
+		
+		/*
+		*     If it is successful, download button will show up. 		
+		*     
+		*/
+        if (polygonfile.successful){
+            console.log("YES");
+            var saver = new BinaryHelper();
+            for (var actualfile in polygonfile['shapefile']){
+        			if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+        				saver.addData({
+        					filename: "polygons_from_openlayers",
+        					extension: actualfile,
+        					datablob: polygonfile['shapefile'][actualfile]
+        				});
+        			}
+        		}
+        		var div = document.createElement("div");
+        		div.id = "polygonButtonDiv";
+        		div.innerHTML = "Polygons:";
+        		document.getElementById("saveButtons").appendChild(div);
+        		saver.createSaveControl("polygonButtonDiv",true);
+          }else{
+
+            console.log("NO");
+        }
+		if (linefile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in linefile['shapefile']){
+				if (linefile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "lines_from_gmaps",
+						extension: actualfile,
+						datablob: linefile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "lineButtonDiv";
+			div.innerHTML = "Lines:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("lineButtonDiv",true);
+		}
+		if (polygonfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in polygonfile['shapefile']){
+				if (polygonfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "polygons_from_gmaps",
+						extension: actualfile,
+						datablob: polygonfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "polygonButtonDiv";
+			div.innerHTML = "Polygons:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("polygonButtonDiv",true);
+		}
+
+		if (pointfile.successful){
+			var saver = new BinaryHelper();
+			for (var actualfile in pointfile['shapefile']){
+				if (pointfile['shapefile'].hasOwnProperty(actualfile)){
+					saver.addData({
+						filename: "points_from_gmaps",
+						extension: actualfile,
+						datablob: pointfile['shapefile'][actualfile]
+					});
+				}
+			}
+			var div = document.createElement("div");
+			div.id = "pointButtonDiv";
+			div.innerHTML = "Points:";
+			document.getElementById("saveButtons").appendChild(div);
+			saver.createSaveControl("pointButtonDiv",true);
+		}
+
+    }
+	</script>
+	<section id="footer">
+        <div class="footer-section">
+        <p>© 2015 Kenneth Hu. All Rights Reserved. Questions? Feel free to <a href="mailto:Kenneth.hu@hotmail.com">drop me an email</a>.</p>
+        </div>
+    </section>
+  </body>
+</html>

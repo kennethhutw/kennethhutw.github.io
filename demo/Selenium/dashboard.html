@@ -141,6 +141,38 @@
                             </div>
                         </div>
                     </div>
+
+                            <div id="userInfo" class="row" style="display:none;">
+                                <div class="col-md-3 col-lg-3 " align="center"> 
+                                    <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+                                        class="img-circle img-responsive"> 
+                                </div>
+
+                              
+                                <div class=" col-md-9 col-lg-9 ">
+                                    <table class="table table-user-information">
+                                        <tbody>
+                                            <tr>
+                                                <td>Name:</td>
+                                                <td><span id="username3"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gender:</td>
+                                                <td><span id="gender"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Country</td>
+                                                <td><span id="country"></span></td>
+                                            </tr>
+
+                                            
+                                        </tbody>
+                                    </table>
+
+                                    <a href="#" class="btn btn-primary">My Sales Performance</a>
+                                    <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                                </div>
+                            </div>
                 </div>
             </div>
         </div>
@@ -191,6 +223,13 @@
                      $("#username").html(result.username);
                      $("#username1").html(result.username);
                      $("#username2").html(result.username);
+                }
+                if(result.gender)
+                {
+                    $("#userInfo").show()
+                    $("#username3").html(result.username);
+                    $("#gender").html(result.gender);
+                    $("#country").html(result.country);
                 }
         });
     var parseQueryString = function (url) {

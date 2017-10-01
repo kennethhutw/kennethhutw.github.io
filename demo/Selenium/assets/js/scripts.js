@@ -27,11 +27,10 @@ jQuery(document).ready(function() {
     		}
     		else {
 				if (_countinue)
-					{
+				{
 					$(this).removeClass('input-error');
 					$('.alert-danger').hide();
-					}
-			
+				}
     		}
 		});
 		
@@ -90,8 +89,11 @@ jQuery(document).ready(function() {
 		if (_account.length > 0 && _password.length  > 0) {
 			$('.alert-success').show();
 			$('.alert-danger').hide();
+			var _gender = $("#gender").is(':checked');
+			var _country = $("#country option:selected").val();
+			console.log(_gender + "  " + _country);
 			if (_dashboard)
-				window.location.href = "dashboard.html?username=" + _account;
+				window.location.href = "dashboard.html?username=" + _account + "&gender=" + _gender+ "&country=";
 		}
 		else {
 			$('.alert-success').hide();

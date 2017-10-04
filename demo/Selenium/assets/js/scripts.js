@@ -90,10 +90,10 @@ jQuery(document).ready(function() {
 			$('.alert-success').show();
 			$('.alert-danger').hide();
 			var _gender = $("input[name='gender']:checked").val();
-			var _country = $("#country option:selected").val();
+			var _country = $("#country option:selected").html();
 			console.log(_gender + "  " + _country);
 			if (_dashboard)
-				window.location.href = "dashboard.html?username=" + _account + "&gender=" + _gender+ "&country=";
+				window.location.href = "dashboard.html?username=" + _account + "&gender=" + _gender + "&country=" + _country;
 		}
 		else {
 			$('.alert-success').hide();

@@ -89,7 +89,7 @@ jQuery(document).ready(function() {
 		if (_account.length > 0 && _password.length  > 0) {
 			$('.alert-success').show();
 			$('.alert-danger').hide();
-			var _gender = $("#gender").is(':checked');
+			var _gender = $("input[name='gender']:checked").val();
 			var _country = $("#country option:selected").val();
 			console.log(_gender + "  " + _country);
 			if (_dashboard)
